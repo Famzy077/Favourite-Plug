@@ -1,0 +1,131 @@
+[
+    {
+        "id": 1,
+        "name": "Apple iPhone 16",
+        "price": 1099.99,
+        "image": "/Images/Products/iphone.png",
+        "description": "The Apple iPhone 16 is a high-end smartphone with a large display, powerful A16 Bionic chip, and advanced camera system. It features a 6.7-inch Super Retina XDR display, 5G connectivity, and a triple-camera setup with ProRAW and ProRes video recording capabilities.",
+        "category": "Smartphones"
+    },
+    {
+        "id": 2,
+        "name": "Samsung Galaxy S25 Ultra",
+        "price": 1199.99,
+        "image": "/Images/Products/Samsung25s.png",
+        "description": "The Samsung Galaxy S25 Ultra is a high-end Android smartphone with a large display, powerful Snapdragon 8 Gen 1 chip, and advanced camera system. It features a 6.8-inch Dynamic AMOLED display, 5G connectivity, and a quad-camera setup with 108MP main sensor.",
+        "category": "Smartphones"
+    },
+    {
+        "id": 3,
+        "name": "Samsung S22 Ultra",
+        "price": 1300.99,
+        "image": "/Images/Products/Samsung22.png",
+        "description": "The Samsung S22 Ultra is a premium smartphone with a large display, powerful Snapdragon 8 Gen 1 chip, and advanced camera system. It features a 6.8-inch Dynamic AMOLED display, 5G connectivity, and a quad-camera setup with 108MP main sensor.",
+        "category": "Smartphones"
+    },
+    {
+        "id": 4,
+        "name": "Google Pixel 9 Pro",
+        "price": 2499.99,
+        "image": "/Images/Products/GooglePixel.png",
+        "description": "The Google Pixel 9 Pro is a flagship smartphone with a large display, powerful Tensor G3 chip, and advanced camera system. It features a 6.7-inch OLED display, 5G connectivity, and a triple-camera setup with advanced computational photography features.",
+        "category": "Smartphones"
+    },
+    {
+        "id": 5,
+        "name": "Apple MacBook Pro (M1)",
+        "price": 1299.99,
+        "image": "/Images/Products/infinx.png",
+        "description": "The Apple MacBook Pro (M1) is a high-performance laptop powered by Apple's M1 chip. It features a Retina display, long battery life, and advanced graphics capabilities, making it ideal for creative professionals and power users.",
+        "category": "Laptops"
+    },
+    {
+        "id": 6,
+        "name": "Monolith Tablet",
+        "price": 999.99,
+        "image": "/Images/Products/Tablet.png",
+        "description": "The Tablet is a versatile device with a large touchscreen display, powerful processor, and support for various apps and accessories. It is ideal for browsing, streaming, and productivity tasks.",
+        "category": "Tablets"
+    },
+    {
+        "id": 7,
+        "name": "Xiaomi Redmi 15 Ultral",
+        "price": 799.99,
+        "image": "/Images/Products/XaomiUtral.png",
+        "description": "The Xiaomi Redmi 13 is a budget-friendly smartphone with a large display, decent performance, and a good camera system. It features a 6.5-inch IPS LCD display, 4G connectivity, and a dual-camera setup.",
+        "category": "Smartphones"
+    },
+    {
+        "id": 8,
+        "name": "Infinix Zero 30",
+        "price": 599.99,
+        "image": "/Images/Products/InfinixZero.png",
+        "description": "The Infinix Zero 30 is a mid-range smartphone with a large display, decent performance, and a good camera system. It features a 6.7-inch AMOLED display, 5G connectivity, and a triple-camera setup.",
+        "category": "Smartphones"
+    },
+    {
+        "id": 9,
+        "name": "App Watch series 8",
+        "price": 399.99,
+        "image": "/Images/Products/SmartWatch1.png",
+        "description": "The Apple Watch Series 8 is a smartwatch with a large display, fitness tracking features, and support for various apps. It is ideal for health-conscious users and those who want to stay connected on the go.",
+        "category": "Smartwatches"
+
+    },
+    {
+        "id": 10,
+        "name": "Samsung Galaxy Watch 5",
+        "price": 349.99,
+        "image": "/Images/Products/SmartWatch2.png",
+        "description": "The Samsung Galaxy Watch 5 is a smartwatch with a large display, fitness tracking features, and support for various apps. It is ideal for health-conscious users and those who want to stay connected on the go.",
+        "category": "Smartwatches"
+    },
+    {
+        "id": 11,
+        "name": "Apple iPad Pro",
+        "price": 999.99,
+        "image": "/Images/Products/SmartWatch3.png",
+        "description": "The Apple iPad Pro is a high-performance tablet powered by Apple's M1 chip. It features a Liquid Retina display, long battery life, and support for the Apple Pencil and Magic Keyboard.",
+        "category": "Tablets"
+    },
+    {
+        "id": 12,
+        "name": "Samsung Galaxy Tab S8",
+        "price": 799.99,
+        "image": "/Images/Products/SmartWatch4.png",
+        "description": "The Samsung Galaxy Tab S8 is a high-performance tablet with a large display, powerful Snapdragon 8 Gen 1 chip, and support for the S Pen. It is ideal for productivity and entertainment tasks.",
+        "category": "Tablets"
+    },
+    {
+        "id": 13,
+        "name": "Apple AirPods Pro",
+        "price": 249.99,
+        "image": "/Images/Products/SmartWatch5.png",
+        "description": "The Apple AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Audio"
+    },
+    {
+        "id": 14,
+        "name": "Samsung Galaxy Buds Pro",
+        "price": 199.99,
+        "image": "/Images/Products/SmartWatch6.png",
+        "description": "The Samsung Galaxy Buds Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Audio"
+    },
+    {
+        "id": 15,
+        "name": "Sony WH-1000XM4",
+        "price": 349.99,
+        "image": "/Images/Products/SmartWatch7.png",
+        "description": "The Sony WH-1000XM4 are wireless over-ear headphones with active noise cancellation, touch controls, and long battery life. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Audio"
+    },
+    {
+        "id": 16,
+        "name": "Bose QuietComfort 35 II",
+        "price": 299.99,
+        "image": "/Images/Products/SmartWatch8.png",
+        "description": "The Bose QuietComfort 35 II are wireless over-ear headphones with active noise cancellation, touch controls, and long battery life. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Audio"
+    }
+]
