@@ -14,25 +14,25 @@ export default async function ProductDetail({ params }) {
   return (
     <main>
       <div className='text-center'>
-      <div className="relative h-[50vh] flex justify-center items-center text-white">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/Images/GalaxySeries.png')" }}
-        >
-          <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="relative h-[50vh] flex justify-center items-center text-white">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/Images/GalaxySeries.png')" }}
+          >
+            <div className="absolute inset-0 bg-black opacity-50"></div>
+          </div>
+          <div className="relative z-10 flex items-center space-x-2">
+            <p className="text-2xl underline">
+              <Link href="/">Home</Link>
+            </p>
+            <span className="text-2xl">/</span>
+            <h1 className="text-2xl text-blue-400 font-bold">Shop</h1>
+          </div>
         </div>
-        <div className="relative z-10 flex items-center space-x-2">
-          <p className="text-2xl underline">
-            <Link href="/">Home</Link>
-          </p>
-          <span className="text-2xl">/</span>
-          <h1 className="text-2xl text-blue-400 font-bold">Shop</h1>
-        </div>
-      </div>
         <h1 className="text-3xl font-bold mb-1 text-white rounded-xl bg-blue-500 mx-10 p-2 mt-5">Product Details</h1>
       </div>
       <div className="p-10 max-w-3xl">
-        <main className='flex'>
+        <main className='flex max-sm:flex-col'>
           <div className='w-[50%] max-sm:w-[100%] flex justify-center items-center'>
             <Image src={product.image} width={300} height={100} alt={product.name} className="w-[100%] max-sm:h-[fit-content] h-[50vh] mb-4" />
           </div>
