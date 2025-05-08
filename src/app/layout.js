@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/app/UI/Header";
 import Footer from "@/app/UI/Footer"
 import Docs from "./UI/Docs";
-import MiniHeader from "./UI/miniHeader";
+// import MiniHeader from "./UI/miniHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
