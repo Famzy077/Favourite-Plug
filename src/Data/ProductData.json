@@ -65,36 +65,35 @@
     },
     {
         "id": 9,
-        "name": "App Watch series 8",
-        "price": 399.99,
-        "image": "/Images/Products/SmartWatch1.png",
-        "description": "The Apple Watch Series 8 is a smartwatch with a large display, fitness tracking features, and support for various apps. It is ideal for health-conscious users and those who want to stay connected on the go.",
+        "name": "Samsung Galaxy ",
+        "price": 799.99,
+        "image": "/Images/Products/SmartWatch4.png",
+        "description": "The Samsung Galaxy Tab S8 is a high-performance tablet with a large display, powerful Snapdragon 8 Gen 1 chip, and support for the S Pen. It is ideal for productivity and entertainment tasks.",
         "category": "Smartwatches"
-
     },
     {
         "id": 10,
-        "name": "Samsung Galaxy Watch 5",
-        "price": 349.99,
-        "image": "/Images/Products/SmartWatch2.png",
-        "description": "The Samsung Galaxy Watch 5 is a smartwatch with a large display, fitness tracking features, and support for various apps. It is ideal for health-conscious users and those who want to stay connected on the go.",
+        "name": "Samsung Galaxy ",
+        "price": 799.99,
+        "image": "/Images/Products/SmartWatch4.png",
+        "description": "The Samsung Galaxy Tab S8 is a high-performance tablet with a large display, powerful Snapdragon 8 Gen 1 chip, and support for the S Pen. It is ideal for productivity and entertainment tasks.",
         "category": "Smartwatches"
     },
     {
         "id": 11,
-        "name": "Apple iPad Pro",
-        "price": 999.99,
-        "image": "/Images/Products/SmartWatch3.png",
-        "description": "The Apple iPad Pro is a high-performance tablet powered by Apple's M1 chip. It features a Liquid Retina display, long battery life, and support for the Apple Pencil and Magic Keyboard.",
-        "category": "Tablets"
+        "name": "Apple AirPods Pro",
+        "price": 249.99,
+        "image": "/Images/Products/SmartWatch5.png",
+        "description": "The Apple AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Smartwatches"
     },
     {
         "id": 12,
-        "name": "Samsung Galaxy Tab S8",
-        "price": 799.99,
-        "image": "/Images/Products/SmartWatch4.png",
-        "description": "The Samsung Galaxy Tab S8 is a high-performance tablet with a large display, powerful Snapdragon 8 Gen 1 chip, and support for the S Pen. It is ideal for productivity and entertainment tasks.",
-        "category": "Tablets"
+        "name": "Samsung Galaxy",
+        "price": 199.99,
+        "image": "/Images/Products/SmartWatch6.png",
+        "description": "The Samsung Galaxy Buds Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Smartwatches"
     },
     {
         "id": 13,
@@ -102,30 +101,30 @@
         "price": 249.99,
         "image": "/Images/Products/SmartWatch5.png",
         "description": "The Apple AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
-        "category": "Audio"
+        "category": "Smartwatches"
     },
     {
         "id": 14,
-        "name": "Samsung Galaxy Buds Pro",
+        "name": "Samsung Galaxy",
         "price": 199.99,
         "image": "/Images/Products/SmartWatch6.png",
         "description": "The Samsung Galaxy Buds Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
-        "category": "Audio"
+        "category": "Smartwatches"
     },
     {
         "id": 15,
-        "name": "Sony WH-1000XM4",
-        "price": 349.99,
-        "image": "/Images/Products/SmartWatch7.png",
-        "description": "The Sony WH-1000XM4 are wireless over-ear headphones with active noise cancellation, touch controls, and long battery life. They are ideal for music lovers and those who want to stay connected on the go.",
-        "category": "Audio"
+        "name": "Apple AirPods Pro",
+        "price": 249.99,
+        "image": "/Images/Products/SmartWatch5.png",
+        "description": "The Apple AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Smartwatches"
     },
     {
         "id": 16,
-        "name": "Bose QuietComfort 35 II",
-        "price": 299.99,
-        "image": "/Images/Products/SmartWatch8.png",
-        "description": "The Bose QuietComfort 35 II are wireless over-ear headphones with active noise cancellation, touch controls, and long battery life. They are ideal for music lovers and those who want to stay connected on the go.",
-        "category": "Audio"
+        "name": "Samsung Galaxy",
+        "price": 199.99,
+        "image": "/Images/Products/SmartWatch6.png",
+        "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Smartwatches"
     }
 ]

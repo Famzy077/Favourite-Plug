@@ -1,27 +1,31 @@
 import React from 'react'
 import Section from '../../app/UI/SlidedSection'
-import Call from './Call'
+import Call from '../../app/UI/Call'
 import ProductCard from '@/app/Components/ProductsCard'
 import products from '../.././Data/ProductData.json'
-import Footer from '@/app/UI/Footer'
+import ProductBaner from '@/app/Components/Home/ProductBaner'
+import { SmartwatchCarousel } from '@/app/Components/Home/WatchCarousel'
 
 const Page = () => {
+  
+  const mobileProducts = products.filter(product => product.category === 'Smartphones' || product.category === 'Tablets' || product.category === 'Laptops');
+
   return (
     <div className='bg-zinc-200'>
-        <Section/>
-        <Call/>
-        <div className='pb-10'>
-          <h1 className='text-3xl max-sm:text-2xl  pl-10 py-4'>Mobile Devices</h1>
-          <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-10">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+      <Section/>
+      <Call/>
+      <div className='pb-10'>
+        <h1 className='text-3xl max-sm:text-2xl  pl-10 py-2'>Mobile Devices</h1>
+        <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-10">
+          {mobileProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
+      </div>
 
-        <div>
-          <h1>Smart Watches</h1>
-        </div>
+      <ProductBaner/>
+      <SmartwatchCarousel/>
+
     </div>
   )
 }
