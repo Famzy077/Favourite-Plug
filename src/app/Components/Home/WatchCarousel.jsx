@@ -10,7 +10,9 @@ export const SmartwatchCarousel = () => {
 
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 2,
@@ -33,7 +35,7 @@ export const SmartwatchCarousel = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
