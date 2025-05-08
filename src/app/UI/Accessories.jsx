@@ -1,3 +1,4 @@
+import Slider from "react-slick";
 import React from 'react'
 import ProductCard from '@/app/Components/ProductsCard'
 import products from '../.././Data/ProductData.json'
@@ -17,3 +18,56 @@ export const Accessories = () => {
     </div>
   )
 }
+
+export const AccessoriesSLides = () => {
+  const accessories = products.filter(
+    (product) => product.category === "Accessories");
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 2,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  return (
+    <div className="pb-10">
+      <div className="px-10 max-sm:px-2">
+        <Slider {...settings}>
+          {accessories.map((product) => (
+            <div key={product.id} className="p-2">
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </div>
+  );
+};
