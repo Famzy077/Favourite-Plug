@@ -12,11 +12,13 @@ const Page = dynamic(() => import("@/Pages/Home/Home"), {
 
 function Home() {
   return (
-    <Provider store={store}>
+    <main className="bg-black">
+      <Provider store={store}>
       <div>
         <Page />
       </div>
     </Provider>
+    </main>
   );
 }
 

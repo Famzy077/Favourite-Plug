@@ -1,14 +1,12 @@
 import React from 'react'
 import Section from '../../app/UI/SlidedSection'
 import Call from '../../app/UI/Call'
-import ProductCard from '@/app/Components/ProductsCard'
 import products from '../.././Data/ProductData.json'
 import ProductBaner from '@/app/Components/Home/ProductBaner'
 import { SmartwatchCarousel } from '@/app/Components/Home/WatchCarousel'
 import {PowerBank} from '@/app/Components/PowerBank'
-import Laptop from '@/app/UI/Laptop'
-import Accessories from '@/app/UI/Accessories'
-import Docs from '@/app/UI/Docs'
+import {Laptops} from '@/app/UI/Laptop'
+import { Accessories } from '@/app/UI/Accessories'
 import {Mobile} from '@/app/Components/MobileSlide'
 const Page = () => {
   
@@ -21,11 +19,11 @@ const Page = () => {
 
       <ProductBaner/>
       <SmartwatchCarousel/>
-      <Laptop/>
+      <Laptops/>
       <PowerBank/>
       
       <div>
-        <h1 className='text-3xl max-sm:text-2xl  pl-10 py-2'>Accessories and more...</h1>
+        <h1 className="text-3xl max-sm:mx-4 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Accessories and more...</h1> 
         <Accessories/>
       </div>
     </div>

@@ -6,10 +6,10 @@ import Link from 'next/link';
 
 const HeaderPage = () => {
   return (
-    <header className='flex justify-between items-center bg-blue-100 p-4 shadow-md'>
+    <header className='flex mt-0 justify-between sticky -top-2 z-80 items-center bg-blue-100 p-4 max-sm:p-2 shadow-md'>
         <div className='flex items-center w-[50%]'>
             <Link href={'/'}>
-                <Image className='w-[10rem] ' src={Logo1} alt="Logo" layout="intrinsic" />
+                <Image className='w-[10rem] max-sm:w-[7rem]' src={Logo1} alt="Logo" layout="intrinsic" />
             </Link>
         </div>
         <nav className='flex max-md:hidden items-center space-x-4 w-[50%] text-xl'> 

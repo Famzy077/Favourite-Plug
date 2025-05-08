@@ -58,14 +58,14 @@
     {
         "id": 8,
         "name": "Infinix Zero 30",
-        "price": 599.99,
+        "price": 6099.99,
         "image": "/Images/Products/InfinixZero.png",
         "description": "The Infinix Zero 30 is a mid-range smartphone with a large display, decent performance, and a good camera system. It features a 6.7-inch AMOLED display, 5G connectivity, and a triple-camera setup.",
         "category": "Smartphones"
     },
     {
         "id": 9,
-        "name": "Samsung Galaxy ",
+        "name": "Pink Smart Watch ",
         "price": 799.99,
         "image": "/Images/Products/SmartWatch4.png",
         "description": "The Samsung Galaxy Tab S8 is a high-performance tablet with a large display, powerful Snapdragon 8 Gen 1 chip, and support for the S Pen. It is ideal for productivity and entertainment tasks.",
@@ -73,9 +73,9 @@
     },
     {
         "id": 10,
-        "name": "Samsung Galaxy ",
+        "name": "Samsung Galaxy Watch",
         "price": 799.99,
-        "image": "/Images/Products/SmartWatch4.png",
+        "image": "/Images/Products/SmartWatch6.png",
         "description": "The Samsung Galaxy Tab S8 is a high-performance tablet with a large display, powerful Snapdragon 8 Gen 1 chip, and support for the S Pen. It is ideal for productivity and entertainment tasks.",
         "category": "Smartwatches"
     },
@@ -91,7 +91,7 @@
         "id": 12,
         "name": "Samsung Galaxy",
         "price": 199.99,
-        "image": "/Images/Products/SmartWatch6.png",
+        "image": "/Images/Products/SmartWatch4.png",
         "description": "The Samsung Galaxy Buds Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Smartwatches"
     },
@@ -318,5 +318,21 @@
         "image": "/Images/Products/SystemStands.png",
         "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Accessories"
+    },
+    {
+        "id": 41,
+        "name": "Mac book pro",
+        "price": 4000000,
+        "image": "/Images/Products/LAPtop.png",
+        "description": "The Mac Book Laptop is a versatile and powerful device designed for productivity and entertainment. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
+        "category": "Laptops"
+    },
+    {
+        "id": 42,
+        "name": "Asus intel core i7",
+        "price": 2000000,
+        "image": "/Images/Products/Asus.png",
+        "description": "The Mac Book Laptop is a versatile and powerful device designed for productivity and entertainment. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
+        "category": "Laptops"
     }
 ]

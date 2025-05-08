@@ -1,7 +1,7 @@
 import products from '..//../../Data/ProductData.json'
 import Image from 'next/image'
 import Link from 'next/link'
-import Accessories from '@/app/UI/Accessories';
+import { Accessories } from '@/app/UI/Accessories';
 
 
 export default async function ProductDetail({ params }) {

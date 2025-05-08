@@ -2,7 +2,7 @@ import React from 'react'
 import ProductCard from '@/app/Components/ProductsCard'
 import products from '../.././Data/ProductData.json'
 
-const Accessories = () => {
+export const Accessories = () => {
     const mobileProducts = products.filter(product => product.category === 'Accessories');
 
   return (
@@ -17,5 +17,3 @@ const Accessories = () => {
     </div>
   )
 }
-
-export default Accessories

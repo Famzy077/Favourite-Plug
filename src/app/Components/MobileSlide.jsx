@@ -4,7 +4,7 @@ import products from '../.././Data/ProductData.json';
 
 export const Mobile = () => {
   const mobileProducts = products.filter(
-    (product) => product.category === "Smartphones" | product.category === "Tablets");
+    (product) => product.category === "Smartphones" || product.category === "Tablets");
 
   const settings = {
     dots: false,
@@ -33,7 +33,7 @@ export const Mobile = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -42,8 +42,8 @@ export const Mobile = () => {
 
   return (
     <div className="pb-10">
-      <h1 className="text-3xl max-sm:text-2xl pl-12 pt-16">Mobile Phones/Tablets</h1> 
-      <div className="px-10">
+        <h1 className="text-3xl max-sm:mx-4 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Mobile Phones/Tablets</h1> 
+      <div className="px-10 max-sm:px-2">
         <Slider {...settings}>
           {mobileProducts.map((product) => (
             <div key={product.id} className="p-2">
