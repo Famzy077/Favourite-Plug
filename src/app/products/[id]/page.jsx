@@ -1,6 +1,7 @@
 import products from '..//../../Data/ProductData.json'
 import Image from 'next/image'
 import Link from 'next/link'
+import Accessories from '@/app/UI/Accessories';
 
 
 export default async function ProductDetail({ params }) {
@@ -32,7 +33,7 @@ export default async function ProductDetail({ params }) {
         <h1 className="text-3xl font-bold mb-1 text-white rounded-xl bg-blue-500 mx-10 p-2 mt-5">Product Details</h1>
       </div>
       <div className="p-10 max-w-3xl">
-        <main className='flex max-sm:flex-col'>
+        <main className='flex gap-5 max-sm:flex-col'>
           <div className='w-[50%] max-sm:w-[100%] flex justify-center items-center'>
             <Image src={product.image} width={300} height={100} alt={product.name} className="w-[100%] max-sm:h-[fit-content] h-[50vh] mb-4" />
           </div>
@@ -41,10 +42,15 @@ export default async function ProductDetail({ params }) {
             <p className="text-gray-700 text-lg mb-2">${product.price.toLocaleString()}</p>
             <p className="text-gray-600">{product.description}</p>
             <div className='mt-5'>
-              <button className='text-2xl border border-zin-700 text-white rounded-xl hover:bg-zinc-400 bg-zinc-500 py-2 px-3 cursor-pointer'>Call to order</button>
+              <button className='text-2xl border border-blue-500 text-white rounded-xl bg-blue-500 hover:bg-blue-400 py-2 px-3 cursor-pointer'>Call to order</button>
             </div>
           </div>
         </main>
+      </div>
+
+      <div className='bg-blue-100 p-5'>
+        <h1 className='text-2xl pt-8 px-8 font-semibold text-zinc-800'>You can also explore other items</h1>
+        <Accessories/>
       </div>
     </main>
   );

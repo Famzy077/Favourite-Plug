@@ -5,10 +5,13 @@ import ProductCard from '@/app/Components/ProductsCard'
 import products from '../.././Data/ProductData.json'
 import ProductBaner from '@/app/Components/Home/ProductBaner'
 import { SmartwatchCarousel } from '@/app/Components/Home/WatchCarousel'
-
+import PowerBank from '@/app/UI/PowerBank'
+import Laptop from '@/app/UI/Laptop'
+import Accessories from '@/app/UI/Accessories'
+import Docs from '@/app/UI/Docs'
 const Page = () => {
   
-  const mobileProducts = products.filter(product => product.category === 'Smartphones' || product.category === 'Tablets' || product.category === 'Laptops');
+  const mobileProducts = products.filter(product => product.category === 'Smartphones' || product.category === 'Tablets');
 
   return (
     <div className='bg-zinc-200'>
@@ -25,7 +28,13 @@ const Page = () => {
 
       <ProductBaner/>
       <SmartwatchCarousel/>
-
+      <Laptop/>
+      <PowerBank/>
+      
+      <div>
+        <h1 className='text-3xl max-sm:text-2xl  pl-10 py-2'>Accessories and more...</h1>
+        <Accessories/>
+      </div>
     </div>
   )
 }

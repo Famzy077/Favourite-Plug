@@ -57,10 +57,10 @@ const Section = () => {
           <div className="bg-black w-full max-sm:h-[30vh] h-[80vh] flex justify-center items-center">
             <Link href={''}>
               <Image
-                  src={SamsungSeries}
-                  alt="Samsung Series"
-                  className="w-full max-sm:w-[100%] max-sm:h-[30vh] h-full object-fit"
-                  title="Samsung Series"
+                src={SamsungSeries}
+                alt="Samsung Series"
+                className="w-[100%] max-sm:w-[100%] max-sm:h-[30vh] h-full object-fit"
+                title="Samsung Series"
               />
             </Link>
           </div>
@@ -72,10 +72,10 @@ const Section = () => {
             </div>
             <Link href={''}>
                 <Image
-                    src={Watch}
-                    alt="Watch"
-                    className="w-full max-sm:w-[100%] max-sm:h-[30vh] h-full object-fit"
-                    title="Watch"
+                  src={Watch}
+                  alt="Watch"
+                  className="w-[100%] max-sm:w-[100%] max-sm:h-[30vh] h-full object-fit"
+                  title="Watch"
                 />
             </Link>
           </div>
@@ -84,10 +84,10 @@ const Section = () => {
             <h1 className="text-white max-sm:text-3xl text-5xl absolute top-10 left-0 text-center z-10 px-4">Get Affordable Gadget</h1>
             <Link href={''}>
                 <Image
-                    src={Mac}
-                    alt="Mac"
-                    className="w-full max-sm:w-[100%] max-sm:h-[30vh] h-full object-fit"
-                    title="Mac"
+                  src={Mac}
+                  alt="Mac"
+                  className="w-[100%] max-sm:w-[100%] max-sm:h-[30vh] h-full object-fit"
+                  title="Mac"
                 />
             </Link>
           </div>
@@ -97,10 +97,10 @@ const Section = () => {
             <p className="text-white max-sm:text-3xl text-5xl absolute mt-2 top-20 left-0 text-center z-10 px-4">Products</p>
             <Link href={''}>
                 <Image
-                    src={Iphone}
-                    alt="Mac"
-                    className="w-full max-sm:w-[100%] max-sm:h-[30vh] h-full object-fit"
-                    title="Mac"
+                  src={Iphone}
+                  alt="Mac"
+                  className="w-[100%] max-sm:w-[100%] max-sm:h-[30vh] h-full object-fit"
+                  title="Mac"
                 />
             </Link>
           </div>

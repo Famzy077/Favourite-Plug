@@ -126,5 +126,197 @@
         "image": "/Images/Products/SmartWatch6.png",
         "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Smartwatches"
+    },
+    {
+        "id": 17,
+        "name": "itel airBuds",
+        "price": 249.99,
+        "image": "/Images/Products/itelAirpod.png",
+        "description": "The itel AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Accessories"
+    },
+    {
+        "id": 18,
+        "name": "Samsung Air puds",
+        "price": 199.99,
+        "image": "/Images/Products/AirPodAccess.png",
+        "description": "The Samsung Galaxy Buds Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Accessories"
+    },
+    {
+        "id": 19,
+        "name": "Pink AirPods",
+        "price": 249.99,
+        "image": "/Images/Products/FastCharger.png",
+        "description": "The Apple AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Accessories"
+    },
+    {
+        "id": 20,
+        "name": "Samsung Galaxy",
+        "price": 199.99,
+        "image": "/Images/Products/BudsLite.png",
+        "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Accessories"
+    },
+    {
+        "id": 21,
+        "name": "itel airBuds Pro",
+        "price": 249.99,
+        "image": "/Images/Products/itelAipod.png",
+        "description": "itel are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Accessories"
+    },
+    {
+        "id": 22,
+        "name": "Samsung Galaxy",
+        "price": 199.99,
+        "image": "/Images/Products/itelAirpod.png",
+        "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Accessories"
+    },
+    {
+        "id": 23,
+        "name": "itel airBuds Pro",
+        "price": 249.99,
+        "image": "/Images/Products/Mp2.png",
+        "description": "itel are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Accessories"
+    },
+    {
+        "id": 24,
+        "name": "Samsung Galaxy",
+        "price": 199.99,
+        "image": "/Images/Products/GuixiaAirpods.png",
+        "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Accessories"
+    },
+    {
+        "id": 25,
+        "name": "itel Philly Powerbank",
+        "price": 249.99,
+        "image": "/Images/Products/itelPower.png",
+        "description": "itel are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "PowerBanks"
+    },
+    {
+        "id": 26,
+        "name": "Samsung Galaxy",
+        "price": 199.99,
+        "image": "/Images/Products/LaptopPowerbank.png",
+        "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "PowerBanks"
+    },
+    {
+        "id": 27,
+        "name": "itel airBuds Pro",
+        "price": 249.99,
+        "image": "/Images/Products/PhillyPowerbank.png",
+        "description": "itel are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "PowerBanks"
+    },
+    {
+        "id": 28,
+        "name": "Samsung PowerBanks",
+        "price": 199.99,
+        "image": "/Images/Products/PowerBanks.png",
+        "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "PowerBanks"
+    },
+    {
+        "id": 29,
+        "name": "Hp Laptop core i7",
+        "price": 899.99,
+        "image": "/Images/Products/HpLaptop.png",
+        "description": "The Dell Inspiron 15 is a reliable and affordable laptop designed for everyday use. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
+        "category": "Laptops"
+    },
+    {
+        "id": 30,
+        "name": "Lenovo ThinkPad X1 Carbon",
+        "price": 1499.99,
+        "image": "/Images/Products/DellLaptop.png",
+        "description": "The Lenovo ThinkPad X1 Carbon is a premium laptop designed for business professionals. It features a lightweight design, high-resolution display, and powerful performance, making it ideal for work on the go.",
+        "category": "Laptops"
+    },
+    {
+        "id": 31,
+        "name": "Apple MacBook (M1)",
+        "price": 699.99,
+        "image": "/Images/Products/Mac-tab.png",
+        "description": "The Mac 3 is a lightweight and portable laptop designed for everyday use. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
+        "category": "Laptops"
+    },
+    {
+        "id": 32,
+        "name": "Power Bank 20000mAh",
+        "price": 49.99, 
+        "image": "/Images/Products/PdPowerbank.png",
+        "description": "The Power Bank 20000mAh is a portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
+        "category": "PowerBanks"
+    },
+    {
+        "id": 33,
+        "name": "Power Bank 10000mAh",
+        "price": 29.99, 
+        "image": "/Images/Products/VicPowerbank.png",
+        "description": "The Power Bank 10000mAh is a portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
+        "category": "PowerBanks"
+    },
+    {
+        "id": 34,
+        "name": "Power Bank 5000mAh",
+        "price": 19.99, 
+        "image": "/Images/Products/Acelec2000Powerbank.png",
+        "description": "The Power Bank 5000mAh is a compact and portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
+        "category": "PowerBanks"
+    },
+    {
+        "id": 35,
+        "name": "Power Bank 20000mAh",
+        "price": 59.99, 
+        "image": "/Images/Products/2000VicPowerbank.png",
+        "description": "The Power Bank 20000mAh is a compact and portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
+        "category": "PowerBanks"
+    },
+    {
+        "id": 36,
+        "name": "Power Bank 3000mAh",
+        "price": 9.99, 
+        "image": "/Images/Products/Poe.png",
+        "description": "The Power Bank 3000mAh is a compact and portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
+        "category": "Accessories"
+    },
+    {
+        "id": 37,
+        "name": "Laptop Charger",
+        "price": 9.99, 
+        "image": "/Images/Products/LaptopCharger.png",
+        "description": "The Laptop Charger is a compact and portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
+        "category": "Accessories"
+    },
+    {
+        "id": 38,
+        "name": "Power Bank 10000mAh",
+        "price": 1299.99,
+        "image": "/Images/Products/Power30000PowerBank.png",
+        "description": "The HP Laptop is a versatile and powerful device designed for productivity and entertainment. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
+        "category": "Accessories"
+    },
+    {
+        "id": 39,
+        "name": "iPhone 15pro",
+        "price": 1299.99,
+        "image": "/Images/Products/iPhone15pro.png",
+        "description": "The iPhone 15pro is a sleek and powerful smartphone designed for productivity and visual creativity",
+        "category": "Smartphones"
+    },
+    {
+        "id": 40,
+        "name": "System Stands",
+        "price": 1299.99,
+        "image": "/Images/Products/SystemStands.png",
+        "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
+        "category": "Accessories"
     }
 ]
