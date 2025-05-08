@@ -32,14 +32,14 @@ export default async function ProductDetail({ params }) {
         </div>
         <h1 className="text-3xl font-bold mb-1 text-white rounded-xl bg-blue-500 mx-10 p-2 mt-5">Product Details</h1>
       </div>
-      <div className="p-10 max-w-3xl">
+      <div className="p-5 max-w-3xl">
         <main className='flex gap-5 max-sm:flex-col'>
           <div className='w-[50%] max-sm:w-[100%] flex justify-center items-center'>
             <Image src={product.image} width={300} height={100} alt={product.name} className="w-[100%] max-sm:h-[fit-content] h-[50vh] mb-4" />
           </div>
           <div className='w-[50%] max-sm:w-[100%] flex flex-col justify-center items-start'>
             <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-            <p className="text-gray-700 text-lg mb-2">${product.price.toLocaleString()}</p>
+            <p className="text-gray-700 text-lg mb-2">₦{product.price.toLocaleString()}</p>
             <p className="text-gray-600">{product.description}</p>
             <div className='mt-5'>
               <button className='text-2xl border border-blue-500 text-white rounded-xl bg-blue-500 hover:bg-blue-400 py-2 px-3 cursor-pointer'>Call to order</button>
