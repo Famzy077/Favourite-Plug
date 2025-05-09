@@ -1,7 +1,7 @@
-import products from '..//../../Data/ProductData.json'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Accessories } from '@/app/UI/Accessories';
+// import { Accessories } from '@/app/UI/Accessories';
+import products from '..//../../Data/ProductData.json'
 
 
 export default async function ProductDetail({ params }) {
@@ -50,7 +50,7 @@ export default async function ProductDetail({ params }) {
 
       <div className='bg-blue-100 p-5'>
         <h1 className='text-2xl pt-8 px-8 font-semibold text-zinc-800'>You can also explore other items</h1>
-        <Accessories/>
+        {/* <Accessories/> */}
       </div>
     </main>
   );
