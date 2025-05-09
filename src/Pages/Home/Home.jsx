@@ -6,9 +6,8 @@ import ProductBaner from '@/app/Components/Home/ProductBaner'
 import { SmartwatchCarousel } from '@/app/Components/Home/WatchCarousel'
 import {PowerBank} from '@/app/Components/PowerBank'
 import {Laptops} from '@/app/UI/Laptop'
-import { Accessories } from '@/app/UI/Accessories'
 import {Mobile} from '@/app/Components/MobileSlide'
-import { AccessoriesSLides } from '@/app/UI/Accessories'
+import AccessoriesSLides from '@/app/UI/Accessories'
 const Page = () => {
   
 

@@ -1,25 +1,27 @@
-import Slider from "react-slick";
+'use client'
 import React from 'react'
 import ProductCard from '@/app/Components/ProductsCard'
 import products from '../.././Data/ProductData.json'
+import Slider from 'react-slick'
 
-export const Accessories = () => {
-    const mobileProducts = products.filter(product => product.category === 'Accessories');
+// const accessories = products.filter(product => product.category === 'Accessories');
+// const Accessories = () => {
 
-  return (
-    <div>
-      <div className='pb-10'>
-        <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-10">
-          {mobileProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <div className='pb-10'>
+//         <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-10">
+//           {accessories.map((product) => (
+//             <ProductCard key={product.id} product={product} />
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+// export { Accessories }
 
-export const AccessoriesSLides = () => {
+const AccessoriesSLides = () => {
   const accessories = products.filter(
     (product) => product.category === "Accessories");
 
@@ -71,3 +73,5 @@ export const AccessoriesSLides = () => {
     </div>
   );
 };
+export default AccessoriesSLides
+// export { Accessories }

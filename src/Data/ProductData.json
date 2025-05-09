@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Apple iPhone 16",
         "price": 1099.99,
-        "image": "/Images/Products/iphone.png",
+        "image": "/Images/Products/iPhone16.png",
         "description": "The Apple iPhone 16 is a high-end smartphone with a large display, powerful A16 Bionic chip, and advanced camera system. It features a 6.7-inch Super Retina XDR display, 5G connectivity, and a triple-camera setup with ProRAW and ProRes video recording capabilities.",
         "category": "Smartphones"
     },

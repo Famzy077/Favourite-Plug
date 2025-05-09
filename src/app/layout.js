@@ -3,7 +3,6 @@ import "./globals.css";
 import Header from "@/app/UI/Header";
 import Footer from "@/app/UI/Footer"
 import Docs from "./UI/Docs";
-// import MiniHeader from "./UI/miniHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +26,6 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header/>
-        {/* <MiniHeader/> */}
         {children}
         <Docs/>
         <Footer/>
