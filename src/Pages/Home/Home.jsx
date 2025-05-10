@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import Section from '../../app/UI/SlidedSection'
+import Section from '../../app/Components/Home/SlidedSection'
 import Call from '../../app/UI/Call'
 import products from '../.././Data/ProductData.json'
 import ProductBaner from '@/app/Components/Home/ProductBaner'

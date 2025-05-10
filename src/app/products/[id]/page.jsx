@@ -50,7 +50,7 @@ export default async function ProductDetail({ params }) {
         </main>
       </div>
 
-      <div className='bg-blue-100 p-5'>
+      <div className='bg-blue-100 p-5 mb-14'>
         <h1 className='text-2xl pt-8 px-4  pl-0 max-sm:text-xl font-semibold text-zinc-800'>You can also explore other items</h1>
         <Accessories/>
         <MobileSticky/>

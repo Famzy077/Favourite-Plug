@@ -4,12 +4,12 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import SamsungSeries from "../../../public/Images/GalaxyS25.png";
-import Watch from "../../../public/Images/WatchLanding.png";
-import Mac from "../../../public/Images/Mac.png"
+import SamsungSeries from "/public/Images/GalaxyS25.png";
+import Watch from "/public/Images/WatchLanding.png";
+import Mac from "/public/Images/Mac.png"
 import Image from "next/image";
 import Link from "next/link";
-import Iphone from '../../../public/Images/iphoneSection__.png'
+import Iphone from '/public/Images/iphoneSection__.png'
 
 
 
@@ -66,7 +66,7 @@ const Section = () => {
           </div>
 
           <div className="bg-[#0f0f0f] w-full max-sm:h-[30vh] h-[80vh] relative flex justify-center items-center">
-            <div className="text-white max-sm:text-3xl text-6xl absolute top-22 left-0 z-10 px-4">
+            <div className="text-white max-sm:text-3xl text-6xl absolute max-sm:hidden top-22 left-0 z-10 px-4">
               <h1>Smart Watch Pro</h1>
               <button className="border border-white rounded hover:shadow cursor-pointer py-2 max-sm:px-2 px-3 max-sm:text-xl text-2xl font-medium bg-zinc-300 hover:bg-zinc-200 text-black">Call to Order</button>
             </div>
@@ -81,7 +81,7 @@ const Section = () => {
           </div>
 
           <div className="bg-zinc-800 w-full max-sm:h-[30vh] h-[80vh] relative flex justify-center items-center">
-            <h1 className="text-white max-sm:text-3xl text-5xl absolute top-10 left-0 text-center z-10 px-4">Get Affordable Gadget</h1>
+            <h1 className="text-white max-sm:text-3xl text-5xl absolute top-10 left-0 max-sm:hidden text-center z-10 px-4">Get Affordable Gadget</h1>
             <Link href={''}>
                 <Image
                   src={Mac}
@@ -93,8 +93,8 @@ const Section = () => {
           </div>
 
           <div className="bg-zinc-800 w-full max-sm:h-[30vh] h-[80vh] relative flex justify-center items-center">
-            <h1 className="text-white max-sm:text-3xl text-5xl absolute top-10 left-0 text-center z-10 px-4">Explore Apple</h1>
-            <p className="text-white max-sm:text-3xl text-5xl absolute mt-2 top-20 left-0 text-center z-10 px-4">Products</p>
+            <h1 className="max-sm:hidden text-white max-sm:text-3xl text-5xl absolute top-10 left-0 text-center z-10 px-4">Explore Apple</h1>
+            <p className="max-sm:hidden text-white max-sm:text-3xl text-5xl absolute mt-2 top-20 left-0 text-center z-10 px-4">Products</p>
             <Link href={''}>
                 <Image
                   src={Iphone}
