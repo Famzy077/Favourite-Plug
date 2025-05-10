@@ -1,16 +1,16 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import Logo1 from '../../../public/Images/Logo1.png';
+import Logo1 from '../../../public/Images/Logo.png';
 import MiniHeader from './MiniHeader';
 import { Menu } from 'lucide-react';
 const HeaderPage = () => {
   return (
     <div className='justify-between sticky top-0 z-80 items-center'>
-      <header className='flex bg-blue-200 p-4 max-sm:p-2 shadow-md items-center justify-between'>
+      <header className='flex bg-blue-200 p-2 max-sm:p-2 shadow-md items-center justify-between'>
         <div className='flex items-center w-[100%]  lg-[50%] justify-between'>
           <Link href={'/'}>
-            <Image className='w-[10rem] max-sm:w-[7rem]' src={Logo1} alt="Logo" />
+            <Image className='w-[3.5rem] lg:ml-2 border max-sm:w-[2rem]' src={Logo1} alt="Logo" />
           </Link>
 
           <Menu className='mr-2 cursor-pointer max-sm:block md:block lg:hidden' size={30}/>

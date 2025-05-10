@@ -10,11 +10,11 @@ export const SmartwatchCarousel = () => {
   const settings = {
     dots: true,
     infinite: true,
-    autoplay: false,
+    autoplay: true,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 2,
-    arrows: true,
+    arrows: false,
     responsive: [
       {
         breakpoint: 1024,
