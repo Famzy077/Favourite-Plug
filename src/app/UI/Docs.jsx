@@ -5,7 +5,7 @@ const Docs = () => {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="px-16 py-20 max-sm:px-5 bg-blue-200">
+    <div className="px-16 py-20 max-sm:px-5 bg-blue-200 max-sm:hidden">
       <main className="p-7 max-sm:px-3 bg-white rounded-xl shadow-xl">
         <h1 className="text-2xl max-sm:text-xl py-2 font-semibold text-zinc-800">
           Favorite Plug - Trusted Tech & Gadget Destination

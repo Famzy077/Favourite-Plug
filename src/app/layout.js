@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/app/UI/Header";
+import {HeaderPage} from "@/app/UI/Header";
+import { MobileBottomNav } from "@/app/UI/Header";
 import Footer from "@/app/UI/Footer"
 import Docs from "./UI/Docs";
 
@@ -25,7 +26,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header/>
+        <HeaderPage/>
+        <MobileBottomNav/>
         {children}
         <Docs/>
         <Footer/>

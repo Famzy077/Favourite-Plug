@@ -63,7 +63,7 @@ export const AccessoriesStick = () => {
   const accessories = products.filter((product) => product.category === "Accessories").reverse();
 
   return (
-    <div className="flex overflow-x-auto overflow-y-hidden gap-4 p-4 w-full scrollbar-hide">
+    <div className="flex overflow-x-auto overflow-y-hidden gap-4 p-4 w-full scrollbar-hide mb-16">
       {accessories.map((product) => (
         <div
           key={product.id}
