@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
           className="w-[] max-sm:h-[120px] h-[100px] object-fit rounded-lg"
           />
         </div>
-        <h2 className="text-sm font-bold cursor-pointer">{product.name.slice(0, 16)}...</h2>
+        <h2 className="text-sm font-bold cursor-pointer">{product.name.slice(0, 10)}...</h2>
         <p className="text-gray-600 text-sm">₦{product.price}</p>
       </Link>
     </div>

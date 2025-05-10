@@ -1,7 +1,8 @@
+import { Accessories } from '@/app/UI/Accessories';
 import Image from 'next/image'
 import Link from 'next/link'
 import products from '..//../../Data/ProductData.json'
-// import AccessoriesSlides from '@/app/Components/AccessoriesSlides';
+
 export default async function ProductDetail({ params }) {
   const productId = parseInt(params.id);
   const product = products.find((p) => p.id === productId);
@@ -47,8 +48,8 @@ export default async function ProductDetail({ params }) {
       </div>
 
       <div className='bg-blue-100 p-5'>
-        <h1 className='text-2xl pt-8 px-8 font-semibold text-zinc-800'>You can also explore other items</h1>
-        {/* <AccessoriesSlides/> */}
+        <h1 className='text-2xl pt-8 px-4  pl-0 max-sm:text-xl font-semibold text-zinc-800'>You can also explore other items</h1>
+        <Accessories/>
       </div>
     </main>
   );

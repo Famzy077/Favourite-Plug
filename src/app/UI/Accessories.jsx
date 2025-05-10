@@ -1,45 +1,30 @@
 'use client'
 import React from 'react'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import ProductCard from '@/app/Components/ProductsCard'
 import products from '../.././Data/ProductData.json'
-import Slider from 'react-slick'
 
-// const accessories = products.filter(product => product.category === 'Accessories');
-// const Accessories = () => {
 
-//   return (
-//     <div>
-//       <div className='pb-10'>
-//         <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-10">
-//           {accessories.map((product) => (
-//             <ProductCard key={product.id} product={product} />
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-// export { Accessories }
-
-const AccessoriesSLides = () => {
-  const accessories = products.filter(
-    (product) => product.category === "Accessories");
+export const Accessories = () => {
+  const accessories = products.filter((product) => product.category === "Accessories");
 
   const settings = {
     dots: false,
     infinite: true,
+    arrows: true,
     autoplay: true,
     autoplaySpeed: 2000,
     speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 2,
-    arrows: true,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
@@ -60,7 +45,7 @@ const AccessoriesSLides = () => {
   };
 
   return (
-    <div className="pb-10">
+    <div className='-mb-3'>
       <div className="px-10 max-sm:px-2">
         <Slider {...settings}>
           {accessories.map((product) => (
@@ -73,5 +58,20 @@ const AccessoriesSLides = () => {
     </div>
   );
 };
-export default AccessoriesSLides
-// export { Accessories }
+
+export const AccessoriesStick = () => {
+  const accessories = products.filter((product) => product.category === "Accessories").reverse();
+
+  return (
+    <div className="flex overflow-x-auto overflow-y-hidden gap-4 p-4 w-full scrollbar-hide">
+      {accessories.map((product) => (
+        <div
+          key={product.id}
+          className="min-w-[10rem] flex-shrink-0"
+        >
+          <ProductCard product={product} />
+        </div>
+      ))}
+    </div>
+  );
+};

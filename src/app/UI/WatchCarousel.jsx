@@ -1,7 +1,6 @@
-// src/Components/SmartwatchCarousel.jsx
 import Slider from "react-slick";
-import ProductCard from "../ProductsCard";
-import products from "../../../Data/ProductData.json";
+import ProductCard from "../Components/ProductsCard";
+import products from '../../Data/ProductData.json';
 
 export const SmartwatchCarousel = () => {
   const smartwatchProducts = products.filter(

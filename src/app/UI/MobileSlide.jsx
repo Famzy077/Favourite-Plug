@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import ProductCard from './ProductsCard';
+import ProductCard from "../Components/ProductsCard";
 import products from '../.././Data/ProductData.json';
 
 export const Mobile = () => {
@@ -41,8 +41,8 @@ export const Mobile = () => {
   };
 
   return (
-    <div className="pb-10">
-        <h1 className="text-3xl max-sm:mx-4 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Mobile Phones/Tablets</h1> 
+    <div className='-mb-3'>
+      <h1 className="text-3xl max-sm:mx-4 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Mobile Phones/Tablets</h1> 
       <div className="px-10 max-sm:px-2">
         <Slider {...settings}>
           {mobileProducts.map((product) => (
@@ -55,3 +55,24 @@ export const Mobile = () => {
     </div>
   );
 };
+
+
+export const MobileSticky = () => {
+  const mobileProducts = products
+    .filter(product => product.category === "Smartphones" || product.category === "Tablets")
+    .reverse();
+
+  return (
+    <div className="flex overflow-x-auto overflow-y-hidden gap-4 p-4 w-full scrollbar-hide">
+      {mobileProducts.map((product) => (
+        <div
+          key={product.id}
+          className="min-w-[10rem] flex-shrink-0"
+        >
+          <ProductCard product={product} />
+        </div>
+      ))}
+    </div>
+  );
+};
+
