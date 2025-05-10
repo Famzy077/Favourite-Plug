@@ -4,23 +4,6 @@ import React from 'react'
 import ProductCard from '@/app/Components/ProductsCard'
 import products from '../.././Data/ProductData.json'
 
-export const Laptop = () => {
-    const laptops = products.filter(product => product.category === 'Laptops');
-
-  return (
-    <div>
-      <div className='pb-10'>
-          <h1 className="text-3xl max-sm:mx-4 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Laptop Device</h1> 
-        <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-10">
-          {laptops.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export const Laptops = () => {
   const laptops = products.filter((product) =>product.category === "Laptops");
 
@@ -59,7 +42,7 @@ export const Laptops = () => {
   };
 
   return (
-    <div className="pb-10">
+    <div className="-mb-2">
         <h1 className="text-3xl max-sm:mx-4 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Laptop Devices</h1> 
       <div className="px-10 max-sm:px-2">
         <Slider {...settings}>
@@ -70,6 +53,25 @@ export const Laptops = () => {
           ))}
         </Slider>
       </div>
+    </div>
+  );
+};
+
+export const LaptopSlide = () => {
+  const laptop = products
+    .filter(product => product.category === "Laptops")
+    .reverse();
+
+  return (
+    <div className="flex mb-10 overflow-x-auto overflow-y-hidden gap-4 p-4 w-full scrollbar-hide">
+      {laptop.map((product) => (
+        <div
+          key={product.id}
+          className="min-w-[10rem] flex-shrink-0"
+        >
+          <ProductCard product={product} />
+        </div>
+      ))}
     </div>
   );
 };

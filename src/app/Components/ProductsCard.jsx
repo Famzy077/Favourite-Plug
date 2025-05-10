@@ -18,6 +18,7 @@ const ProductCard = ({ product }) => {
         </div>
         <h2 className="text-sm font-bold cursor-pointer">{product.name.slice(0, 10)}...</h2>
         <p className="text-gray-600 text-sm">₦{product.price}</p>
+        <strike className="text-gray-600 relative -top-1.5 text-sm">₦{product.oldPrice}</strike>
       </Link>
     </div>
   );

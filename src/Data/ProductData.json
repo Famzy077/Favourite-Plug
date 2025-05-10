@@ -3,6 +3,7 @@
         "id": 1,
         "name": "Apple iPhone 16",
         "price": 1099.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/iPhone16.png",
         "description": "The Apple iPhone 16 is a high-end smartphone with a large display, powerful A16 Bionic chip, and advanced camera system. It features a 6.7-inch Super Retina XDR display, 5G connectivity, and a triple-camera setup with ProRAW and ProRes video recording capabilities.",
         "category": "Smartphones"
@@ -11,6 +12,7 @@
         "id": 2,
         "name": "Samsung Galaxy S25",
         "price": 1199.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/Samsung25s.png",
         "description": "The Samsung Galaxy S25 Ultra is a high-end Android smartphone with a large display, powerful Snapdragon 8 Gen 1 chip, and advanced camera system. It features a 6.8-inch Dynamic AMOLED display, 5G connectivity, and a quad-camera setup with 108MP main sensor.",
         "category": "Smartphones"
@@ -19,6 +21,7 @@
         "id": 3,
         "name": "Samsung S22 Ultra",
         "price": 1300.99,
+        "oldPrice": 3000,
         "image": "/Images/Products/Samsung22.png",
         "description": "The Samsung S22 Ultra is a premium smartphone with a large display, powerful Snapdragon 8 Gen 1 chip, and advanced camera system. It features a 6.8-inch Dynamic AMOLED display, 5G connectivity, and a quad-camera setup with 108MP main sensor.",
         "category": "Smartphones"
@@ -27,6 +30,7 @@
         "id": 4,
         "name": "Google Pixel 9 Pro",
         "price": 2499.99,
+        "oldPrice": 2600,
         "image": "/Images/Products/GooglePixel.png",
         "description": "The Google Pixel 9 Pro is a flagship smartphone with a large display, powerful Tensor G3 chip, and advanced camera system. It features a 6.7-inch OLED display, 5G connectivity, and a triple-camera setup with advanced computational photography features.",
         "category": "Smartphones"
@@ -35,6 +39,7 @@
         "id": 5,
         "name": "Apple MacBook Pro (M1)",
         "price": 1299.99,
+        "oldPrice": 2100,
         "image": "/Images/Products/infinx.png",
         "description": "The Apple MacBook Pro (M1) is a high-performance laptop powered by Apple's M1 chip. It features a Retina display, long battery life, and advanced graphics capabilities, making it ideal for creative professionals and power users.",
         "category": "Laptops"
@@ -43,6 +48,7 @@
         "id": 6,
         "name": "Monolith Tablet",
         "price": 999.99,
+        "oldPrice": 1500,
         "image": "/Images/Products/Tablet.png",
         "description": "The Tablet is a versatile device with a large touchscreen display, powerful processor, and support for various apps and accessories. It is ideal for browsing, streaming, and productivity tasks.",
         "category": "Tablets"
@@ -51,6 +57,7 @@
         "id": 7,
         "name": "Xiaomi Redmi 15 Ultral",
         "price": 799.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/XaomiUtral.png",
         "description": "The Xiaomi Redmi 13 is a budget-friendly smartphone with a large display, decent performance, and a good camera system. It features a 6.5-inch IPS LCD display, 4G connectivity, and a dual-camera setup.",
         "category": "Smartphones"
@@ -59,6 +66,7 @@
         "id": 8,
         "name": "Infinix Zero 30",
         "price": 6099.99,
+        "oldPrice": 19000,
         "image": "/Images/Products/InfinixZero.png",
         "description": "The Infinix Zero 30 is a mid-range smartphone with a large display, decent performance, and a good camera system. It features a 6.7-inch AMOLED display, 5G connectivity, and a triple-camera setup.",
         "category": "Smartphones"
@@ -67,6 +75,7 @@
         "id": 9,
         "name": "Pink Smart Watch ",
         "price": 799.99,
+        "oldPrice": 1500,
         "image": "/Images/Products/SmartWatch4.png",
         "description": "The Samsung Galaxy Tab S8 is a high-performance tablet with a large display, powerful Snapdragon 8 Gen 1 chip, and support for the S Pen. It is ideal for productivity and entertainment tasks.",
         "category": "Smartwatches"
@@ -75,6 +84,7 @@
         "id": 10,
         "name": "Samsung Galaxy Watch",
         "price": 799.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/SmartWatch6.png",
         "description": "The Samsung Galaxy Tab S8 is a high-performance tablet with a large display, powerful Snapdragon 8 Gen 1 chip, and support for the S Pen. It is ideal for productivity and entertainment tasks.",
         "category": "Smartwatches"
@@ -83,6 +93,7 @@
         "id": 11,
         "name": "Apple AirPods Pro",
         "price": 249.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/SmartWatch5.png",
         "description": "The Apple AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Smartwatches"
@@ -91,6 +102,7 @@
         "id": 12,
         "name": "Samsung Galaxy",
         "price": 199.99,
+        "oldPrice": 2800,
         "image": "/Images/Products/SmartWatch4.png",
         "description": "The Samsung Galaxy Buds Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Smartwatches"
@@ -99,6 +111,7 @@
         "id": 13,
         "name": "Apple AirPods Pro",
         "price": 249.99,
+        "oldPrice": 1500,
         "image": "/Images/Products/SmartWatch5.png",
         "description": "The Apple AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Smartwatches"
@@ -107,6 +120,7 @@
         "id": 14,
         "name": "Samsung Galaxy",
         "price": 199.99,
+        "oldPrice": 3000,
         "image": "/Images/Products/SmartWatch6.png",
         "description": "The Samsung Galaxy Buds Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Smartwatches"
@@ -115,6 +129,7 @@
         "id": 15,
         "name": "Apple AirPods Pro",
         "price": 249.99,
+        "oldPrice": 1500,
         "image": "/Images/Products/SmartWatch5.png",
         "description": "The Apple AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Smartwatches"
@@ -123,6 +138,7 @@
         "id": 16,
         "name": "Samsung Galaxy",
         "price": 199.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/SmartWatch6.png",
         "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Smartwatches"
@@ -131,6 +147,7 @@
         "id": 17,
         "name": "itel airBuds",
         "price": 249.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/itelAirpod.png",
         "description": "The itel AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Accessories"
@@ -139,6 +156,7 @@
         "id": 18,
         "name": "Samsung Air puds",
         "price": 199.99,
+        "oldPrice": 2300,
         "image": "/Images/Products/AirPodAccess.png",
         "description": "The Samsung Galaxy Buds Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Accessories"
@@ -147,6 +165,7 @@
         "id": 19,
         "name": "Pink AirPods",
         "price": 249.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/FastCharger.png",
         "description": "The Apple AirPods Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Accessories"
@@ -155,6 +174,7 @@
         "id": 20,
         "name": "Samsung Galaxy",
         "price": 199.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/BudsLite.png",
         "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Accessories"
@@ -163,6 +183,7 @@
         "id": 21,
         "name": "itel airBuds Pro",
         "price": 249.99,
+        "oldPrice": 1500,
         "image": "/Images/Products/itelAipod.png",
         "description": "itel are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Accessories"
@@ -171,6 +192,7 @@
         "id": 22,
         "name": "Samsung Galaxy",
         "price": 199.99,
+        "oldPrice": 2800,
         "image": "/Images/Products/itelAirpod.png",
         "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Accessories"
@@ -179,6 +201,7 @@
         "id": 23,
         "name": "itel airBuds Pro",
         "price": 249.99,
+        "oldPrice": 2100,
         "image": "/Images/Products/Mp2.png",
         "description": "itel are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Accessories"
@@ -187,6 +210,7 @@
         "id": 24,
         "name": "Samsung Galaxy",
         "price": 199.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/GuixiaAirpods.png",
         "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Accessories"
@@ -195,6 +219,7 @@
         "id": 25,
         "name": "itel Philly Powerbank",
         "price": 249.99,
+        "oldPrice": 4500,
         "image": "/Images/Products/itelPower.png",
         "description": "itel are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "PowerBanks"
@@ -203,6 +228,7 @@
         "id": 26,
         "name": "Samsung Galaxy",
         "price": 199.99,
+        "oldPrice": 2800,
         "image": "/Images/Products/LaptopPowerbank.png",
         "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "PowerBanks"
@@ -211,6 +237,7 @@
         "id": 27,
         "name": "itel airBuds Pro",
         "price": 249.99,
+        "oldPrice": 29500,
         "image": "/Images/Products/PhillyPowerbank.png",
         "description": "itel are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "PowerBanks"
@@ -219,6 +246,7 @@
         "id": 28,
         "name": "Samsung PowerBanks",
         "price": 199.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/PowerBanks.png",
         "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "PowerBanks"
@@ -227,6 +255,7 @@
         "id": 29,
         "name": "Hp Laptop core i7",
         "price": 899.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/HpLaptop.png",
         "description": "The Dell Inspiron 15 is a reliable and affordable laptop designed for everyday use. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
         "category": "Laptops"
@@ -235,6 +264,7 @@
         "id": 30,
         "name": "Lenovo ThinkPad X1 Carbon",
         "price": 1499.99,
+        "oldPrice": 1200,
         "image": "/Images/Products/DellLaptop.png",
         "description": "The Lenovo ThinkPad X1 Carbon is a premium laptop designed for business professionals. It features a lightweight design, high-resolution display, and powerful performance, making it ideal for work on the go.",
         "category": "Laptops"
@@ -243,6 +273,7 @@
         "id": 31,
         "name": "Apple MacBook (M1)",
         "price": 699.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/Mac-tab.png",
         "description": "The Mac 3 is a lightweight and portable laptop designed for everyday use. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
         "category": "Laptops"
@@ -251,6 +282,7 @@
         "id": 32,
         "name": "Power Bank 20000mAh",
         "price": 49.99, 
+        "oldPrice": 2500,
         "image": "/Images/Products/PdPowerbank.png",
         "description": "The Power Bank 20000mAh is a portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
         "category": "PowerBanks"
@@ -259,6 +291,7 @@
         "id": 33,
         "name": "Power Bank 10000mAh",
         "price": 29.99, 
+        "oldPrice":52500,
         "image": "/Images/Products/VicPowerbank.png",
         "description": "The Power Bank 10000mAh is a portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
         "category": "PowerBanks"
@@ -266,7 +299,8 @@
     {
         "id": 34,
         "name": "Power Bank 5000mAh",
-        "price": 19.99, 
+        "price": 19.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/Acelec2000Powerbank.png",
         "description": "The Power Bank 5000mAh is a compact and portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
         "category": "PowerBanks"
@@ -274,7 +308,8 @@
     {
         "id": 35,
         "name": "Power Bank 20000mAh",
-        "price": 59.99, 
+        "price": 59.99,
+        "oldPrice": 2800,
         "image": "/Images/Products/2000VicPowerbank.png",
         "description": "The Power Bank 20000mAh is a compact and portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
         "category": "PowerBanks"
@@ -282,7 +317,8 @@
     {
         "id": 36,
         "name": "Power Bank 3000mAh",
-        "price": 9.99, 
+        "price": 9.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/Poe.png",
         "description": "The Power Bank 3000mAh is a compact and portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
         "category": "Accessories"
@@ -290,7 +326,8 @@
     {
         "id": 37,
         "name": "Laptop Charger",
-        "price": 9.99, 
+        "price": 9.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/LaptopCharger.png",
         "description": "The Laptop Charger is a compact and portable power bank designed to keep your devices charged on the go. It features a high-capacity battery, multiple USB ports, and fast charging capabilities, making it ideal for travel and outdoor activities.",
         "category": "Accessories"
@@ -299,6 +336,7 @@
         "id": 38,
         "name": "Power Bank 10000mAh",
         "price": 1299.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/Power30000PowerBank.png",
         "description": "The HP Laptop is a versatile and powerful device designed for productivity and entertainment. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
         "category": "Accessories"
@@ -307,6 +345,7 @@
         "id": 39,
         "name": "iPhone 15pro",
         "price": 1299.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/iPhone15pro.png",
         "description": "The iPhone 15pro is a sleek and powerful smartphone designed for productivity and visual creativity",
         "category": "Smartphones"
@@ -315,6 +354,7 @@
         "id": 40,
         "name": "System Stands",
         "price": 1299.99,
+        "oldPrice": 2500,
         "image": "/Images/Products/SystemStands.png",
         "description": "The Samsung Galaxy Bud Pro are wireless earbuds with active noise cancellation, transparency mode, and a customizable fit. They are ideal for music lovers and those who want to stay connected on the go.",
         "category": "Accessories"
@@ -323,6 +363,7 @@
         "id": 41,
         "name": "Mac book pro",
         "price": 4000000,
+        "oldPrice": 2500,
         "image": "/Images/Products/LAPtop.png",
         "description": "The Mac Book Laptop is a versatile and powerful device designed for productivity and entertainment. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
         "category": "Laptops"
@@ -331,6 +372,7 @@
         "id": 42,
         "name": "Asus intel core i7",
         "price": 2000000,
+        "oldPrice": 2500,
         "image": "/Images/Products/Asus.png",
         "description": "The Mac Book Laptop is a versatile and powerful device designed for productivity and entertainment. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
         "category": "Laptops"

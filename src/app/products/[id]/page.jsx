@@ -1,7 +1,9 @@
+'use client'
 import { Accessories } from '@/app/UI/Accessories';
 import Image from 'next/image'
 import Link from 'next/link'
 import products from '..//../../Data/ProductData.json'
+import { MobileSticky } from '@/app/UI/MobileSlide';
 
 export default async function ProductDetail({ params }) {
   const productId = parseInt(params.id);
@@ -39,6 +41,7 @@ export default async function ProductDetail({ params }) {
           <div className='w-[50%] max-sm:w-[100%] flex flex-col justify-center items-start'>
             <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
             <p className="text-gray-700 text-lg mb-2">₦{product.price.toLocaleString()}</p>
+            <strike className="text-gray-600 relative -top-2.5 text-sm">₦{product.oldPrice.toLocaleString()}</strike>
             <p className="text-gray-600">{product.description}</p>
             <div className='mt-5'>
               <button className='text-2xl border border-blue-500 text-white rounded-xl bg-blue-500 hover:bg-blue-400 py-2 px-3 cursor-pointer'>Call to order</button>
@@ -50,6 +53,7 @@ export default async function ProductDetail({ params }) {
       <div className='bg-blue-100 p-5'>
         <h1 className='text-2xl pt-8 px-4  pl-0 max-sm:text-xl font-semibold text-zinc-800'>You can also explore other items</h1>
         <Accessories/>
+        <MobileSticky/>
       </div>
     </main>
   );

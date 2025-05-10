@@ -28,16 +28,16 @@ const MiniHeader = () => {
     }, [searchTerm]);
   return (
     <div className='flex z-40 justify-between -inset-0 shadow bg-zinc-200 py-3 px-5 flex-col gap-2 w-full relative'>
-      <div className='flex gap-3 relative'>
+      <div className='flex gap-3 relative max-sm:px-0 max-md:px-26 md:px-26'>
         <input
           type="search"
           placeholder="Search products..."
-          className='border-2 max-sm:rounded-l max-sm:w-[100%] outline-0 py-2 max-sm:py-1 px-4 rounded-r-[12px] w-[100%] border-blue-500'
+          className='border-2 max-sm:rounded max-sm:w-[100%] bg-white outline-0 py-2 max-sm:py-1 px-4 rounded-l w-[100%] border-blue-500'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button
-          className="bg-blue-500 fixed border border-blue-500 rounded-r max-sm:right-[0] right-[5rem] cursur-pointer text-white max-sm:py-[5px] px-3 py-[8.7px]"
+          className="bg-blue-500 fixed border border-blue-500 rounded-r max-sm:right-[-2px] right-[5rem] cursur-pointer text-white max-sm:py-[5px] px-3 py-[9.2px]"
           onClick={() => {}}
           >
           <Search size={24} className="text-white" />    
