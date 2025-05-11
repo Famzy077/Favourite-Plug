@@ -3,7 +3,7 @@ import { Accessories } from '@/app/UI/Accessories';
 import Image from 'next/image'
 import Link from 'next/link'
 import products from '..//../../Data/ProductData.json'
-import { MobileSticky } from '@/app/UI/MobileSlide';
+import { MobileSticky } from '@/app/UI/Mobile';
 
 export default async function ProductDetail({ params }) {
   const productId = parseInt(params.id);

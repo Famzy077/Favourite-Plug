@@ -1,13 +1,13 @@
 'use client'
 import React from 'react'
-import Section from '../../app/Components/Home/SlidedSection'
-import Call from '../../app/UI/Call'
-import products from '../.././Data/ProductData.json'
+import Section from '@/app/Components/Home/SlidedSection'
+import Call from '@/app/UI/Call'
+import products from '../../../Data/ProductData.json'
 import ProductBaner from '@/app/Components/Home/ProductBaner'
 import { SmartwatchCarousel } from '@/app/UI/WatchCarousel'
 import {PowerBank} from '@/app/UI/PowerBank'
 import {Laptops, LaptopSlide} from '@/app/UI/Laptop'
-import { Mobile, MobileSticky } from '@/app/UI/MobileSlide'
+import { Mobile, MobileSticky } from '@/app/UI/Mobile'
 import { Accessories, AccessoriesStick } from '@/app/UI/Accessories'
 
 const Page = () => {

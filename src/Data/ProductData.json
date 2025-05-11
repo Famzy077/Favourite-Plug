@@ -403,5 +403,14 @@
         "image": "/Images/Products/mackPro.png",
         "description": "The Mac Book Laptop is a versatile and powerful device designed for productivity and entertainment. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
         "category": "Laptops"
+    },
+    {
+        "id": 46,
+        "name": "Laptop Stand book pro",
+        "price": 2000000,
+        "oldPrice": 3000500,
+        "image": "/Images/Products/SystemStands.png",
+        "description": "The Mac Book Laptop is a versatile and powerful device designed for productivity and entertainment. It features a sleek design, high-resolution display, and powerful performance, making it ideal for work and play.",
+        "category": "Accessories"
     }
 ]

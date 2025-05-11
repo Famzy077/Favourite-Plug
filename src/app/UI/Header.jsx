@@ -22,7 +22,7 @@ export const HeaderPage = () => {
         <nav className='flex items-center space-x-4 w-[50%] text-xl max-sm:hidden max-md:hidden md:hidden lg:block'>
           <ul className='flex space-x-7 text-gray-800'>
             <li><Link href="/">Home</Link></li>
-            <li><Link href="/products">Products</Link></li>
+            <li><Link href="/Pages/Categories/Categories">Categories</Link></li>
             <li><Link href="/">About</Link></li>
             <li><Link href="/">Blog</Link></li>
             <li><Link href="/">Contact</Link></li>
@@ -44,7 +44,7 @@ export const MobileBottomNav = () => {
 
   const navItems = [
     { href: '/', icon: <HomeIcon />, label: 'Home' },
-    { href: '/categories', icon: <List />, label: 'Categories' },
+    { href: '/pages/categories', icon: <List />, label: 'Categories' },
     { href: '/wishlist', icon: <Heart />, label: 'Wishlist' },
     { href: '/account', icon: <UserRound />, label: 'Account' },
   ];

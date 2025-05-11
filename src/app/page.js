@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "./redux/Store";
 
 // Dynamically import the Page component
-const Page = dynamic(() => import("@/Pages/Home/Home"), {
+const Page = dynamic(() => import("../app/pages/Home/Home"), {
   ssr: false,
 });
 
