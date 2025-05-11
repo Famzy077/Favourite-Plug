@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Categories from '@/app/Components/Category/Categories'
 import { BannerSlider } from '@/app/Components/Category/BannerSlider'
 
