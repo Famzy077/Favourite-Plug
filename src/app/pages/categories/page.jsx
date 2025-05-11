@@ -6,7 +6,9 @@ const Page = () => {
   return (
     <div>
       <BannerSlider/>
-      <Categories/>
+      <Suspense fallback={<div>Loading categories...</div>}>
+        <Categories />
+      </Suspense>
     </div>
   )
 }
