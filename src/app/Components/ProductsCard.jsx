@@ -17,8 +17,10 @@ const ProductCard = ({ product }) => {
           />
         </div>
         <h2 className="text-sm font-bold cursor-pointer">{product.name.slice(0, 10)}...</h2>
-        <p className="text-gray-600 text-sm">₦{product.price}</p>
-        <strike className="text-gray-600 relative -top-1.5 text-sm">₦{product.oldPrice}</strike>
+        <div className="max-sm:flex max-sm:items-center max-sm:gap-2">
+          <p className="text-gray-600 text-sm">₦{product.price}</p>
+          <strike className="text-gray-600 relative max-sm:top-0 -top-1.5 text-sm">₦{product.oldPrice}</strike>
+        </div>
       </Link>
     </div>
   );

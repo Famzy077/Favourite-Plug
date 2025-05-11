@@ -31,7 +31,7 @@ const MiniHeader = () => {
       <div className='flex gap-3 relative max-sm:px-0 max-md:px-26 md:px-26'>
         <input
           type="search"
-          placeholder="Search products..."
+          placeholder="Search on Favorite plug"
           className='border-2 max-sm:rounded max-sm:w-[100%] bg-white outline-0 py-2 max-sm:py-1 px-4 rounded-l w-[100%] border-blue-500'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
