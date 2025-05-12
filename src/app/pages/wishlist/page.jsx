@@ -12,14 +12,14 @@ const Wishlist = () => {
   }
   console.log(wishlist)
   return (
-    <div className="lg:px-20 bg-zinc-100 p-5 border-2 min-h-screen">
+    <div className="lg:px-20 bg-zinc-100 p-5 min-h-screen">
       <h1 className="text-4xl font-bold mb-6">Your Wishlist ❤️</h1>
       <div className="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 h-[90vh]">
         {wishlist.map((product) => (
           <div key={product.id} className="relative">
             <button
               onClick={() => removeFromWishlist(product.id)}
-              className="absolute top-2 right-2 text-red-500 z-10"
+              className="absolute text-xl bg-pink-200 rounded-full p-1.5 top-2 right-2 text-red-500 z-10"
             >
               {isWishlisted(product.id) ? <FaHeart /> : <FaRegHeart />}
             </button>

@@ -3,19 +3,22 @@ import { useEffect, useState } from 'react';
 
 export const useWishlist = () => {
   const [wishlist, setWishlist] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Load wishlist from localStorage
+  // Hydration-safe: wait until mounted
   useEffect(() => {
-    const storedWishlist = localStorage.getItem('wishlist');
-    if (storedWishlist) {
-      setWishlist(JSON.parse(storedWishlist));
+    const stored = localStorage.getItem('wishlist');
+    if (stored) {
+      setWishlist(JSON.parse(stored));
     }
+    setIsMounted(true);
   }, []);
 
-  // Save to localStorage when wishlist changes
   useEffect(() => {
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-  }, [wishlist]);
+    if (isMounted) {
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    }
+  }, [wishlist, isMounted]);
 
   const addToWishlist = (product) => {
     if (!isWishlisted(product.id)) {
@@ -31,5 +34,5 @@ export const useWishlist = () => {
     return wishlist.some((item) => item.id === productId);
   };
 
-  return { wishlist, addToWishlist, removeFromWishlist, isWishlisted };
+  return { wishlist, addToWishlist, removeFromWishlist, isWishlisted, isMounted };
 };

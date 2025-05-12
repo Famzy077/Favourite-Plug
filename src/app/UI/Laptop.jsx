@@ -43,7 +43,7 @@ export const Laptops = () => {
 
   return (
     <div className="-mb-2">
-        <h1 className="text-3xl max-sm:mx-4 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Laptop Devices</h1> 
+        <h1 className="text-3xl max-sm:top-2 relative max-sm:rounded-none max-sm:mx-0 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Laptop Devices</h1> 
       <div className="px-10 max-sm:px-2">
         <Slider {...settings}>
           {laptops.map((product) => (

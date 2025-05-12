@@ -65,7 +65,7 @@ export const PowerBank = () => {
 
   return (
     <div className="pb-10">
-      <h1 className="text-3xl max-sm:mx-12 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Power Bank</h1> 
+      <h1 className="text-3xl max-sm:top-2 relative max-sm:mx-0 mx-11.5 p-2 rounded max-sm:rounded-none text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Power Bank</h1> 
       <div className="px-10">
         <Slider {...settings}>
           {powerBanks.map((product) => (

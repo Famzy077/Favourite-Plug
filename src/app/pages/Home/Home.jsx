@@ -26,7 +26,7 @@ const Page = () => {
       <LaptopSlide/>
       <PowerBank/>
       <div>
-        <h1 className="text-3xl max-sm:mx-4 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Accessories and more...</h1> 
+        <h1 className="text-3xl max-sm:top-2 relative max-sm:mx-0 mx-11.5 p-2 max-sm:rounded-none rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Accessories and more...</h1> 
         <Accessories/>
         <AccessoriesStick/>
       </div>

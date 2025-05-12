@@ -52,44 +52,44 @@ const Section = () => {
     };
 
   return (
-    <div className="overflow-hidden m-3">
-        <Slider className="mb-4.5 gap-5" {...settings}>
-          <Link href={''}>
-            <Image
-              src={SamsungSeries}
-              alt="Samsung Series"
-              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-full object-fit rounded-2xl mx-3"
-              title="Samsung Series"
-            />
-          </Link>
+    <div className="overflow-hidden max-sm:m-3">
+      <Slider className="mb-4.5 gap-5" {...settings}>
+        <Link href={''}>
+          <Image
+            src={SamsungSeries}
+            alt="Samsung Series"
+            className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+            title="Samsung Series"
+          />
+        </Link>
 
-          <Link href={''}>
-              <Image
-                src={Watch}
-                alt="Watch"
-                className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-full object-fit rounded-2xl mx-3"
-                title="Watch"
-              />
-          </Link>
-          
-          <Link href={''}>
-              <Image
-                src={Mac}
-                alt="Mac"
-                className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-full object-fit rounded-2xl mx-3"
-                title="Mac"
-              />
-          </Link>
-          
-          <Link href={''}>
-              <Image
-                src={Iphone}
-                alt="Mac"
-                className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-full object-fit rounded-2xl mx-3"
-                title="Mac"
-              />
-          </Link>
-        </Slider>
+        <Link href={''}>
+            <Image
+              src={Watch}
+              alt="Watch"
+              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+              title="Watch"
+            />
+        </Link>
+        
+        <Link href={''}>
+            <Image
+              src={Mac}
+              alt="Mac"
+              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+              title="Mac"
+            />
+        </Link>
+        
+        <Link href={''}>
+            <Image
+              src={Iphone}
+              alt="Mac"
+              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+              title="Mac"
+            />
+        </Link>
+      </Slider>
     </div>
 
   );
