@@ -66,7 +66,7 @@ const Categories = () => {
                   onClick={() =>
                     isInWishlist ? removeFromWishlist(product.id) : addToWishlist(product)
                   }
-                  className="absolute text-xl bg-pink-200 rounded-full p-1.5 top-2 right-2 text-red-500 z-10"
+                  className="absolute text-[17px] bg-pink-200 rounded-full p-1.5 top-2 right-2 text-red-500 z-10"
                 >
                   {isInWishlist ? <FaHeart /> : <FaRegHeart />}
                 </button>

@@ -51,8 +51,8 @@ export const BannerSlider = () => {
     };
 
   return (
-    <div className="overflow-hidden">
-      <Slider className="mb-4.5" {...settings}>
+    <div className="overflow-hidden bg-zinc-100">
+      <Slider className="mb-4.5 my-5" {...settings}>
         <Link href={''}>
           <Image
             src={Infinix}
@@ -74,18 +74,18 @@ export const BannerSlider = () => {
         <Link href={''}>
             <Image
               src={SamsungA52}
-              alt="Mac"
+              alt="SamsungA52"
               className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
-              title="Mac"
+              title="SamsungA52"
             />
         </Link>
 
         <Link href={''}>
             <Image
               src={Iphone}
-              alt="Mac"
+              alt="Iphone"
               className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
-              title="Mac"
+              title="Iphone"
             />
         </Link>
       </Slider>
