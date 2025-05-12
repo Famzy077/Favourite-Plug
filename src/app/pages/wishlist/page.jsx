@@ -8,11 +8,11 @@ const Wishlist = () => {
   const { wishlist, removeFromWishlist, isWishlisted } = useWishlist();
 
   if (wishlist.length === 0) {
-    return <div className="p-5 text-center">No items in your wishlist 💔</div>;
+    return <div className="p-5 text-center max-sm:h-[85vh]">No items in your wishlist 💔</div>;
   }
   console.log(wishlist)
   return (
-    <div className="lg:px-20 bg-zinc-100 p-5 border-2 max-sm:h-[90vh]">
+    <div className="lg:px-20 bg-zinc-100 p-5 border-2 min-h-screen">
       <h1 className="text-4xl font-bold mb-6">Your Wishlist ❤️</h1>
       <div className="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 h-[90vh]">
         {wishlist.map((product) => (
