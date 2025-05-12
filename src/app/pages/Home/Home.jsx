@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Section from '@/app/Components/Home/SlidedSection'
-import Call from '@/app/UI/Call'
+import {Call, CallPhone} from '@/app/UI/Call'
 import products from '../../../Data/ProductData.json'
 import ProductBaner from '@/app/Components/Home/ProductBaner'
 import { SmartwatchCarousel } from '@/app/UI/WatchCarousel'
@@ -15,6 +15,7 @@ const Page = () => {
 
   return (
     <div className='bg-zinc-200'>
+      <CallPhone/>
       <Section/>
       <Call/>
       <Mobile/>
