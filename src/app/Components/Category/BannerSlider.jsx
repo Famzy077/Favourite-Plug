@@ -52,51 +52,43 @@ export const BannerSlider = () => {
 
   return (
     <div className="overflow-hidden">
-        <Slider className="mb-4.5" {...settings}>
-          <div className="bg-black w-full max-sm:h-[30vh]  h-[70vh] flex justify-center items-center">
-            <Link href={''}>
-              <Image
-                src={Infinix}
-                alt="Infinix Series"
-                className="w-[100%] max-sm:w-[100%] max-sm:h-[30vh]  h-[70vh] object-fit"
-                title="Samsung Series"
-              />
-            </Link>
-          </div>
+      <Slider className="mb-4.5" {...settings}>
+        <Link href={''}>
+          <Image
+            src={Infinix}
+            alt="Infinix Series"
+            className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+            title="Samsung Series"
+          />
+        </Link>
 
-          <div className="bg-[#0f0f0f] w-full max-sm:h-[30vh]  h-[70vh] relative flex justify-center items-center">
-            <Link href={''}>
-                <Image
-                  src={Samsung}
-                  alt="Watch"
-                  className="w-[100%] max-sm:w-[100%] max-sm:h-[30vh]   h-[70vh] object-fit"
-                  title="Watch"
-                />
-            </Link>
-          </div>
+        <Link href={''}>
+            <Image
+              src={Samsung}
+              alt="Watch"
+              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+              title="Watch"
+            />
+        </Link>
 
-          <div className="bg-zinc-800 w-full max-sm:h-[30vh]  h-[70vh] relative flex justify-center items-center">
-            <Link href={''}>
-                <Image
-                  src={SamsungA52}
-                  alt="Mac"
-                  className="w-[100%] max-sm:w-[100%] max-sm:h-[30vh]  h-[70vh] object-fit"
-                  title="Mac"
-                />
-            </Link>
-          </div>
+        <Link href={''}>
+            <Image
+              src={SamsungA52}
+              alt="Mac"
+              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+              title="Mac"
+            />
+        </Link>
 
-          <div className="bg-zinc-800 w-full max-sm:h-[30vh] h-[70vh] relative flex justify-center items-center">
-            <Link href={''}>
-                <Image
-                  src={Iphone}
-                  alt="Mac"
-                  className="w-[100%] max-sm:h-[30vh]  h-[70vh] object-fit"
-                  title="Mac"
-                />
-            </Link>
-          </div>
-        </Slider>
+        <Link href={''}>
+            <Image
+              src={Iphone}
+              alt="Mac"
+              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+              title="Mac"
+            />
+        </Link>
+      </Slider>
     </div>
 
   );
