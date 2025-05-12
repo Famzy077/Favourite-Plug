@@ -3,7 +3,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Infinix from "/public/Images/InfinixNote.png";
+import BannerImg from "/public/Images/Phones.png";
 import Samsung from "/public/Images/GalaxyS25.png";
 import SamsungA52 from "/public/Images/SamsungA52.png"
 import Image from "next/image";
@@ -51,11 +51,11 @@ export const BannerSlider = () => {
     };
 
   return (
-    <div className="overflow-hidden bg-zinc-100">
+    <div className="overflow-hidden bg-zinc-200">
       <Slider className="mb-4.5 my-5" {...settings}>
         <Link href={''}>
           <Image
-            src={Infinix}
+            src={BannerImg}
             alt="Infinix Series"
             className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
             title="Samsung Series"
