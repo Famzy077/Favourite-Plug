@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useWishlist } from '@/app/hooks/useWishlist';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import Image from 'next/image';
 
 const Wishlist = () => {
   const { wishlist, removeFromWishlist, isWishlisted } = useWishlist();
@@ -27,7 +28,7 @@ const Wishlist = () => {
             <Link href={`/products/${product.id}`}>
               <div className="px-4 py-5 flex flex-col rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300">
                 <div className="flex justify-center items-center mb-1">
-                  <img src={product.image} alt={product.name} className="h-[100px] object-fit rounded-lg" />
+                  <Image src={product.image} width={100} height={150} alt={product.name} className="h-[100px] object-fit rounded-lg" />
                 </div>
                 <h1 className="text-sm font-semibold">{product.name.slice(0, 10)}...</h1>
                 <p>₦{product.price}</p>
