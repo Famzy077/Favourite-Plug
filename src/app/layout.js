@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Gadget Shop",
-  description: "Your tech plug",
+  title: "Favorite Plug",
+  description: "Favorite your tech plug",
 };
 
 export default function RootLayout({ children }) {
