@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
   const isInWishlist = isMounted && isWishlisted(product.id);
 
   return (
-    <div className="relative px-4 py-5 flex flex-col rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300">
+    <div className="relative px-4 max-sm:px-2 py-5 flex flex-col rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300">
       {/* Heart button */}
       {isMounted && (
         <button
@@ -35,12 +35,12 @@ const ProductCard = ({ product }) => {
             className="max-sm:h-[120px] h-[100px] object-fit rounded-lg"
           />
         </div>
-        <h2 className="text-sm font-bold cursor-pointer">
+        <h2 className="text-sm max-sm:text-[15px] font-bold max-sm:font-light cursor-pointer">
           {product.name.slice(0, 10)}...
         </h2>
         <div className="max-sm:flex max-sm:items-center max-sm:gap-2">
-          <p className="text-gray-600 text-sm">₦{product.price}</p>
-          <strike className="text-gray-600 relative max-sm:top-0 -top-1.5 text-sm">
+          <p className="text-gray-600 text-sm max-sm:text-[13px]">₦{product.price}</p>
+          <strike className="text-gray-600 relative max-sm:top-0 -top-1.5 text-sm max-sm:text-[13px]">
             ₦{product.oldPrice}
           </strike>
         </div>

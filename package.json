@@ -1,5 +1,5 @@
 {
-  "name": "favourite",
+  "name": "favourite-gadget",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.0",
-    "@tanstack/react-query": "^5.75.7",
+    "@tanstack/react-query": "^5.76.0",
     "lucide": "^0.507.0",
     "lucide-react": "^0.508.0",
     "next": "15.3.1",

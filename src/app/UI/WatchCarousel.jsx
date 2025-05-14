@@ -43,7 +43,7 @@ export const SmartwatchCarousel = () => {
   return (
     <div className="pb-10">
       <h1 className="text-3xl max-sm:top-2 relative max-sm:mx-0 max-sm:rounded-none mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Fashion Watch</h1> 
-      <div className="px-10">
+      <div className="px-10 max-sm:px-2">
         <Slider {...settings}>
           {smartwatchProducts.map((product) => (
             <div key={product.id} className="p-2">

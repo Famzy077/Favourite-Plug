@@ -24,8 +24,7 @@ export const HeaderPage = () => {
             <li><Link href="/">Home</Link></li>
             <li><Link href="/pages/categories">Categories</Link></li>
             <li><Link href="/pages/wishlist">Wishlist</Link></li>
-            <li><Link href="/">Blog</Link></li>
-            <li><Link href="/">Contact</Link></li>
+            <li><Link href="/pages/account">Account</Link></li>
           </ul>
         </nav>
         <div className='w-[50%] max-sm:hidden text-center max-md:hidden md:hidden lg:block'>
@@ -46,7 +45,7 @@ export const MobileBottomNav = () => {
     { href: '/', icon: <HomeIcon />, label: 'Home' },
     { href: '/pages/categories', icon: <List />, label: 'Categories' },
     { href: '/pages/wishlist', icon: <Heart />, label: 'Wishlist' },
-    { href: '/account', icon: <UserRound />, label: 'Account' },
+    { href: '/pages/account', icon: <UserRound />, label: 'Account' },
   ];
 
   return (
