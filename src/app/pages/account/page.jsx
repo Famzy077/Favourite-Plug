@@ -1,30 +1,34 @@
 'use client'
 import Sidebar from '@/app/Components/Account/Sidebar';
-import AccountDetails from '@/app/Components/Account/AccountDetails.';
-import profileImage from  '/public/Images/Xaomi.png'
-import Image from 'next/image';
 import AddressBook from '@/app/Components/Account/AddressBook';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-const queryClient = new QueryClient();
-const Account = () => {
+import { useState } from "react";
+import AccountDetails from '@/app/Components/Account/AccountDetails.';
+import Wishlist from "@/app/Components/Account/wishlist";
+// import Voucher from "./Voucher"; // Optional for now
+
+const AccountPage = () => {
+  const [activeTab, setActiveTab] = useState("wishlist");
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "wishlist":
+        return <Wishlist />;
+      case "voucher":
+        return <Voucher />;
+      default:
+        return <AccountDetails />;
+    }
+  };
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen bg-gray-100">
-        <Sidebar />
-        <div className="flex-1 p-6 border border-gray-300 m-6 rounded-[4px]">
-          <h2 className="text-2xl font-bold mb-4">Account Overview</h2>
-          <div className="flex flex-col gap-4">
-            
-            <Image src={profileImage} alt='profileImage' width={100} height={100} className='rounded-full bg-pink-200 p-2' />
-            <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-3 lg:grid-cols-2x'>
-              <AccountDetails name="Xavier Johnson" email="xavier@gmail.com" />
-              <AddressBook/>
-            </div>
-          </div>
-        </div>
+    <div className="flex gap-6 min-h-[85vh]">
+      <Sidebar selectedTab={activeTab} onTabChange={setActiveTab} />
+      <div className="flex-1 bg-white p-4 rounded shadow">
+        {renderContent()}
       </div>
-    </QueryClientProvider>
+
+    </div>
   );
 };
 
-export default Account;
+export default AccountPage;

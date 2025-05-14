@@ -13,8 +13,8 @@ const Wishlist = () => {
   }
   console.log(wishlist)
   return (
-    <div className="lg:px-20 bg-zinc-100 p-5 mb-[auto-fit] ">
-      <h1 className="text-4xl font-bold mb-6">Your Wishlist ❤️</h1>
+    <div className="lg:px-20 bg-zinc-100 p-5 mb-[auto-fit] min-h-[85vh]">
+      <h1 className="text-4xl mb-6 max-sm:text-2xl font-medium">Your Wishlist ❤️</h1>
       <div className="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-14">
         {wishlist.map((product) => (
           <div key={product.id} className="relative">
