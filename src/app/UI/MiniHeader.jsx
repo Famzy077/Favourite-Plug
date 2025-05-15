@@ -32,12 +32,12 @@ const MiniHeader = () => {
         <input
           type="search"
           placeholder="Search on Favorite plug"
-          className='border-2 max-sm:rounded max-sm:w-[100%] bg-white outline-0 py-2 max-sm:py-1 px-4 rounded-l w-[100%] border-blue-500'
+          className='border-2 max-sm:rounded max-sm:w-[100%] bg-white outline-0 py-2 max-sm:py-1.5 px-4 rounded-l w-[100%] border-blue-500'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button
-          className="bg-blue-500 fixed border border-blue-500 rounded-r max-sm:right-[-2px] right-[5rem] cursur-pointer text-white max-sm:py-[5px] px-3 py-[9.2px]"
+          className="bg-blue-500 fixed border border-blue-500 rounded-r max-sm:right-[-2px] right-[5rem] cursur-pointer text-white max-sm:py-[7.2px] px-3 py-[9.2px]"
           onClick={() => {}}
           >
           <Search size={24} className="text-white" />    

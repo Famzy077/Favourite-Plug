@@ -2,7 +2,7 @@
 import React from 'react'
 import Section from '@/app/Components/Home/SlidedSection'
 import {Call, CallPhone} from '@/app/UI/Call'
-import products from '../../../Data/ProductData.json'
+// import products from '../../../Data/ProductData.json'
 import ProductBaner from '@/app/Components/Home/ProductBaner'
 import { SmartwatchCarousel } from '@/app/UI/WatchCarousel'
 import {PowerBank} from '@/app/UI/PowerBank'
@@ -33,9 +33,9 @@ const Page = () => {
     </div>
   )
 }
-export async function generateStaticParams() {
-  return products.map((product) => ({
-    id: product.id.toString(),
-  }));
-}
+// export async function generateStaticParams() {
+//   return products.map((product) => ({
+//     id: product.id.toString(),
+//   }));
+// }
 export default Page

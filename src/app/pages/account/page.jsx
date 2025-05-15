@@ -21,7 +21,7 @@ const AccountPage = () => {
   };
 
   return (
-    <div className="flex gap-6 min-h-[85vh]">
+    <div className="flex gap-6 max-sm:gap-0 min-h-[85vh]">
       <Sidebar selectedTab={activeTab} onTabChange={setActiveTab} />
       <div className="flex-1 bg-white p-4 rounded shadow">
         {renderContent()}

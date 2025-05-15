@@ -1,15 +1,13 @@
-// components/SlickSlider.js
 "use client";
 import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import SamsungSeries from "/public/Images/GalaxyS25.png";
 import Watch from "/public/Images/WatchLanding.png";
 import Mac from "/public/Images/Mac.png"
 import Image from "next/image";
 import Link from "next/link";
 import Iphone from '/public/Images/iphoneSection__.png'
+import Slider from "react-slick";
+
 
 
 
@@ -84,9 +82,9 @@ const Section = () => {
         <Link href={''}>
             <Image
               src={Iphone}
-              alt="Mac"
+              alt="Iphone"
               className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
-              title="Mac"
+              title="Iphone"
             />
         </Link>
       </Slider>
