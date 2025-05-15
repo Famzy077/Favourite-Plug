@@ -17,7 +17,7 @@ const AddressBook = () => {
         <FaPen onClick={() => setEditing(!editing)} className='text-blue-500 cursor-pointer' size={14} />
       </div>
 
-      <div className='p-3 text-sm text-gray-700'>
+      <div className='p-3 py-5 text-sm text-gray-700'>
         {editing ? (
           <div className="flex flex-col gap-2">
             <textarea

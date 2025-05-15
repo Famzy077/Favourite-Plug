@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import AddressBook from './AddressBook';
 
-const AccountDetails = () => {
+export const AccountDetails = () => {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState('Xavier Johnson');
   const [email, setEmail] = useState('xavier@gmail.com');
@@ -13,9 +13,9 @@ const AccountDetails = () => {
   };
 
   return (
-    <section className='flex gap-5 lg:flex max-sm:flex-col justify-between'>
+    <section className='flex gap-5 lg:flex max-sm:flex-col max-sm:h-[auto] h-[70vh] justify-between items-center pr'>
         <div className="border w-[100%] bg-white border-gray-300 rounded-[5px]">
-            <div className='flex items-center justify-between border-b p-3 border-gray-300'>
+            <div className='flex  items-center justify-between border-b p-3 border-gray-300'>
                 <h1 className='font-medium'>Account details</h1>
                 <button onClick={() => setEditing(!editing)} className="text-blue-500 text-sm">
                 {editing ? 'Cancel' : 'Edit'}
@@ -58,7 +58,6 @@ const AccountDetails = () => {
   );
 };
 
-export default AccountDetails;
 
 // "use client";
 // import { useState, useEffect } from "react";
