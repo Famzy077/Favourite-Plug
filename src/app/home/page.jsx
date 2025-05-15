@@ -9,12 +9,16 @@ import {PowerBank} from '@/app/UI/PowerBank'
 import {Laptops, LaptopSlide} from '@/app/UI/Laptop'
 import { Mobile, MobileSticky } from '@/app/UI/Mobile'
 import { Accessories, AccessoriesStick } from '@/app/UI/Accessories'
+import { HeaderPage, MobileBottomNav } from '../UI/Header';
+import Footer from '../UI/Footer';
+import Docs from '../UI/Docs';
 
 const Page = () => {
   
 
   return (
     <div className='bg-zinc-200'>
+      <HeaderPage/>
       <CallPhone/>
       <Section/>
       <Call/>
@@ -30,12 +34,10 @@ const Page = () => {
         <Accessories/>
         <AccessoriesStick/>
       </div>
+      <Docs/>
+      <Footer/>
+      <MobileBottomNav/>
     </div>
   )
 }
-// export async function generateStaticParams() {
-//   return products.map((product) => ({
-//     id: product.id.toString(),
-//   }));
-// }
 export default Page

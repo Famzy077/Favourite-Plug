@@ -23,7 +23,7 @@ const Login = () => {
     }
 
     // Navigate to verification page with email as query
-    router.push(`/pages/verify?email=${encodeURIComponent(formData.email)}`);
+    router.push(`/verify?email=${encodeURIComponent(formData.email)}`);
   };
 
   return (

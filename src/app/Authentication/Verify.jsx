@@ -26,7 +26,7 @@ const VerifyEmail = () => {
     e.preventDefault();
     alert(`Verifying code: ${code.join('')} for ${email}`);
       //  API here to validate the code
-     router.push('/pages/home')
+     router.push('/home')
   };
 
   return (

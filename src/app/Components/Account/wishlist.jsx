@@ -1,5 +1,5 @@
 'use client'
-import Wishlist from "@/app/pages/wishlist/page";
+import Wishlist from "@/app/wishlist/page";
 
 export default function WishlistPage() {
 

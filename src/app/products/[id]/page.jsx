@@ -4,6 +4,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import products from '..//../../Data/ProductData.json'
 import { MobileSticky } from '@/app/UI/Mobile';
+import { HeaderPage, MobileBottomNav } from '@/app/UI/Header';
+import Footer from '@/app/UI/Footer';
+import Docs from '@/app/UI/Docs';
 
 export default function ProductDetail({ params }) {
   const productId = parseInt(params.id);
@@ -15,6 +18,7 @@ export default function ProductDetail({ params }) {
 
   return (
     <main>
+      <HeaderPage/>
       <div className='text-center'>
         <div className="relative h-[50vh] flex justify-center items-center text-white">
           <div
@@ -55,6 +59,10 @@ export default function ProductDetail({ params }) {
         <Accessories/>
         <MobileSticky/>
       </div>
+
+      <Docs/>
+      <Footer/>
+      <MobileBottomNav/>
     </main>
   );
 }

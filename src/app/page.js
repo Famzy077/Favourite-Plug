@@ -6,7 +6,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import store from "./redux/Store";
 
-const LoginPage = dynamic(() => import("../app/pages/login/page"), {
+const LoginPage = dynamic(() => import("./login/page"), {
   ssr: false,
 });
 

@@ -27,7 +27,7 @@ const MiniHeader = () => {
       setFilteredItems(results);
     }, [searchTerm]);
   return (
-    <div className='flex z-40 justify-between -inset-0 shadow bg-zinc-200 py-5 px-5 flex-col gap-2 w-full relative'>
+    <div className=' z-40 block md:hidden -inset-0 shadow bg-zinc-200 py-5 px-5 flex-col gap-2 w-full relative'>
       <div className='flex gap-3 relative max-sm:px-0 max-md:px-26 md:px-26'>
         <input
           type="search"
