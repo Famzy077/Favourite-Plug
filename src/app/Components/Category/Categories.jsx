@@ -36,7 +36,7 @@ const Categories = () => {
 
   return (
     <div className='lg:px-20 bg-zinc-100'>
-      <h1 className='text-4xl font-bold mx-5 my-4'>Categories</h1>
+      <h1 className='text-4xl max-sm:text-2xl font-bold mx-5 my-4'>Categories</h1>
 
       {/* Filter Buttons */}
       <div className='flex'>
@@ -45,7 +45,7 @@ const Categories = () => {
             <button
               key={catKey}
               onClick={() => handleFilter(cat)}
-              className={`bord max-sm:text-[0.7rem] text-[18px] text-blue-500 p-0 rounded-[5px] shadow ${
+              className={`max-sm:text-[0.7rem] text-[18px] text-blue-500 p-0 rounded-[5px] shadow ${
                 category === cat ? 'bg-blue-500 shadow-none font-bold text-white' : 'bg-white shadow shadow-blue-500'
               }`}
             >
