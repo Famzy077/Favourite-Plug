@@ -16,13 +16,13 @@ export default function Home() {
     const user = localStorage.getItem('favoritePlugUser');
     
     if (!user) {
-      router.replace('/login'); // ⛔ Redirect to /login if not logged in
+      router.replace('/login'); //Redirect to /login if not logged in
     } else {
-      setCheckingAuth(false); // ✅ Allow homepage to render
+      setCheckingAuth(false); // Allow homepage to render
     }
   }, [router]);
 
-  if (checkingAuth) return null; // Prevent flicker while checking auth
+  if (checkingAuth) return null;
 
   return (
     <QueryClientProvider client={queryClient}>
