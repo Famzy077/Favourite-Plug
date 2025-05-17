@@ -4,8 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import products from '..//../../Data/ProductData.json'
 import { MobileSticky } from '@/app/UI/Mobile';
-import { HeaderPage, MobileBottomNav } from '@/app/UI/Header';
-import Footer from '@/app/UI/Footer';
 import Docs from '@/app/UI/Docs';
 
 export default function ProductDetail({ params }) {
@@ -18,7 +16,6 @@ export default function ProductDetail({ params }) {
 
   return (
     <main>
-      <HeaderPage/>
       <div className='text-center'>
         <div className="relative h-[50vh] flex justify-center items-center text-white">
           <div
@@ -29,7 +26,7 @@ export default function ProductDetail({ params }) {
           </div>
           <div className="relative z-10 flex items-center space-x-2">
             <p className="text-2xl underline">
-              <Link href="/">Home</Link>
+              <Link href="/home">Home</Link>
             </p>
             <span className="text-2xl">/</span>
             <h1 className="text-2xl text-blue-400 font-bold">Shop</h1>
@@ -61,8 +58,6 @@ export default function ProductDetail({ params }) {
       </div>
 
       <Docs/>
-      <Footer/>
-      <MobileBottomNav/>
     </main>
   );
 }

@@ -14,17 +14,33 @@ const Login = () => {
     setFormData({ ...formData, email: e.target.value });
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   if (formData.email.trim().length < 5) {
+  //     alert('Please enter a valid email or phone number');
+  //     return;
+  //   }
+
+  //   // Navigate to verification page with email as query
+  //   router.push(`/verify?email=${encodeURIComponent(formData.email)}`);
+  // };
+
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (formData.email.trim().length < 5) {
-      alert('Please enter a valid email or phone number');
-      return;
-    }
+  if (formData.email.trim().length < 5) {
+    alert('Please enter a valid email or phone number');
+    return;
+  }
 
-    // Navigate to verification page with email as query
-    router.push(`/verify?email=${encodeURIComponent(formData.email)}`);
-  };
+  // Save to localStorage
+  localStorage.setItem('favoritePlugUser', JSON.stringify({ email: formData.email }));
+
+  // Redirect to verification page
+  router.push(`/verify?email=${encodeURIComponent(formData.email)}`);
+};
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-white">

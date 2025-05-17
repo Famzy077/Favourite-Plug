@@ -2,23 +2,19 @@
 import React from 'react'
 import Section from '@/app/Components/Home/SlidedSection'
 import {Call, CallPhone} from '@/app/UI/Call'
-// import products from '../../../Data/ProductData.json'
 import ProductBaner from '@/app/Components/Home/ProductBaner'
 import { SmartwatchCarousel } from '@/app/UI/WatchCarousel'
 import {PowerBank} from '@/app/UI/PowerBank'
 import {Laptops, LaptopSlide} from '@/app/UI/Laptop'
 import { Mobile, MobileSticky } from '@/app/UI/Mobile'
 import { Accessories, AccessoriesStick } from '@/app/UI/Accessories'
-import { HeaderPage, MobileBottomNav } from '../UI/Header';
-import Footer from '../UI/Footer';
-import Docs from '../UI/Docs';
+import Docs from '../../UI/Docs';
 
 const Page = () => {
   
 
   return (
     <div className='bg-zinc-200'>
-      <HeaderPage/>
       <CallPhone/>
       <Section/>
       <Call/>
@@ -35,8 +31,6 @@ const Page = () => {
         <AccessoriesStick/>
       </div>
       <Docs/>
-      <Footer/>
-      <MobileBottomNav/>
     </div>
   )
 }

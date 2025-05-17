@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { useWishlist } from '@/app/hooks/useWishlist';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import Image from 'next/image';
-import { HeaderPage, MobileBottomNav } from '../UI/Header';
-import Footer from '../UI/Footer';
-import Docs from '../UI/Docs';
+import { HeaderPage, MobileBottomNav } from '../../UI/Header';
+import Footer from '../../UI/Footer';
+import Docs from '../../UI/Docs';
 
 const Wishlist = () => {
   const { wishlist, removeFromWishlist, isWishlisted } = useWishlist();
