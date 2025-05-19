@@ -1,13 +1,16 @@
 'use client'
+
 import { Accessories } from '@/app/UI/Accessories';
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 import products from '..//../../Data/ProductData.json'
 import { MobileSticky } from '@/app/UI/Mobile';
 import Docs from '@/app/UI/Docs';
+import { use } from 'react';
 
-export default function ProductDetail({ params }) {
-  const productId = parseInt(params.id);
+const ProductPage = ({ params }) => {
+  const resolvedParams = use(params);
+  const productId = parseInt(resolvedParams.id);
   const product = products.find((p) => p.id === productId);
 
   if (!product) {
@@ -32,8 +35,9 @@ export default function ProductDetail({ params }) {
             <h1 className="text-2xl text-blue-400 font-bold">Shop</h1>
           </div>
         </div>
-        <h1 className="text-3xl font-bold mb-1 text-white rounded-xl bg-blue-500 mx-10 p-2 mt-5">Product Details</h1>
+        <h1 className="text-3xl font-bold mb-1 text-white bg-blue-500 mx-2 p-2 mt-5">Product Details</h1>
       </div>
+
       <div className="p-5 max-w-3xl">
         <main className='flex gap-5 max-sm:flex-col'>
           <div className='w-[50%] max-sm:w-[100%] flex justify-center items-center'>
@@ -61,3 +65,5 @@ export default function ProductDetail({ params }) {
     </main>
   );
 }
+
+export default ProductPage;
