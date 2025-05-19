@@ -22,12 +22,44 @@ const VerifyEmail = () => {
     if (value && next) next.focus();
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Verifying code: ${code.join('')} for ${email}`);
-      //  API here to validate the code
-     router.push('/home')
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  const verificationCode = code.join('');
+  
+  if (verificationCode.length < 4) {
+    alert('Please enter the full 4-digit code');
+    return;
+  }
+  
+  try {
+    const response = await fetch('https://favorite-server-0.onrender.com/api/auth/verify-code', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, code: verificationCode }),
+    });
+
+    if (!response.ok) {
+      // Get error message from response if any
+      const errorData = await response.json();
+      alert(errorData.message || 'Verification failed, please try again.');
+      return;
+    }
+
+    const data = await response.json();
+    
+    if (data.success) {
+      alert('Verification successful!');
+      router.push(`/create?email=${encodeURIComponent(email)}`); // Redirect after success
+    } else {
+      alert('Invalid code, please try again.');
+    }
+  } catch (error) {
+    console.error('Verification error:', error);
+    alert('Network error, please try again later.');
+  }
+};
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center">

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Suspense } from 'react'
-import VerifyEmail from '@/app/(auth)/Verify'
+import VerifyEmail from './Verify'
 
 const page = () => {
   return (
