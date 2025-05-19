@@ -1,10 +1,13 @@
 import React from 'react'
+import { Suspense } from 'react'
 import CreateAccount from './createAccount'
 
 const page = () => {
   return (
     <div>
-      <CreateAccount />
+      <Suspense>
+        <CreateAccount />
+      </Suspense>
     </div>
   )
 }

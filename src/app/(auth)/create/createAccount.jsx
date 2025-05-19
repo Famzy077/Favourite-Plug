@@ -51,66 +51,7 @@ const CreateAccount = () => {
       setPasswordStrength(calculatePasswordStrength(value));
     }
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setError('');
-
-  //   // Client-side validation
-  //   if (formData.password !== formData.confirmPassword) {
-  //     setError("Passwords don't match");
-  //     return;
-  //   }
-    
-  //   if (formData.password.length < 8) {
-  //     setError("Password must be at least 8 characters");
-  //     return;
-  //   }
-
-  //   try {
-  //     setLoading(true);
-      
-  //     // First verify the endpoint exists
-  //     const endpoint = '/api/auth/create-account';
-
-  //     // Make the actual request
-  //     const response = await api.post('/api/auth/create-account', {
-  //       email: formData.email,
-  //       password: formData.password
-  //     });
-
-  //     if (response.data.success) {
-  //       router.push('/personal-details');
-  //     } else {
-  //       throw new Error(response.data.message || 'Account creation failed');
-  //     }
-  //   } catch (error) {
-  //     console.error('API Error:', error);
-      
-  //     if (error.code === 'ECONNABORTED') {
-  //       setError('Request timeout. Please try again.');
-  //     } else if (error.response) {
-  //       // Server responded with error status
-  //       switch (error.response.status) {
-  //         case 404:
-  //           setError('Endpoint not found. Please contact support.');
-  //           break;
-  //         case 500:
-  //           setError('Server error. Please try again later.');
-  //           break;
-  //         default:
-  //           setError(error.response.data?.message || 'Request failed');
-  //       }
-  //     } else if (error.request) {
-  //       setError('No response from server. Check your connection.');
-  //     } else {
-  //       setError(error.message || 'An unexpected error occurred');
-  //     }
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
+  
   const handleSubmit = async (e) => {
   e.preventDefault();
   setError('');
