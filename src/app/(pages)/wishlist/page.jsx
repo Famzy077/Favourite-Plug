@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { useWishlist } from '@/app/hooks/useWishlist';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import Image from 'next/image';
-import { HeaderPage, MobileBottomNav } from '../../UI/Header';
-import Footer from '../../UI/Footer';
 import Docs from '../../UI/Docs';
 
 const Wishlist = () => {
@@ -17,7 +15,6 @@ const Wishlist = () => {
   console.log(wishlist)
   return (
     <div>
-      <HeaderPage/>
       <div className="lg:px-20 bg-zinc-100 p-5 max-sm:px-2 mb-[auto-fit] min-h-[85vh]">
         <h1 className="text-4xl mb-6 max-sm:text-2xl font-medium font-sans">Your Wishlist</h1>
         <div className="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-14">
@@ -45,8 +42,6 @@ const Wishlist = () => {
       </div>
       
       <Docs/>
-      <Footer/>
-      <MobileBottomNav/>
     </div>
   );
 };
