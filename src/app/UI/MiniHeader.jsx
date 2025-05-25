@@ -8,7 +8,7 @@ import Link from 'next/link';
 const MiniHeader = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
-    const pathname = usePathname(); // listens to route changes
+    const pathname = usePathname();
     useEffect(() => {
       setSearchTerm('');
       setFilteredItems([]);

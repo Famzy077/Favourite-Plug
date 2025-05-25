@@ -22,15 +22,15 @@ const VerifyEmail = () => {
     if (value && next) next.focus();
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
   const verificationCode = code.join('');
-  
+
   if (verificationCode.length < 4) {
     alert('Please enter the full 4-digit code');
     return;
   }
-  
+
   try {
     const response = await fetch('https://favorite-server-0.onrender.com/api/auth/verify-code', {
       method: 'POST',
@@ -41,17 +41,25 @@ const VerifyEmail = () => {
     });
 
     if (!response.ok) {
-      // Get error message from response if any
       const errorData = await response.json();
       alert(errorData.message || 'Verification failed, please try again.');
       return;
     }
 
     const data = await response.json();
-    
+
     if (data.success) {
-      alert('Verification successful!');
-      router.push(`/create?email=${encodeURIComponent(email)}`); // Redirect after success
+      // ✅ Check if email already exists
+      const checkResponse = await fetch(`https://favorite-server-0.onrender.com/api/auth/check-email?email=${encodeURIComponent(email)}`);
+      const checkData = await checkResponse.json();
+
+      if (checkData.exists) {
+        // Email already registered
+        router.push('/sign-in'); // Redirect to sign-in page
+      } else {
+        // New user, redirect to create account
+        router.push(`/create?email=${encodeURIComponent(email)}`);
+      }
     } else {
       alert('Invalid code, please try again.');
     }

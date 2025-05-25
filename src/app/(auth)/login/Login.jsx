@@ -14,6 +14,7 @@ const Login = () => {
   const [formData, setFormData] = useState({ email: '' });
   const [Error, setError] = useState(null);
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, email: e.target.value });
@@ -37,8 +38,8 @@ const Login = () => {
       if (response.data.message) {
         alert(response.data.message);
       } else {
-        // alert('Code sent successfully!');
         setError('Code sent successfully!');
+        is
       }
 
       localStorage.setItem('favoritePlugUser', JSON.stringify({ email: formData.email }));
@@ -50,14 +51,15 @@ const Login = () => {
         alert(`Error: ${error.response.status} - ${error.response.data.message || 'Unknown error'}`);
       } else if (error.request) {
         // Request made but no response received
-        alert('No response from server. Please try again later.');
         setError('No response from server. Please try again later.');
       } else {
-        // Other errors
-        // alert(`Error: ${error.message}`);
         setError(`Error: ${error.message}`);
       }
       console.error(error);
+    } finally{
+      setTimeout(() => {
+        setLoading(false)
+      }, 2000)
     }
   };
 
@@ -79,13 +81,26 @@ const Login = () => {
           placeholder="Email or Mobile Number*"
           className="border w-full px-3 py-2 rounded-md mb-4 text-sm"
         />
-
         <button
           type="submit"
-          className="w-full cursor-pointer bg-blue-500 text-white font-semibold py-2 rounded-md mb-2 shadow-sm"
+          disabled={loading}
+          className={`w-full bg-blue-500 text-white py-3 px-6 rounded-md shadow-md hover:bg-blue-600 transition ${
+            loading ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'
+          }`}
         >
-          Continue
+          {loading ? (
+            <span className="flex items-center justify-center">
+              <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Continue...
+            </span>
+          ) : (
+            'Continue'
+          )}
         </button>
+
         <p className="text-red-500 text-sm mt-1.5">{Error}</p>
       </form>
 

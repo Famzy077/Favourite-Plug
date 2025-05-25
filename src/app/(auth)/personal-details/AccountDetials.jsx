@@ -45,7 +45,7 @@ const PersonalDetails = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Redirect to next page after successful submission
-      router.push('/home'); // Change this to your actual next page
+      router.push('/home');
     } catch (error) {
       console.error('Error saving details:', error);
       alert('An error occurred. Please try again.');

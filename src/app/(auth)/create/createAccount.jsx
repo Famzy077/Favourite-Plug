@@ -275,7 +275,7 @@ const CreateAccount = () => {
                 type="button"
                 onClick={() => {
                   setIsEditingEmail(false);
-                  // Here you might want to verify the new email
+                  router.push('/login')
                 }}
                 className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
               >

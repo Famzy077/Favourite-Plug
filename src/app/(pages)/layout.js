@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import PageProvider from "./page";
 import { HeaderPage, MobileBottomNav } from "../UI/Header";
 import Footer from "../UI/Footer";
 import "@/app/globals.css";
@@ -23,7 +24,9 @@ export default function PageLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <HeaderPage/>
+        <PageProvider>
         {children}
+      </PageProvider>
         <MobileBottomNav/>
         <Footer/>
       </body>
