@@ -56,13 +56,15 @@ const CreateAccount = () => {
   e.preventDefault();
   setError('');
 
-  if (formData.password !== formData.confirmPassword) {
-    setError("Passwords don't match");
+  // Check verification status
+  const verifiedEmail = localStorage.getItem('verifiedEmail');
+  if (!verifiedEmail || verifiedEmail !== formData.email) {
+    setError('Email verification required. Please verify your email first.');
     return;
   }
 
-  if (formData.password.length < 8) {
-    setError("Password must be at least 8 characters");
+  if (formData.password !== formData.confirmPassword) {
+    setError("Passwords don't match");
     return;
   }
 
@@ -72,14 +74,14 @@ const CreateAccount = () => {
     const response = await api.post('/api/auth/create-account', {
       email: formData.email,
       password: formData.password,
-      confirmPassword: formData.confirmPassword
+      confirmPassword: formData.confirmPassword,
+      verificationProof: localStorage.getItem('verificationToken') // If using tokens
     });
 
-
     if (response.data.success) {
+      // Clear verification flags after successful account creation
+      localStorage.removeItem('verifiedEmail');
       router.push('/personal-details');
-    } else {
-      throw new Error(response.data.message || 'Account creation failed');
     }
   } catch (error) {
     console.error('Full error response:', error.response?.data || error.message);
