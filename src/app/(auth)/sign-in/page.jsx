@@ -53,12 +53,8 @@ const SignIn = () => {
       });
 
       if (response.data.success) {
-        // Store token if available
-        if (response.data.token) {
-          localStorage.setItem('authToken', response.data.token);
-        }
-        
-        // Redirect to home or dashboard
+        localStorage.setItem('authToken', response.data.token);
+        localStorage.setItem('favoritePlugUser', JSON.stringify(response.data.user)); // 👈 Full user object
         router.push('/home');
       } else {
         throw new Error(response.data.message || 'Login failed');
