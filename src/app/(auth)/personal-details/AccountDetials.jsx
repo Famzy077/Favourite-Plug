@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import axios from 'axios';
@@ -23,16 +23,38 @@ const PersonalDetails = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState(null);
+  const [isClient, setIsClient] = useState(false);
 
-  const storedUser = JSON.parse(localStorage.getItem('favoritePlugUser') || '{}');
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
+  const getStoredUser = () => {
+    if (typeof window !== 'undefined') {
+      return JSON.parse(localStorage.getItem('favoritePlugUser') || '{}');
+    }
+    return {};
+  };
   const [formData, setFormData] = useState({
-    firstName: storedUser?.fullName?.split(' ')[0] || '',
-    lastName: storedUser?.fullName?.split(' ')[1] || '',
-    address: storedUser?.address || '',
-    prefix: storedUser?.phone?.slice(0, 4) || '+234',
-    phoneNumber: storedUser?.phone?.slice(4) || ''
+    firstName: '',
+    lastName: '',
+    address: '',
+    prefix: '+234',
+    phoneNumber: ''
   });
+
+  useEffect(() => {
+    if (isClient) {
+      const storedUser = getStoredUser();
+      setFormData({
+        firstName: storedUser?.fullName?.split(' ')[0] || '',
+        lastName: storedUser?.fullName?.split(' ')[1] || '',
+        address: storedUser?.address || '',
+        prefix: storedUser?.phone?.slice(0, 4) || '+234',
+        phoneNumber: storedUser?.phone?.slice(4) || ''
+      });
+    }
+  }, [isClient]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,7 +74,7 @@ const PersonalDetails = () => {
     try {
       await schema.validate(formData, { abortEarly: false });
 
-      const token = localStorage.getItem('authToken');
+      const token = isClient ? localStorage.getItem('authToken') : null;
       if (!token) {
         throw new Error('Authentication token not found');
       }
@@ -66,6 +88,7 @@ const PersonalDetails = () => {
       };
 
       // Optional: Skip API call if nothing has changed
+      const storedUser = getStoredUser();
       const storedPhone = storedUser?.phone;
       const storedFullName = storedUser?.fullName;
       const storedAddress = storedUser?.address;
@@ -91,12 +114,14 @@ const PersonalDetails = () => {
         }
       );
 
-      localStorage.setItem('favoritePlugUser', JSON.stringify({
-        ...storedUser,
-        fullName: payload.fullName,
-        phone: payload.phone,
-        address: payload.address
-      }));
+      if (isClient) {
+        localStorage.setItem('favoritePlugUser', JSON.stringify({
+          ...storedUser,
+          fullName: payload.fullName,
+          phone: payload.phone,
+          address: payload.address
+        }));
+      }
 
       router.push('/home');
     } catch (err) {
