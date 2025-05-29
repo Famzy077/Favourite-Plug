@@ -5,6 +5,22 @@ import Image from 'next/image';
 import logo from '/public/Images/Logo.png';
 import { Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
+import * as yup from 'yup'; // ✅ yup
+
+const validationSchema = yup.object().shape({
+  email: yup.string().email('Invalid email format').required('Email is required'),
+  password: yup
+    .string()
+    .required('Password is required')
+    .min(8, 'Password must be at least 8 characters')
+    .matches(/[A-Z]/, 'Must contain an uppercase letter')
+    .matches(/[0-9]/, 'Must contain a number')
+    .matches(/[^A-Za-z0-9]/, 'Must contain a special character'),
+  confirmPassword: yup
+    .string()
+    .required('Confirm password is required')
+    .oneOf([yup.ref('password')], 'Passwords must match')
+});
 
 const CreateAccount = () => {
   const router = useRouter();
@@ -21,13 +37,10 @@ const CreateAccount = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // Initialize Axios with base URL
   const api = axios.create({
     baseURL: 'https://favorite-server-0.onrender.com',
     timeout: 10000,
-    headers: {
-      'Content-Type': 'application/json',
-    }
+    headers: { 'Content-Type': 'application/json' }
   });
 
   const calculatePasswordStrength = (password) => {
@@ -51,72 +64,68 @@ const CreateAccount = () => {
       setPasswordStrength(calculatePasswordStrength(value));
     }
   };
-  
+
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError('');
+    e.preventDefault();
+    setError('');
 
-  // Check verification status
-  const verifiedEmail = localStorage.getItem('verifiedEmail');
-  if (!verifiedEmail || verifiedEmail !== formData.email) {
-    setError('Email verification required. Please verify your email first.');
-    return;
-  }
-
-  if (formData.password !== formData.confirmPassword) {
-    setError("Passwords don't match");
-    return;
-  }
-
-  try {
-    setLoading(true);
-
-    const response = await api.post('/api/auth/create-account', {
-      email: formData.email,
-      password: formData.password,
-      confirmPassword: formData.confirmPassword,
-      verificationProof: localStorage.getItem('verificationToken') // If using tokens
-    });
-
-    if (response.data.success) {
-      // Clear verification flags after successful account creation
-      localStorage.removeItem('verifiedEmail');
-      router.push('/personal-details');
-    }
-  } catch (error) {
-    console.error('Full error response:', error.response?.data || error.message);
-
-    if (error.code === 'ECONNABORTED') {
-      setError('Request timeout. Please try again.');
-    } else if (error.response) {
-      switch (error.response.status) {
-        case 404:
-          setError('Endpoint not found. Please contact support.');
-          break;
-        case 500:
-          setError('Server error. Please try again later.');
-          break;
-        default:
-          setError(error.response.data?.message || 'Request failed');
+    try {
+      await validationSchema.validate(formData, { abortEarly: false });
+    } catch (validationError) {
+      if (validationError.inner && validationError.inner.length > 0) {
+        setError(validationError.inner[0].message);
+      } else {
+        setError(validationError.message);
       }
-    } else if (error.request) {
-      setError('No response from server. Check your connection.');
-    } else {
-      setError(error.message || 'An unexpected error occurred');
+      return;
     }
-  } finally {
-    setLoading(false);
-  }
-};
+
+    const verifiedEmail = localStorage.getItem('verifiedEmail');
+    if (!verifiedEmail || verifiedEmail !== formData.email) {
+      setError('Email verification required. Please verify your email first.');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await api.post('/api/auth/create-account', {
+        email: formData.email,
+        password: formData.password,
+        confirmPassword: formData.confirmPassword,
+        verificationProof: localStorage.getItem('verificationToken')
+      });
+
+      if (response.data.success) {
+        localStorage.removeItem('verifiedEmail');
+        router.push('/personal-details');
+      }
+    } catch (error) {
+      console.error('Full error response:', error.response?.data || error.message);
+      if (error.code === 'ECONNABORTED') {
+        setError('Request timeout. Please try again.');
+      } else if (error.response) {
+        switch (error.response.status) {
+          case 404:
+            setError('Endpoint not found. Please contact support.');
+            break;
+          case 500:
+            setError('Server error. Please try again later.');
+            break;
+          default:
+            setError(error.response.data?.message || 'Request failed');
+        }
+      } else if (error.request) {
+        setError('No response from server. Check your connection.');
+      } else {
+        setError(error.message || 'An unexpected error occurred');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const getPasswordStrengthColor = () => {
-    const colors = [
-      'bg-red-500',
-      'bg-orange-500',
-      'bg-yellow-500',
-      'bg-blue-500',
-      'bg-green-500'
-    ];
+    const colors = ['bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-blue-500', 'bg-green-500'];
     return colors[passwordStrength] || 'bg-gray-500';
   };
 

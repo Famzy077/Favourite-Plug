@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Sidebar from '@/app/Components/Account/Sidebar';
-import AddressBook from '@/app/Components/Account/AddressBook';
 import { AccountDetails } from "../../Components/Account/AccountDetails";
 // import Voucher from '@/app/Components/Account/Voucher'; 
 import { AccountWishlist } from '../../Components/accountWishlist/wishlist';
@@ -18,8 +17,6 @@ const AccountPage = () => {
         return <Voucher />;
       case "wishlist":
         return <AccountWishlist />;
-      case "address":
-        return <AddressBook />;
       default:
         return <AccountDetails />;
     }

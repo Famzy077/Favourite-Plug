@@ -5,48 +5,49 @@ import Image from 'next/image';
 import logo from '/public/Images/Logo.png';
 import { Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
+import * as yup from 'yup'; // ✅ yup schema
+
+// ✅ Define validation schema
+const validationSchema = yup.object().shape({
+  email: yup.string().email('Invalid email address').required('Email is required'),
+  password: yup.string().required('Password is required')
+});
 
 const SignIn = () => {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  // Initialize Axios with base URL
   const api = axios.create({
     baseURL: 'https://favorite-server-0.onrender.com',
     timeout: 10000,
-    headers: {
-      'Content-Type': 'application/json',
-    }
+    headers: { 'Content-Type': 'application/json' }
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    // Basic validation
-    if (!formData.email || !formData.password) {
-      setError("Please fill in all required fields");
+    try {
+      await validationSchema.validate(formData, { abortEarly: false });
+    } catch (validationError) {
+      if (validationError.inner?.length > 0) {
+        setError(validationError.inner[0].message);
+      } else {
+        setError(validationError.message);
+      }
       return;
     }
 
     try {
       setLoading(true);
-      
       const response = await api.post("/api/auth/login", {
         email: formData.email,
         password: formData.password
@@ -54,17 +55,16 @@ const SignIn = () => {
 
       if (response.data.success) {
         localStorage.setItem('authToken', response.data.token);
-        localStorage.setItem('favoritePlugUser', JSON.stringify(response.data.user)); // 👈 Full user object
+        localStorage.setItem('favoritePlugUser', JSON.stringify(response.data.user));
         router.push('/home');
       } else {
         throw new Error(response.data.message || 'Login failed');
       }
     } catch (error) {
       console.error('Login error:', error);
-      
+
       let errorMessage = 'An error occurred during login';
       if (error.response) {
-        // Handle specific HTTP error codes
         switch (error.response.status) {
           case 400:
             errorMessage = 'Invalid email or password';
@@ -88,7 +88,7 @@ const SignIn = () => {
       } else {
         errorMessage = error.message || 'Login failed';
       }
-      
+
       setError(errorMessage);
     } finally {
       setLoading(false);
@@ -98,11 +98,8 @@ const SignIn = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center max-w-md mx-auto">
       <Image src={logo} alt="Favorite Plug Logo" width={60} height={60} className="mb-4" />
-
-      <h1 className="text-2xl font-bold mb-2">Welcome Back To Favorite PLug</h1>
-      <p className="text-gray-600 mb-6">
-        Log in
-      </p>
+      <h1 className="text-2xl font-bold mb-2">Welcome Back To Favorite Plug</h1>
+      <p className="text-gray-600 mb-6">Log in</p>
 
       {error && (
         <div className="w-full mb-4 p-3 bg-red-100 border-l-4 border-red-500 text-red-700">
@@ -142,11 +139,7 @@ const SignIn = () => {
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
-              {showPassword ? (
-                <EyeOff className="h-5 w-5" />
-              ) : (
-                <Eye className="h-5 w-5" />
-              )}
+              {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
             </button>
           </div>
           <p className="text-xs text-gray-500 mt-1">

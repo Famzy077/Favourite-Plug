@@ -2,53 +2,115 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import axios from 'axios';
+import * as yup from 'yup';
+import { AlertCircle, Loader } from 'lucide-react';
 import logo from '/public/Images/Logo.png';
+
+const schema = yup.object().shape({
+  firstName: yup.string().required('First name is required'),
+  lastName: yup.string().required('Last name is required'),
+  prefix: yup.string().required(),
+  phoneNumber: yup
+    .string()
+    .matches(/^\d+$/, 'Phone number must contain only digits')
+    .required('Phone number is required'),
+  address: yup.string().required('Address is required'),
+});
 
 const PersonalDetails = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState(null);
+
+  const storedUser = JSON.parse(localStorage.getItem('favoritePlugUser') || '{}');
+
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    prefix: '+234',
-    phoneNumber: ''
+    firstName: storedUser?.fullName?.split(' ')[0] || '',
+    lastName: storedUser?.fullName?.split(' ')[1] || '',
+    address: storedUser?.address || '',
+    prefix: storedUser?.phone?.slice(0, 4) || '+234',
+    phoneNumber: storedUser?.phone?.slice(4) || ''
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+    if (apiError) setApiError(null);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
-    // Validate required fields
-    if (!formData.firstName || !formData.lastName || !formData.phoneNumber) {
-      alert('Please fill in all required fields');
-      setLoading(false);
-      return;
-    }
-
-    // Validate phone number (basic validation)
-    if (!/^\d+$/.test(formData.phoneNumber)) {
-      alert('Please enter a valid phone number');
-      setLoading(false);
-      return;
-    }
+    setErrors({});
+    setApiError(null);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Redirect to next page after successful submission
+      await schema.validate(formData, { abortEarly: false });
+
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+        throw new Error('Authentication token not found');
+      }
+
+      const fullPhoneNumber = `${formData.prefix}${formData.phoneNumber}`;
+
+      const payload = {
+        fullName: `${formData.firstName} ${formData.lastName}`,
+        phone: fullPhoneNumber,
+        address: formData.address,
+      };
+
+      // Optional: Skip API call if nothing has changed
+      const storedPhone = storedUser?.phone;
+      const storedFullName = storedUser?.fullName;
+      const storedAddress = storedUser?.address;
+
+      if (
+        storedPhone === payload.phone &&
+        storedFullName === payload.fullName &&
+        storedAddress === payload.address
+      ) {
+        setLoading(false);
+        router.push('/home');
+        return;
+      }
+
+      const response = await axios.post(
+        'https://favorite-server-0.onrender.com/api/user-details',
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      localStorage.setItem('favoritePlugUser', JSON.stringify({
+        ...storedUser,
+        fullName: payload.fullName,
+        phone: payload.phone,
+        address: payload.address
+      }));
+
       router.push('/home');
-    } catch (error) {
-      console.error('Error saving details:', error);
-      alert('An error occurred. Please try again.');
+    } catch (err) {
+      if (err.name === 'ValidationError') {
+        const newErrors = {};
+        err.inner.forEach((e) => {
+          newErrors[e.path] = e.message;
+        });
+        setErrors(newErrors);
+      } else if (err.response?.status === 409) {
+        setApiError('This phone number is already registered. Please use a different number.');
+      } else {
+        setApiError(err.message || 'Something went wrong. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
@@ -59,9 +121,14 @@ const PersonalDetails = () => {
       <Image src={logo} alt="Favorite Plug Logo" width={60} height={60} className="mb-4" />
 
       <h1 className="text-2xl font-bold mb-2">Personal details</h1>
-      <p className="text-gray-600 mb-6">
-        We just need you to fill in some details.
-      </p>
+      <p className="text-gray-600 mb-6">We just need you to fill in some details.</p>
+
+      {apiError && (
+        <div className="w-full mb-4 p-3 bg-red-50 border-l-4 border-red-500 text-red-700 flex items-start">
+          <AlertCircle className="h-5 w-5 mr-2 flex-shrink-0" />
+          <p>{apiError}</p>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="w-full">
         <div className="mb-4 text-left">
@@ -71,10 +138,10 @@ const PersonalDetails = () => {
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md p-2"
+            className={`w-full border ${errors.firstName ? 'border-red-500' : 'border-gray-300'} rounded-md p-2`}
             placeholder="Enter your first name"
-            required
           />
+          {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
         </div>
 
         <div className="mb-4 text-left">
@@ -84,10 +151,10 @@ const PersonalDetails = () => {
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md p-2"
+            className={`w-full border ${errors.lastName ? 'border-red-500' : 'border-gray-300'} rounded-md p-2`}
             placeholder="Enter your last name"
-            required
           />
+          {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
         </div>
 
         <div className="mb-6 text-left">
@@ -100,7 +167,6 @@ const PersonalDetails = () => {
               className="border border-gray-300 rounded-l-md p-2 bg-gray-100"
             >
               <option value="+234">+234 ▼</option>
-              {/* Add more country codes as needed */}
               <option value="+1">+1</option>
               <option value="+44">+44</option>
               <option value="+233">+233</option>
@@ -110,11 +176,24 @@ const PersonalDetails = () => {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="flex-grow border border-gray-300 rounded-r-md p-2"
+              className={`flex-grow border ${errors.phoneNumber ? 'border-red-500' : 'border-gray-300'} rounded-r-md p-2`}
               placeholder="Enter your phone number"
-              required
             />
           </div>
+          {errors.phoneNumber && <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>}
+        </div>
+
+        <div className="mb-4 text-left">
+          <label className="block text-sm font-medium text-gray-700 mb-1">Address*</label>
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            className={`w-full border ${errors.address ? 'border-red-500' : 'border-gray-300'} rounded-md p-2`}
+            placeholder="123 Street Name, City"
+          />
+          {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
         </div>
 
         <button
@@ -125,11 +204,8 @@ const PersonalDetails = () => {
           }`}
         >
           {loading ? (
-            <span className="flex items-center justify-center">
-              <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
+            <span className="flex items-center justify-center gap-2">
+              <Loader className="animate-spin h-5 w-5" />
               Processing...
             </span>
           ) : (

@@ -6,63 +6,65 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import logo from '/public/Images/Logo.png';
 import { FcGoogle } from 'react-icons/fc';
+import * as yup from 'yup';
 
 const apiBase = 'https://favorite-server-0.onrender.com/api'; 
-// const apiBase = 'http://localhost:5000/api'; 
+
+// Yup validation schema
+const schema = yup.object().shape({
+  email: yup.string().email('Enter a valid email address').required('Email is required'),
+});
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '' });
   const [Error, setError] = useState(null);
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleChange = (e) => {
     setFormData({ ...formData, email: e.target.value });
+    setError(null); // clear error as user types
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (formData.email.trim().length < 5) {
-      // alert('Please enter a valid email or phone number');
-      setError('Please enter a valid email');
-      return;
-    }
+    setLoading(true);
+    setError(null);
 
     try {
+      await schema.validate(formData, { abortEarly: false });
+
       const response = await axios.post(`${apiBase}/auth/send-code`, {
         email: formData.email,
       });
 
-      // response.data already parsed JSON
       if (response.data.message) {
-        alert(response.data.message);
-      } else {
-        setError('Code sent successfully!');
-        is
+        // Success message from backend (optional to show)
+        console.log(response.data.message);
       }
 
+      // Save to local storage
       localStorage.setItem('favoritePlugUser', JSON.stringify({ email: formData.email }));
 
+      // Redirect
       router.push(`/verify?email=${encodeURIComponent(formData.email)}`);
-    } catch (error) {
-      if (error.response) {
-        // Server responded with a status outside 2xx
-        alert(`Error: ${error.response.status} - ${error.response.data.message || 'Unknown error'}`);
-      } else if (error.request) {
-        // Request made but no response received
+    } catch (err) {
+      if (err.name === 'ValidationError') {
+        setError(err.errors[0]); // Only show the first error
+      } else if (err.response) {
+        setError(err.response.data?.message || `Error: ${err.response.status}`);
+      } else if (err.request) {
         setError('No response from server. Please try again later.');
       } else {
-        setError(`Error: ${error.message}`);
+        setError(`Unexpected error: ${err.message}`);
       }
-      console.error(error);
-    } finally{
+      console.error(err);
+    } finally {
       setTimeout(() => {
-        setLoading(false)
-      }, 2000)
+        setLoading(false);
+      }, 1500);
     }
   };
-
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-white">
@@ -101,7 +103,7 @@ const Login = () => {
           )}
         </button>
 
-        <p className="text-red-500 text-sm mt-1.5">{Error}</p>
+        {Error && <p className="text-red-500 text-sm mt-1.5">{Error}</p>}
       </form>
 
       <p className="text-xs text-gray-500 mb-4">
