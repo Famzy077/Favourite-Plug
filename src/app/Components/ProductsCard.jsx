@@ -1,17 +1,32 @@
 'use client';
-import Link from "next/link";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { useWishlist } from "@/app/hooks/useWishlist";
-
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { useWishlist } from '@/app/hooks/useWishlist';
 const ProductCard = ({ product }) => {
-  const { addToWishlist, removeFromWishlist, isWishlisted, isMounted } = useWishlist();
+  const [userId, setUserId] = useState(null);
+  
+  useEffect(() => {
+    const stored = localStorage.getItem('favoritePlugUser');
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        setUserId(parsed?.id || parsed?.email);
+      } catch (e) {
+        console.error('Error parsing stored user:', e);
+      }
+    }
+  }, []);
+  
+  console.log('Stored User:', localStorage.getItem('favoritePlugUser'));
 
-  if (!product) {
-    console.warn("undefined 'product in card'");
-    return null;
-  }
+  const { addToWishlist, removeFromWishlist, isWishlisted, isMounted } = useWishlist(userId);
+    if (!product) {
+      console.warn("undefined 'product in card'");
+      return null;
+    }
 
-  const isInWishlist = isMounted && isWishlisted(product.id);
+    const isInWishlist = isWishlisted(product.id);
 
   return (
     <div className="relative px-4 max-sm:px-2 py-5 flex flex-col rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300">
@@ -21,7 +36,7 @@ const ProductCard = ({ product }) => {
           onClick={() =>
             isInWishlist ? removeFromWishlist(product.id) : addToWishlist(product)
           }
-          className="absolute text-xl bg-pink-200 rounded-full p-1.5 top-2 right-2 text-red-500 z-10"
+          className="absolute text-[17px] bg-pink-200 rounded-full p-1.5 top-2 right-2 text-red-500 z-10"
         >
           {isInWishlist ? <FaHeart /> : <FaRegHeart />}
         </button>

@@ -1,26 +1,3 @@
-// import React from 'react'
-// import ProductCard from '@/app/Components/ProductsCard'
-// import products from '../.././Data/ProductData.json'
-
-// const PowerBank = () => {
-//     const mobileProducts = products.filter(product => product.category === 'PowerBanks');
-
-//   return (
-//     <div>
-//       <div className='pb-10'>
-//         <h1 className='text-3xl max-sm:text-2xl  pl-10 py-2'>Power Banks</h1>
-//         <div className="grid max-sm:grid-cols-1 max-md:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-10">
-//           {mobileProducts.map((product) => (
-//             <ProductCard key={product.id} product={product} />
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default PowerBank
-
 import Slider from "react-slick";
 import ProductCard from '../Components/ProductsCard';
 import products from '../.././Data/ProductData.json';
@@ -64,8 +41,8 @@ export const PowerBank = () => {
   };
 
   return (
-    <div className="pb-10">
-      <h1 className="text-3xl max-sm:top-2 relative max-sm:mx-0 mx-11.5 p-2 rounded max-sm:rounded-none text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Power Bank</h1> 
+    <div className="">
+      <h1 className="text-3xl relative max-sm:mx-0 mx-11.5 p-2 rounded max-sm:rounded-none text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-1 mt-2">Power Bank</h1> 
       <div className="px-10 max-sm:px-3">
         <Slider {...settings}>
           {powerBanks.map((product) => (

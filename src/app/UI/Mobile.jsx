@@ -42,8 +42,8 @@ export const Mobile = () => {
 
   return (
     <div className=''>
-      <h1 className="text-3xl max-sm:rounded-none max-sm:mx-0 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-7">Mobile Phones/Tablets</h1> 
-      <div className="px-10 max-sm:-top-2 relative max-sm:px-2">
+      <h1 className="text-3xl max-sm:rounded-none max-sm:mx-0 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mb-2 mt-7">Mobile Phones/Tablets</h1> 
+      <div className="px-10 relative max-sm:px-2 -mb-5">
         <Slider {...settings}>
           {mobileProducts.map((product) => (
             <div key={product.id} className="p-2">

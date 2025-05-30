@@ -1,37 +1,58 @@
-'use client'
-import React from 'react'
-import Section from '@/app/Components/Home/SlidedSection'
-import {Call, CallPhone} from '@/app/UI/Call'
-import ProductBaner from '@/app/Components/Home/ProductBaner'
-import { SmartwatchCarousel } from '@/app/UI/WatchCarousel'
-import {PowerBank} from '@/app/UI/PowerBank'
-import {Laptops, LaptopSlide} from '@/app/UI/Laptop'
-import { Mobile, MobileSticky } from '@/app/UI/Mobile'
-import { Accessories, AccessoriesStick } from '@/app/UI/Accessories'
+'use client';
+import React, { useEffect, useState } from 'react';
+import Section from '@/app/Components/Home/SlidedSection';
+import { Call, CallPhone } from '@/app/UI/Call';
+import ProductBaner from '@/app/Components/Home/ProductBaner';
+import { SmartwatchCarousel } from '@/app/UI/WatchCarousel';
+import { PowerBank } from '@/app/UI/PowerBank';
+import { Laptops, LaptopSlide } from '@/app/UI/Laptop';
+import { Mobile, MobileSticky } from '@/app/UI/Mobile';
+import { Accessories, AccessoriesStick } from '@/app/UI/Accessories';
 import Docs from '../../UI/Docs';
 
+// 🔄 Spinner Component
+const Spinner = () => (
+  <div className="flex items-center justify-center min-h-[80vh]">
+    <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
+
 const Page = () => {
-  
+  const [loading, setLoading] = useState(true);
+
+  // Fake loading for 1 second to simulate initial data processing
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (loading) return <Spinner />;
 
   return (
-    <div className='bg-zinc-200'>
-      <CallPhone/>
-      <Section/>
-      <Call/>
-      <Mobile/>
-      <MobileSticky/>
-      <ProductBaner/>
-      <SmartwatchCarousel/>
-      <Laptops/>
-      <LaptopSlide/>
-      <PowerBank/>
+    <div className="bg-zinc-200">
+      <CallPhone />
+      <Section />
+      <Call />
+      <Mobile />
+      <MobileSticky />
+      <ProductBaner />
+      <SmartwatchCarousel />
+      <Laptops />
+      <LaptopSlide />
+      <PowerBank />
       <div>
-        <h1 className="text-3xl max-sm:top-2 relative max-sm:mx-0 mx-11.5 p-2 max-sm:rounded-none rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Accessories and more...</h1> 
-        <Accessories/>
-        <AccessoriesStick/>
+        <h1 className="text-3xl relative max-sm:mx-0 mx-11.5 p-2 max-sm:rounded-none rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-6">
+          Accessories and more...
+        </h1>
+        <Accessories />
+        <AccessoriesStick />
       </div>
-      <Docs/>
+      <Docs />
     </div>
-  )
-}
-export default Page
+  );
+};
+
+export default Page;

@@ -42,9 +42,9 @@ export const Laptops = () => {
   };
 
   return (
-    <div className="-mb-2">
-        <h1 className="text-3xl max-sm:top-2 relative max-sm:rounded-none max-sm:mx-0 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-16">Laptop Devices</h1> 
-      <div className="px-10 max-sm:px-2">
+    <div className="">
+        <h1 className="text-3xl relative max-sm:rounded-none max-sm:mx-0 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-3 mt-2">Laptop Devices</h1> 
+      <div className="px-10 max-sm:px-2 -mb-5">
         <Slider {...settings}>
           {laptops.map((product) => (
             <div key={product.id} className="p-2">
@@ -63,7 +63,7 @@ export const LaptopSlide = () => {
     .reverse();
 
   return (
-    <div className="flex mb-10 overflow-x-auto overflow-y-hidden gap-4 p-4 w-full scrollbar-hide">
+    <div className="flex overflow-x-auto overflow-y-hidden gap-4 p-4 w-full scrollbar-hide">
       {laptop.map((product) => (
         <div
           key={product.id}

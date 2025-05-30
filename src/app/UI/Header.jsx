@@ -83,7 +83,7 @@ export const HeaderPage = () => {
         </header>
       </div>
       {showSearch && (
-        <div className="fixed inset-0 bg-black bg-opacity-95 h-screen flex justify-center items-start pt-12 z-[90]">
+        <div className="fixed inset-0 opacity-85 h-screen flex justify-center items-start pt-12 z-[90]">
           <div
             ref={searchModalRef}
             className="bg-white z-[100] w-[50%] max-h-[80vh] rounded-lg p-4 shadow-lg relative flex flex-col"
@@ -92,7 +92,7 @@ export const HeaderPage = () => {
               onClick={toggleSearchModal}
               className="absolute right-3 top-2 text-gray-500 hover:text-red-500 transition-all"
             >
-              <XIcon size={25} className='rounded-full p-1 bg-zinc-100'/>
+              <XIcon size={30} className='rounded-full p-1 bg-zinc-100'/>
             </button>
             
             <h2 className="text-lg font-normal mb-3">Search for Products</h2>
@@ -147,7 +147,7 @@ export const MobileBottomNav = () => {
 
   const navItems = [
     { href: '/home', icon: <HomeIcon />, label: 'Home' },
-    { href: '/categories', icon: <List />, label: 'Categories' },
+    { href: '/categories', icon: <List className={`border p-0.5 font-semibold border-zinc-500  rounded-[3px]`}/>, label: 'Categories' },
     { href: '/wishlist', icon: <Heart />, label: 'Wishlist' },
     { href: '/account', icon: <UserRound />, label: 'Account' },
   ];
