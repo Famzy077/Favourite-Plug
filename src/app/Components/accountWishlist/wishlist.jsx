@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { useWishlist } from '@/app/hooks/useWishlist';
+import { useWishlist } from '@/app/hooks/WishlistContext.jsx';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import Image from 'next/image';
 

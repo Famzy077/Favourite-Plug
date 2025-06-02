@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
 import store from '../redux/Store';
+import { WishlistProvider } from '../hooks/WishlistContext.jsx';
 
 const queryClient = new QueryClient();
 
@@ -24,10 +25,14 @@ export default function PageProvider({ children }) {
   if (checkingAuth) return null;
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        {children} {/* ✅ Render whatever page is being routed */}
-      </Provider>
-    </QueryClientProvider>
+    <>
+      <WishlistProvider>
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            {children} {/* Render whatever page is being routed */}
+          </Provider>
+        </QueryClientProvider>
+      </WishlistProvider>
+    </>
   );
 }

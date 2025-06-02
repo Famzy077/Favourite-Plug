@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import '@/app/hooks/UserUniqueContext';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { Loader } from 'lucide-react';
@@ -72,7 +73,7 @@ export const AccountDetails = () => {
       setEditing(false);
     },
     onError: (err) => {
-      console.error('❌ Update error:', err);
+      console.error('Update error:', err);
     },
   });
 

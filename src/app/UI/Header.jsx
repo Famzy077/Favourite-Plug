@@ -68,7 +68,7 @@ export const HeaderPage = () => {
             </ul>
           </nav>
 
-          <div className='flex items-center space-x-4'>
+          <div className=''>
             <button
               onClick={toggleSearchModal}
               className="text-gray-700 hover:text-blue-600 transition-all"
@@ -76,14 +76,17 @@ export const HeaderPage = () => {
             >
               <Search size={24} />
             </button>
-            <button className='bg-blue-500 hover:bg-blue-400 text-white px-4 py-1.5 rounded-sm transition-all'>
+          </div>
+
+          <div className=' space-x-4'>
+            <button className='bg-blue-500 hover:bg-blue-400 text-white px-4 py-1.5 rounded-sm transition-all mr-10'>
               Call To Order
             </button>
           </div>
         </header>
       </div>
       {showSearch && (
-        <div className="fixed inset-0 opacity-85 h-screen flex justify-center items-start pt-12 z-[90]">
+        <div className="fixed inset-0 opacity-85 h-screen flex justify-center items-start pt-[4.6rem] z-[90]">
           <div
             ref={searchModalRef}
             className="bg-white z-[100] w-[50%] max-h-[80vh] rounded-lg p-4 shadow-lg relative flex flex-col"
@@ -141,7 +144,6 @@ export const HeaderPage = () => {
   );
   };
 
-// MobileBottomNav remains exactly the same
 export const MobileBottomNav = () => {
   const pathname = usePathname();
 

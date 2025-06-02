@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import Image from 'next/image';
 import Docs from '../../UI/Docs';
-import { useWishlist } from '@/app/hooks/useWishlist';
+import { useWishlist } from '@/app/hooks/WishlistContext.jsx';
 
 const Wishlist = () => {
   const [userId, setUserId] = useState(null);

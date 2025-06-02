@@ -1,14 +1,49 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import products from '../../Data/ProductData.json';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
+import NoItemImage from '../../../public/Images/noProduct.png';
 
 const MiniHeader = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
     const pathname = usePathname();
+
+    
+    const [results, setResults] = useState([]);
+    const [query, setQuery] = useState('');
+    const searchModalRef = useRef(null);
+  
+    useEffect(() => {
+      const handleOutsideClick = (event) => {
+        if (
+          searchModalRef.current &&
+          !searchModalRef.current.contains(event.target)
+        ) {
+          setShowSearch(false);
+          setQuery('');
+          setResults([]);
+        }
+      };
+  
+      document.addEventListener('mousedown', handleOutsideClick);
+      return () => document.removeEventListener('mousedown', handleOutsideClick);
+    }, []);
+
+    const handleSearch = (e) => {
+      const value = e.target.value;
+      setQuery(value);
+      
+      // Using the imported Products data instead of mock data
+      const filtered = Products.filter((product) =>
+        product.name.toLowerCase().includes(value.toLowerCase())
+      );
+      setResults(filtered);
+    };
+
+
     useEffect(() => {
       setSearchTerm('');
       setFilteredItems([]);
@@ -33,8 +68,8 @@ const MiniHeader = () => {
           type="search"
           placeholder="Search on Favorite plug"
           className='border-2 max-sm:rounded max-sm:w-[100%] bg-white outline-0 py-2 max-sm:py-1.5 px-4 rounded-l w-[100%] border-blue-500'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={query}
+          onChange={handleSearch}
         />
         <button
           className="bg-blue-500 fixed border border-blue-500 rounded-r max-sm:right-[-2px] right-[5rem] cursur-pointer text-white max-sm:py-[7.2px] px-3 py-[9.2px]"
@@ -57,6 +92,8 @@ const MiniHeader = () => {
           ))}
         </div>
       )}
+
+      
     </div>
   )
 }
