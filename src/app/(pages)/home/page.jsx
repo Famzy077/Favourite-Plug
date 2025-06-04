@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react';
 import Section from '@/app/Components/Home/SlidedSection';
 import { Call, CallPhone } from '@/app/UI/Call';
 import ProductBaner from '@/app/Components/Home/ProductBaner';
-import { SmartwatchCarousel } from '@/app/UI/WatchCarousel';
-import { PowerBank } from '@/app/UI/PowerBank';
-import { Laptops, LaptopSlide } from '@/app/UI/Laptop';
-import { Mobile, MobileSticky } from '@/app/UI/Mobile';
-import { Accessories, AccessoriesStick } from '@/app/UI/Accessories';
+import { SmartwatchCarousel } from '@/app/Components/WatchCarousel';
+import { PowerBank } from '@/app/Components/PowerBank';
+import { Laptops, LaptopSlide } from '@/app/Components/Laptop';
+import { Mobile, MobileSticky } from '@/app/Components/Mobile';
+import { Accessories, AccessoriesStick } from '@/app/Components/Accessories';
 import Docs from '../../UI/Docs';
 
-// 🔄 Spinner Component
+// Spinner Component
 const Spinner = () => (
   <div className="flex items-center justify-center min-h-[80vh]">
     <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
@@ -20,7 +20,7 @@ const Spinner = () => (
 const Page = () => {
   const [loading, setLoading] = useState(true);
 
-  // Fake loading for 1 second to simulate initial data processing
+  //loading for 1 second to simulate initial data processing
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);

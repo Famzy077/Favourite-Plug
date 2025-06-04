@@ -1,10 +1,10 @@
 'use client'
 
-import { Accessories } from '@/app/UI/Accessories';
+import { AccessoriesStick } from '@/app/Components/Accessories';
 import Image from 'next/image';
 import Link from 'next/link';
 import products from '..//../../Data/ProductData.json'
-import { MobileSticky } from '@/app/UI/Mobile';
+import { MobileSticky } from '@/app/Components/Mobile';
 import Docs from '@/app/UI/Docs';
 import { use } from 'react';
 
@@ -55,9 +55,9 @@ const ProductPage = ({ params }) => {
         </main>
       </div>
 
-      <div className='bg-blue-100 p-5 mb-14'>
+      <div className='bg-blue-100 p-5 max-sm:p-3 mb-14'>
         <h1 className='text-2xl pt-8 px-4  pl-0 max-sm:text-xl font-semibold text-zinc-800'>You can also explore other items</h1>
-        <Accessories/>
+        <AccessoriesStick/>
         <MobileSticky/>
       </div>
 

@@ -54,12 +54,12 @@ const Categories = () => {
       <h1 className="text-4xl max-sm:text-2xl font-bold mx-5 my-4">Categories</h1>
       <div className="flex">
         {/* Filter Buttons */}
-        <div className="grid max-sm:w-[7rem] h-[30rem] ml-5 w-[10rem] max-sm:grid-cols-1 my-3 gap-4 max-sm:text-[1rem]">
+        <div className="grid max-sm:w-[5rem] max-sm:h-[20rem] h-[30rem] ml-5 w-[10rem] max-sm:grid-cols-1 my-3 gap-4 max-sm:text-[1rem]">
           {['All', 'SmartPhones', 'Tablets', 'Laptops', 'PowerBanks', 'Accessories'].map((cat, key) => (
             <button
               key={key}
               onClick={() => handleFilter(cat)}
-              className={`max-sm:text-[0.7rem] text-[18px] text-blue-500 p-0 rounded-[5px] shadow ${
+              className={`max-sm:text-[0.6rem] text-[18px] text-blue-500 p-0 rounded-[5px] shadow ${
                 category === cat
                   ? 'bg-blue-500 shadow-none font-bold text-white'
                   : 'bg-white shadow shadow-blue-500'
@@ -93,7 +93,7 @@ const Categories = () => {
                   </button>
                 )}
                 <Link href={`/products/${product.id}`}>
-                  <div className="px-4 py-5 flex flex-col rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300">
+                  <div className="px-2 py-2 flex flex-col rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300">
                     <div className="flex justify-center items-center mb-1">
                       <img
                         src={product.image}
@@ -103,16 +103,16 @@ const Categories = () => {
                     </div>
                     <div className="w-full flex flex-col justify-center items-start">
                       <h1 className="text-sm max-sm:text-[0.7rem] font-semibol cursor-pointer">
-                        {product.name.slice(0, 11)}...
+                        {product.name.slice(0, 13)}...
                       </h1>
                       <div className="flex max-sm:items-center gap-2 max-sm:hidden">
                         <p className="text-gray-600 text-sm">₦{product.price}</p>
                         <strike className="text-gray-600 relative text-sm">₦{product.oldPrice}</strike>
                       </div>
-                      <div className="hidden max-sm:flex max-sm:items-center gap-1">
+                      {/* <div className="hidden max-sm:flex max-sm:items-center gap-1">
                         <p className="text-gray-600 text-[0.65rem]">₦{product.price}</p>
-                        <strike className="text-gray-600 relative text-[0.65rem]">₦{product.oldPrice}</strike>
-                      </div>
+                        <strike className="text-gray-600 relative text-[0.65rem]">₦{product.oldPrice}</strike> */}
+                      {/* </div> */}
                     </div>
                   </div>
                 </Link>

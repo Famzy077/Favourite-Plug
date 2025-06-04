@@ -1,4 +1,5 @@
 import '../globals.css'
+import { WishlistProvider } from '../hooks/WishlistContext.jsx'
 export const metadata = {
   title: 'Favorite Plug',
   description: 'Gadget shop',
@@ -7,7 +8,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <WishlistProvider>
+          {children}
+        </WishlistProvider>
+      </body>
     </html>
   )
 }

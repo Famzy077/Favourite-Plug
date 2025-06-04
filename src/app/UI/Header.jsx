@@ -55,11 +55,11 @@ export const HeaderPage = () => {
     <div className='sticky top-0 z-50'>
       <div className='max-md:hidden block'>
         <header className='flex bg-blue-200 p-2 shadow-md items-center justify-between'>
-          <Link href={'/'}>
+          <Link href={'/home'}>
             <Image className='w-[3.5rem] lg:ml-2 border max-sm:w-[2rem]' src={Logo1} alt="Logo" />
           </Link>
 
-          <nav className='w-[60%]'>
+          <nav className='w-[50%]'>
             <ul className='flex justify-center space-x-8 text-gray-800 text-[1rem] font-medium'>
               <li><Link href="/home">Home</Link></li>
               <li><Link href="/categories">Categories</Link></li>
@@ -68,14 +68,17 @@ export const HeaderPage = () => {
             </ul>
           </nav>
 
-          <div className=''>
+          <div
+            onClick={toggleSearchModal}
+            className='border hover:border-blue-600 w-[14%] flex items-center p-1 rounded-[5px] m-auto text-[8px]'
+          >
             <button
-              onClick={toggleSearchModal}
               className="text-gray-700 hover:text-blue-600 transition-all"
               title="Search"
             >
               <Search size={24} />
             </button>
+            <i className='text-sm text-zinc-600'>Search products..</i>
           </div>
 
           <div className=' space-x-4'>
@@ -142,29 +145,30 @@ export const HeaderPage = () => {
       <MiniHeader />
     </div>
   );
-  };
-
+};
 export const MobileBottomNav = () => {
   const pathname = usePathname();
 
   const navItems = [
     { href: '/home', icon: <HomeIcon />, label: 'Home' },
-    { href: '/categories', icon: <List className={`border p-0.5 font-semibold border-zinc-500  rounded-[3px]`}/>, label: 'Categories' },
+    { href: '/categories', icon: <List />, label: 'Categories' },
     { href: '/wishlist', icon: <Heart />, label: 'Wishlist' },
     { href: '/account', icon: <UserRound />, label: 'Account' },
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] block sm:hidden bg-white border-t border-gray-200">
+    <div className="sticky bottom-0 left-0 right-0 z-[100] block sm:hidden bg-white border-t border-gray-200">
       <main className="flex justify-around items-center px-4 py-3">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
+          const isCategories = item.icon === <List/>;
+
           return (
             <Link href={item.href} key={item.label}>
               <div
                 className={`flex flex-col items-center text-xs transition-all duration-200 ${
                   isActive ? 'text-blue-600 scale-110' : 'text-gray-500'
-                }`}
+                } ${isCategories ? 'border border-blue-500 rounded-md px-2 py-1' : ''}`}
               >
                 {React.cloneElement(item.icon, { size: 24 })}
                 <span className="mt-1">{item.label}</span>

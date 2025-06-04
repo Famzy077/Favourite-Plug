@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import ProductCard from "../Components/ProductsCard";
+import ProductCard from "./ProductsCard";
 import products from '../.././Data/ProductData.json';
 
 export const Mobile = () => {

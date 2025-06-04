@@ -32,15 +32,15 @@ const ProductCard = ({ product }) => {
           <img
             src={product.image}
             alt={product.name}
-            className="max-sm:h-[120px] h-[100px] object-fit rounded-lg"
+            className="max-sm:h-[90px] h-[100px] object-fit rounded-lg"
           />
         </div>
         <h2 className="text-sm max-sm:text-[15px] font-bold max-sm:font-light cursor-pointer">
           {product.name.slice(0, 10)}...
         </h2>
         <div className="max-sm:flex max-sm:items-center max-sm:gap-2">
-          <p className="text-gray-600 text-sm max-sm:text-[13px]">₦{product.price}</p>
-          <strike className="text-gray-600 relative max-sm:top-0 -top-1.5 text-sm max-sm:text-[13px]">
+          <p className="text-gray-600 text-sm max-sm:text-[11px]">₦{product.price}</p>
+          <strike className="text-gray-600 relative max-sm:top-0 -top-1.5 text-sm max-sm:text-[11px]">
             ₦{product.oldPrice}
           </strike>
         </div>

@@ -23,12 +23,12 @@ export default function PageLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <HeaderPage/>
         <PageProvider>
-        {children}
-      </PageProvider>
-        <MobileBottomNav/>
-        <Footer/>
+          <HeaderPage />
+          {children}
+          <MobileBottomNav />
+          <Footer />
+        </PageProvider>
       </body>
     </html>
   );
