@@ -1,3 +1,4 @@
+import "@/app/globals.css";
 export const metadata = {
   title: 'Admin-page',
   description: 'Favorite Admin Dashboard',
