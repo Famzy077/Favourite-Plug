@@ -1,17 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛍️ 💻📱 Favorite Plug
 
-## Getting Started
+**Favorite Plug** is a modern, responsive e-commerce platform focused on delivering tech gadgets and accessories to users with a clean and intuitive shopping experience.
 
-First, run the development server:
+🔗 **Live Demo**: [https://favourite-plug.vercel.app](https://favourite-plug.vercel.app)
+
+---
+
+## ✨ Features
+
+- 🏠 Home page showcasing trending and featured gadgets
+- 🔍 Real-time product search with suggestions
+- 📂 Product categories for easy filtering
+- ❤️ Wishlist functionality using `localStorage`
+- 👤 Account management page (with planned auth integration)
+- 🛒 Multi-step checkout & CRUD-ready cart (coming soon)
+- 📱 Responsive design for mobile and desktop
+- 🌐 SEO-friendly routing with Next.js
+
+---
+
+## ⚙️ Tech Stack
+
+| Technology     | Purpose                          |
+|----------------|----------------------------------|
+| **Next.js**    | React framework for SSR & routing |
+| **React**      | UI component structure           |
+| **JavaScript** | Static typing for codebase       |
+| **Tailwind CSS** | Utility-first responsive design |
+| **Lucide Icons** | Icon set used for UI elements   |
+| **Node.js (Planned)** | Backend API integration for auth, Admin etc. |
+| **MongoDB (Planned)** | Product & order database backend |
+| **Vercel**     | Deployment platform              |
+
+---
+
+## 🚧 In Progress
+
+- 🔐 Google authentication and email verification
+- 🧾 Order placement & payment integration
+- 🛒 Shopping cart with local + backend syncing
+- 🧩 Admin dashboard for inventory control
+- 📨 Newsletter & email marketing integration
+
+---
+
+## 📁 Project Structure
 
 ```bash
+📦 favorite-plug/
+├── public/               # Images and static assets
+├── src/
+│   ├── app/              # Pages & routes (Next.js)
+│   ├── components/       # Reusable UI components (Navbar, Header, etc.)
+│   ├── Data/             # Local JSON files for mock products
+│   ├── styles/           # Tailwind CSS and global styles
+│   └── hooks/            # Utilities (planned: API, hooks, etc.)
+├── package.json
+└── README.md
+```
+
+```
+git clone https://github.com/your-username/favorite-plug.git
+cd favorite-plug
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
