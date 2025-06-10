@@ -63,7 +63,7 @@ export default function PageProvider({ children }) {
   useEffect(() => {
     // --- DEBUG LOG #1: What token do we have? ---
     const authToken = localStorage.getItem('authToken');
-    console.log('1. Auth Token found in localStorage:', authToken);
+    // console.log('1. Auth Token found in localStorage:', authToken);
 
     if (pathname === '/') {
       router.replace('/home');
@@ -73,12 +73,12 @@ export default function PageProvider({ children }) {
     const protectedRoutes = ['/wishlist', '/account', '/admin', '/products'];
     
     // --- DEBUG LOG #2: What is the exact path? ---
-    console.log('2. Current Pathname:', pathname);
+    // console.log('2. Current Pathname:', pathname);
 
     const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
     
     // --- DEBUG LOG #3: Is the route considered protected? ---
-    console.log('3. Is this route protected?', isProtectedRoute);
+    // console.log('3. Is this route protected?', isProtectedRoute);
 
     if (!authToken && isProtectedRoute) {
       console.log('4. REDIRECTING to /login...');

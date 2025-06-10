@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from 'next/script';
 import PageProvider from "./page";
 import { HeaderPage, MobileBottomNav } from "../UI/Header";
 import Footer from "../UI/Footer";
@@ -22,6 +23,17 @@ export const metadata = {
 export default function PageLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_MEASUREMENT_ID" />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YOUR_MEASUREMENT_ID');
+          `}
+        </Script>
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <PageProvider>
           <HeaderPage />

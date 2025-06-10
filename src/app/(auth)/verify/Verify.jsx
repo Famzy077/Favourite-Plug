@@ -143,7 +143,7 @@ const VerifyEmail = () => {
         <h1 className="text-xl font-semibold mb-2">Email Required</h1>
         <p className="text-gray-600 mb-6">Please provide an email address to verify</p>
         <button
-          onClick={() => router.push('/sign-up')}
+          onClick={() => router.push('/login')}
           className="bg-blue-500 text-white py-2 px-6 rounded-md shadow-md hover:bg-blue-600 transition cursor-pointer"
         >
           Go Back
