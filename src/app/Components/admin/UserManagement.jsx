@@ -14,7 +14,7 @@ const fetchUsers = async () => {
     return res.data.data;
 };
 
-export const UserManagement = () => {
+const UserManagement = () => {
     const queryClient = useQueryClient();
     const { data: users, isLoading, error } = useQuery({ queryKey: ['users'], queryFn: fetchUsers });
     
@@ -71,3 +71,4 @@ export const UserManagement = () => {
         </div>
     );
 };
+export default UserManagement
