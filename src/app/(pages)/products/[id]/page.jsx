@@ -1,9 +1,8 @@
 'use client'
-
 import { AccessoriesStick } from '@/app/Components/Accessories';
 import Image from 'next/image';
 import Link from 'next/link';
-import products from '..//../../Data/ProductData.json'
+import products from '@/Data/ProductData.json'
 import { MobileSticky } from '@/app/Components/Mobile';
 import Docs from '@/app/UI/Docs';
 import { use } from 'react';

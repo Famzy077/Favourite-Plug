@@ -5,7 +5,7 @@ import Image from 'next/image';
 import logo from '/public/Images/Logo.png';
 import { Eye, EyeOff } from 'lucide-react';
 import axios from 'axios';
-import * as yup from 'yup'; // ✅ yup
+import * as yup from 'yup';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email('Invalid email format').required('Email is required'),
@@ -97,6 +97,7 @@ const CreateAccount = () => {
 
       if (response.data.success) {
         localStorage.removeItem('verifiedEmail');
+        localStorage.setItem('authToken', response.data.token);
         router.push('/personal-details');
       }
     } catch (error) {

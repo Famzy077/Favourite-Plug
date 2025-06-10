@@ -89,7 +89,7 @@ export const HeaderPage = () => {
         </header>
       </div>
       {showSearch && (
-        <div className="fixed inset-0 opacity-85 h-screen flex justify-center items-start pt-[4.6rem] z-[90]">
+        <div className="fixed inset-0 h-screen flex justify-center items-start pt-[4.6rem] z-[90]">
           <div
             ref={searchModalRef}
             className="bg-white z-[100] w-[50%] max-h-[80vh] rounded-lg p-4 shadow-lg relative flex flex-col"

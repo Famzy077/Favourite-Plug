@@ -1,7 +1,6 @@
 // 'use client';
 // import { useEffect, useState } from 'react';
-// import { useRouter } from 'next/navigation';
-// import { usePathname } from 'next/navigation';
+// import { useRouter, usePathname } from 'next/navigation';
 // import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // import { Provider } from 'react-redux';
 // import store from '../redux/Store';
@@ -17,15 +16,20 @@
 //   useEffect(() => {
 //     const user = localStorage.getItem('favoritePlugUser');
 
-//     // If not logged in and trying to access protected routes
-//     const protectedRoutes = ['/home', 'categories', '/wishlist', '/account', '/admin']; // add others if needed
+//     // Redirect '/' to '/home'
+//     if (pathname === '/') {
+//       router.replace('/home');
+//       return;
+//     }
+//     const protectedRoutes = ['/wishlist', '/account', 'products:/id', '/admin'];
 //     const isProtected = protectedRoutes.includes(pathname);
 
 //     if (!user && isProtected) {
 //       router.replace('/login');
-//     } else {
-//       setCheckingAuth(false); // Important: allow children to render
+//       return;
 //     }
+
+//     setCheckingAuth(false);
 //   }, [router, pathname]);
 
 //   if (checkingAuth) return null;
@@ -40,7 +44,6 @@
 //     </WishlistProvider>
 //   );
 // }
-
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
@@ -48,6 +51,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'react-redux';
 import store from '../redux/Store';
 import { WishlistProvider } from '../hooks/WishlistContext.jsx';
+import { FaSpinner } from 'react-icons/fa';
 
 const queryClient = new QueryClient();
 
@@ -57,26 +61,41 @@ export default function PageProvider({ children }) {
   const [checkingAuth, setCheckingAuth] = useState(true);
 
   useEffect(() => {
-    const user = localStorage.getItem('favoritePlugUser');
+    // --- DEBUG LOG #1: What token do we have? ---
+    const authToken = localStorage.getItem('authToken');
+    console.log('1. Auth Token found in localStorage:', authToken);
 
-    // Redirect '/' to '/home'
     if (pathname === '/') {
       router.replace('/home');
       return;
     }
 
-    const protectedRoutes = ['/home', '/categories', '/wishlist', '/account', '/admin'];
-    const isProtected = protectedRoutes.includes(pathname);
+    const protectedRoutes = ['/wishlist', '/account', '/admin', '/products'];
+    
+    // --- DEBUG LOG #2: What is the exact path? ---
+    console.log('2. Current Pathname:', pathname);
 
-    if (!user && isProtected) {
-      router.replace('/login');
+    const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
+    
+    // --- DEBUG LOG #3: Is the route considered protected? ---
+    console.log('3. Is this route protected?', isProtectedRoute);
+
+    if (!authToken && isProtectedRoute) {
+      console.log('4. REDIRECTING to /login...');
+      router.replace(`/login?redirect=${pathname}`);
       return;
     }
 
     setCheckingAuth(false);
   }, [router, pathname]);
 
-  if (checkingAuth) return null;
+  if (checkingAuth) {
+    return (
+      <div className='flex items-center justify-center min-h-[85vh]'>
+        <FaSpinner size={32} className="animate-spin text-gray-500" />
+      </div>
+    );
+  }
 
   return (
     <WishlistProvider>

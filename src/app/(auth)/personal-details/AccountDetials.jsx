@@ -8,8 +8,7 @@ import { AlertCircle, Loader } from 'lucide-react';
 import logo from '/public/Images/Logo.png';
 
 const schema = yup.object().shape({
-  firstName: yup.string().required('First name is required'),
-  lastName: yup.string().required('Last name is required'),
+  fullName: yup.string().required('Full name is required'),
   prefix: yup.string().required(),
   phoneNumber: yup
     .string()
@@ -25,45 +24,48 @@ const PersonalDetails = () => {
   const [apiError, setApiError] = useState(null);
   const [isClient, setIsClient] = useState(false);
 
+  const [formData, setFormData] = useState({
+    fullName: '',
+    address: '',
+    prefix: '+234',
+    phoneNumber: '',
+  });
+
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   const getStoredUser = () => {
     if (typeof window !== 'undefined') {
-      return JSON.parse(localStorage.getItem('favoritePlugUser') || '{}');
+      const user = JSON.parse(localStorage.getItem('favoritePlugUser') || '{}');
+      return user;
     }
     return {};
   };
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    address: '',
-    prefix: '+234',
-    phoneNumber: ''
-  });
 
   useEffect(() => {
     if (isClient) {
       const storedUser = getStoredUser();
       setFormData({
-        firstName: storedUser?.fullName?.split(' ')[0] || '',
-        lastName: storedUser?.fullName?.split(' ')[1] || '',
+        fullName: storedUser?.fullName || '',
         address: storedUser?.address || '',
         prefix: storedUser?.phone?.slice(0, 4) || '+234',
-        phoneNumber: storedUser?.phone?.slice(4) || ''
+        phoneNumber: storedUser?.phone?.slice(4) || '',
       });
     }
   }, [isClient]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: '' }));
     }
     if (apiError) setApiError(null);
   };
+
+  const token = localStorage.getItem('authToken');
+  console.log("Auth Token:", token);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,29 +76,22 @@ const PersonalDetails = () => {
     try {
       await schema.validate(formData, { abortEarly: false });
 
-      const token = isClient ? localStorage.getItem('authToken') : null;
-      if (!token) {
-        throw new Error('Authentication token not found');
-      }
+      const token = localStorage.getItem('authToken');
+      console.log('AUTH TOKEN:', token); // Debug log
+      if (!token) throw new Error('Authentication token not found');
 
       const fullPhoneNumber = `${formData.prefix}${formData.phoneNumber}`;
-
       const payload = {
-        fullName: `${formData.firstName} ${formData.lastName}`,
+        fullName: formData.fullName,
         phone: fullPhoneNumber,
         address: formData.address,
       };
 
-      // Optional: Skip API call if nothing has changed
       const storedUser = getStoredUser();
-      const storedPhone = storedUser?.phone;
-      const storedFullName = storedUser?.fullName;
-      const storedAddress = storedUser?.address;
-
       if (
-        storedPhone === payload.phone &&
-        storedFullName === payload.fullName &&
-        storedAddress === payload.address
+        storedUser?.fullName === payload.fullName &&
+        storedUser?.phone === payload.phone &&
+        storedUser?.address === payload.address
       ) {
         setLoading(false);
         router.push('/home');
@@ -109,19 +104,20 @@ const PersonalDetails = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
+            'Content-Type': 'application/json',
+          },
         }
       );
 
-      if (isClient) {
-        localStorage.setItem('favoritePlugUser', JSON.stringify({
+      localStorage.setItem(
+        'favoritePlugUser',
+        JSON.stringify({
           ...storedUser,
           fullName: payload.fullName,
           phone: payload.phone,
-          address: payload.address
-        }));
-      }
+          address: payload.address,
+        })
+      );
 
       router.push('/home');
     } catch (err) {
@@ -132,10 +128,17 @@ const PersonalDetails = () => {
         });
         setErrors(newErrors);
       } else if (err.response?.status === 409) {
-        setApiError('This phone number is already registered. Please use a different number.');
+        setApiError(
+          'This phone number is already registered. Please use a different number.'
+        );
+      } else if (err.response?.status === 404) {
+        setApiError(
+          'The requested resource was not found. Please check your details and try again.'
+        );
       } else {
         setApiError(err.message || 'Something went wrong. Please try again.');
       }
+      console.error('API Error:', err.response?.data || err.message);
     } finally {
       setLoading(false);
     }
@@ -144,7 +147,6 @@ const PersonalDetails = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center max-w-md mx-auto">
       <Image src={logo} alt="Favorite Plug Logo" width={60} height={60} className="mb-4" />
-
       <h1 className="text-2xl font-bold mb-2">Personal details</h1>
       <p className="text-gray-600 mb-6">We just need you to fill in some details.</p>
 
@@ -157,29 +159,16 @@ const PersonalDetails = () => {
 
       <form onSubmit={handleSubmit} className="w-full">
         <div className="mb-4 text-left">
-          <label className="block text-sm font-medium text-gray-700 mb-1">First Name*</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Full Name*</label>
           <input
             type="text"
-            name="firstName"
-            value={formData.firstName}
+            name="fullName"
+            value={formData.fullName}
             onChange={handleChange}
-            className={`w-full border ${errors.firstName ? 'border-red-500' : 'border-gray-300'} rounded-md p-2`}
-            placeholder="Enter your first name"
+            className={`w-full border ${errors.fullName ? 'border-red-500' : 'border-gray-300'} rounded-md p-2`}
+            placeholder="Enter your full name"
           />
-          {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
-        </div>
-
-        <div className="mb-4 text-left">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Last Name*</label>
-          <input
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            className={`w-full border ${errors.lastName ? 'border-red-500' : 'border-gray-300'} rounded-md p-2`}
-            placeholder="Enter your last name"
-          />
-          {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
+          {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
         </div>
 
         <div className="mb-6 text-left">

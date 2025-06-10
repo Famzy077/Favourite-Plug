@@ -52,9 +52,9 @@ const Categories = () => {
   return (
     <div className="lg:px-20 bg-zinc-100">
       <h1 className="text-4xl max-sm:text-2xl font-bold mx-5 my-4">Categories</h1>
-      <div className="flex">
+      <div className="flex items-start">
         {/* Filter Buttons */}
-        <div className="grid max-sm:w-[5rem] max-sm:h-[20rem] h-[30rem] ml-5 w-[10rem] max-sm:grid-cols-1 my-3 gap-4 max-sm:text-[1rem]">
+        <div className="grid max-sm:w-[6rem] max-sm:h-[20rem] h-[30rem] ml-3 w-[10rem] max-sm:grid-cols-1 my-3 gap-4 max-sm:text-[1rem]">
           {['All', 'SmartPhones', 'Tablets', 'Laptops', 'PowerBanks', 'Accessories'].map((cat, key) => (
             <button
               key={key}
@@ -71,7 +71,7 @@ const Categories = () => {
         </div>
 
         {/* Product List */}
-        <main className="grid max-sm:grid-cols-3 max-sm:gap-1 max-md:grid-cols-3 grid-cols-4 lg:grid-cols-4 overflow-x-auto gap-4 p-3 w-full scrollbar-hide">
+        <main className="grid max-sm:grid-cols-3 grid-rows-0.5 max-sm:gap-1 max-md:grid-cols-3 grid-cols-4 lg:grid-cols-4 overflow-x-auto gap-4 p-3 w-full scrollbar-hide">
           {currentPageProducts.map((product) => {
             if (!product || typeof product.id === 'undefined') return null;
             const isInWishlist = isWishlisted(product.id);
@@ -87,7 +87,7 @@ const Categories = () => {
                         addToWishlist(product);
                       }
                     }}
-                    className="absolute text-[17px] bg-pink-200 rounded-full p-1.5 top-2 right-2 text-red-500 z-10"
+                    className="absolute max-sm:text-[13px] text-[17px] bg-pink-200 rounded-full p-1.5 max-sm:p-1 top-2 right-2 text-red-500 z-10"
                   >
                     {isInWishlist ? <FaHeart /> : <FaRegHeart />}
                   </button>
@@ -102,8 +102,8 @@ const Categories = () => {
                       />
                     </div>
                     <div className="w-full flex flex-col justify-center items-start">
-                      <h1 className="text-sm max-sm:text-[0.7rem] font-semibol cursor-pointer">
-                        {product.name.slice(0, 13)}...
+                      <h1 className="text-sm max-sm:text-[0.6rem] font-light cursor-pointer">
+                        {product.name.slice(0, 10)}...
                       </h1>
                       <div className="flex max-sm:items-center gap-2 max-sm:hidden">
                         <p className="text-gray-600 text-sm">₦{product.price}</p>

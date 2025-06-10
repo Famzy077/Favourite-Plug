@@ -26,7 +26,11 @@ const Wishlist = () => {
   } = useWishlist(userId || undefined); // pass userId once available
 
   if (!userId) {
-    return <div className="p-5 text-center min-h-[85vh] max-h-[85vh]">Please log in to view your wishlist 💔</div>;
+    <div className="p-5 text-center min-h-[85vh] max-h-[85vh]">
+      <h1>Please log in to view your wishlist 💔</h1>
+      <Link href={'/login'}>Click to login</Link>
+    </div>
+    return ;
   }
 
   if (wishlist.length === 0) {

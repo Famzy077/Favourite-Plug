@@ -51,7 +51,7 @@ export const BannerSlider = () => {
     };
 
   return (
-    <div className="overflow-hidden bg-zinc-200">
+    <div className="overflow-hidden bg-zinc-200 pt-3">
       <Slider className="mb-4.5" {...settings}>
         <Link href={''}>
           <Image
