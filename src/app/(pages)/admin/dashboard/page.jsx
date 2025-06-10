@@ -2,7 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProductManagement } from "@/app/Components/admin/ProductManagement";
-import { UserManagement } from "../../..//components/admin/UserManagement";
+import { UserManagement } from "../../../components/admin/UserManagement";
 import { DashboardOverview } from "../../../Components/admin/DashboardOverview";
 
 export default function AdminDashboardPage() {
