@@ -64,8 +64,8 @@ const PersonalDetails = () => {
     if (apiError) setApiError(null);
   };
 
-  const token = localStorage.getItem('authToken');
-  console.log("Auth Token:", token);
+  // const token = localStorage.getItem('authToken');
+  // console.log("Auth Token:", token);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
