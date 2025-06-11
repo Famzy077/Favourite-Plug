@@ -28,21 +28,21 @@ export const DashboardOverview = () => {
       <div className="p-6 bg-white border rounded-lg shadow-sm">
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-gray-500">Total Users</p>
-          <Users className="h-5 w-5 text-gray-400" />
+          <Users className="h-5 w-5 text-blue-500" />
         </div>
         <p className="mt-2 text-3xl font-bold">{stats.totalUsers}</p>
       </div>
       <div className="p-6 bg-white border rounded-lg shadow-sm">
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-gray-500">Total Products</p>
-          <Package className="h-5 w-5 text-gray-400" />
+          <Package className="h-5 w-5 text-blue-500" />
         </div>
         <p className="mt-2 text-3xl font-bold">{stats.totalProducts}</p>
       </div>
       <div className="p-6 bg-white border rounded-lg shadow-sm">
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-gray-500">New Users (Last 30d)</p>
-          <TrendingUp className="h-5 w-5 text-gray-400" />
+          <TrendingUp className="h-5 w-5 text-blue-500" />
         </div>
         <p className="mt-2 text-3xl font-bold">{stats.userGrowthLast30Days}</p>
       </div>

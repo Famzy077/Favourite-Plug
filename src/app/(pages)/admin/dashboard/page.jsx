@@ -11,10 +11,10 @@ export default function AdminDashboardPage() {
       <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
       
       <Tabs defaultValue="overview" className="w-full p-4">
-        <TabsList className="grid w-full gap-3 max-sm:grid-cols-1 h-fit grid-cols-3 p-1 border border-zinc-300">
-          <TabsTrigger className={'p-6 border border-zinc-200'} value="overview">Overview</TabsTrigger>
-          <TabsTrigger className={'p-6 border border-zinc-200'} value="products">Manage Products</TabsTrigger>
-          <TabsTrigger className={'p-6 border border-zinc-200'} value="users">Manage Users</TabsTrigger>
+        <TabsList className="grid w-full gap-3 max-sm:grid-cols-1 h-fit grid-cols-3 p-2 border border-zinc-300">
+          <TabsTrigger className={'p-6 border border-blue-600 text-blue-600'} value="overview">Overview</TabsTrigger>
+          <TabsTrigger className={'p-6 border border-blue-600 text-blue-600'} value="products">Manage Products</TabsTrigger>
+          <TabsTrigger className={'p-6 border border-blue-600 text-blue-600'} value="users">Manage Users</TabsTrigger>
         </TabsList>
         <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer" className="block mt-4 p-6 bg-green-100 border-green-300 border rounded-lg shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">

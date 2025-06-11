@@ -66,8 +66,8 @@ export const ProductManagement = () => {
             {products?.map((product) => (
               <TableRow key={product.id}>
                 <TableCell>
-                    {/* <img src={`http://localhost:5000/${product.image}`} alt={product.name} className="h-12 w-12 object-cover rounded-md" /> */}
-                    <img src={`${url}/${product.image}`} alt={product.name} className="h-12 w-12 object-cover rounded-md" />
+                  {/* <img src={`http://localhost:5000/${product.image}`} alt={product.name} className="h-12 w-12 object-cover rounded-md" /> */}
+                  <img src={`${url}/${product.image}`} alt={product.name} className="h-12 w-12 object-cover rounded-md" />
                 </TableCell>
                 <TableCell className="font-medium">{product.name}</TableCell>
                 <TableCell>${product.price.toFixed(2)}</TableCell>

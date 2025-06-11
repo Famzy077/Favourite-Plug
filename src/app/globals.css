@@ -44,7 +44,6 @@
   --sidebar-ring: oklch(0.709 0.01 56.259);
 }
 
-/* globals.css or styles/globals.css */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
