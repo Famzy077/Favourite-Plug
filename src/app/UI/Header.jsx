@@ -56,7 +56,7 @@ export const HeaderPage = () => {
       <div className='max-md:hidden block'>
         <header className='flex bg-blue-200 p-2 shadow-md items-center justify-between'>
           <Link href={'/home'}>
-            <Image className='w-[3.5rem] lg:ml-2 border max-sm:w-[2rem]' src={Logo1} alt="Logo" />
+            <Image className='w-[3.5rem] lg:ml-2 max-sm:w-[2rem]' src={Logo1} alt="Logo" />
           </Link>
 
           <nav className='w-[50%]'>
@@ -70,7 +70,8 @@ export const HeaderPage = () => {
 
           <div
             onClick={toggleSearchModal}
-            className='border hover:border-blue-600 w-[14%] flex items-center p-1 rounded-[5px] m-auto text-[8px]'
+            className='border hover:border-blue-600 border-gray-600 w-[14%] flex items-center p-1 rounded-[5px] m-auto text-[8px]'
+            title='Search product'
           >
             <button
               className="text-gray-700 hover:text-blue-600 transition-all"

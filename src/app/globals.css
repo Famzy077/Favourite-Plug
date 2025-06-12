@@ -7,8 +7,9 @@
   contain: layout;
 }
 :root {
-  --primary: oklch(0.216 0.006 56.043);
-  --text: #2C2C2C;
+  --primary: #2648db;
+  /* --primary: oklch(0.216 0.006 56.043); */
+  --text: #2c2c2c;
   --Secondary: #C0C0C0;
   --high: #FF4081;
   --radius: 0.625rem;

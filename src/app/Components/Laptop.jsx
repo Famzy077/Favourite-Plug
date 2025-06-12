@@ -1,77 +1,219 @@
-'use client'
+// 'use client'
+// import Slider from "react-slick";
+// import React from 'react'
+// import ProductCard from '@/app/Components/ProductsCard'
+// import products from '../.././Data/ProductData.json'
+
+// export const Laptops = () => {
+//   const laptops = products.filter((product) =>product.category === "Laptops");
+
+//   const settings = {
+//     dots: false,
+//     infinite: true,
+//     arrows: true,
+//     autoplay: true,
+//     autoplaySpeed: 2000,
+//     speed: 500,
+//     slidesToShow: 6,
+//     slidesToScroll: 1,
+//     responsive: [
+//       {
+//         breakpoint: 1024,
+//         settings: {
+//           slidesToShow: 4,
+//           slidesToScroll: 1,
+//         },
+//       },
+//       {
+//         breakpoint: 768,
+//         settings: {
+//           slidesToShow: 3,
+//           slidesToScroll: 1,
+//         },
+//       },
+//       {
+//         breakpoint: 480,
+//         settings: {
+//           slidesToShow: 2,
+//           slidesToScroll: 1,
+//         },
+//       },
+//     ],
+//   };
+
+//   return (
+//     <div className="">
+//         <h1 className="text-3xl relative max-sm:rounded-none max-sm:mx-0 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-3 mt-2">Laptop Devices</h1> 
+//       <div className="px-10 max-sm:px-2 -mb-5">
+//         <Slider {...settings}>
+//           {laptops.map((product) => (
+//             <div key={product.id} className="p-2">
+//               <ProductCard product={product} />
+//             </div>
+//           ))}
+//         </Slider>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export const LaptopSlide = () => {
+//   const laptop = products
+//     .filter(product => product.category === "Laptops")
+//     .reverse();
+
+//   return (
+//     <div className="flex overflow-x-auto overflow-y-hidden gap-4 p-4 w-full scrollbar-hide">
+//       {laptop.map((product) => (
+//         <div
+//           key={product.id}
+//           className="min-w-[10rem] flex-shrink-0"
+//         >
+//           <ProductCard product={product} />
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+'use client';
+
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import Link from 'next/link';
+import { FaSpinner } from 'react-icons/fa';
 import Slider from "react-slick";
-import React from 'react'
-import ProductCard from '@/app/Components/ProductsCard'
-import products from '../.././Data/ProductData.json'
 
-export const Laptops = () => {
-  const laptops = products.filter((product) =>product.category === "Laptops");
+// --- Data Fetching Function ---
+const API_URL = "https://favorite-server-0.onrender.com";
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    arrows: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+const fetchAllProducts = async () => {
+  const res = await axios.get(`${API_URL}/api/products`);
+  return res.data.data;
+};
+
+// --- Reusable Product Card Component (No changes needed) ---
+const ProductCard = ({ product }) => {
+  const calculateDiscount = (price, oldPrice) => {
+    if (!oldPrice || oldPrice <= price) return null;
+    return Math.round(((oldPrice - price) / oldPrice) * 100);
   };
+  const discountPercentage = calculateDiscount(product.price, product.oldPrice);
 
   return (
-    <div className="">
-        <h1 className="text-3xl relative max-sm:rounded-none max-sm:mx-0 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-3 mt-2">Laptop Devices</h1> 
-      <div className="px-10 max-sm:px-2 -mb-5">
-        <Slider {...settings}>
-          {laptops.map((product) => (
-            <div key={product.id} className="p-2">
-              <ProductCard product={product} />
-            </div>
-          ))}
-        </Slider>
+    <div className="group relative border rounded-lg overflow-hidden border-gray-300 bg-white hover:shadow-xl transition-shadow duration-300">
+      <Link href={`/products/${product.id}`}>
+        <div className="aspect-w-1 aspect-h-1 flex justify-center w-full overflow-hidden bg-white py-3">
+          <img
+            src={`${API_URL}/${product.image}`}
+            alt={product.name}
+            className="max-sm:h-[100px] h-[120px] object-fit object-center group-hover:opacity-80 transition-opacity"
+          />
+        </div>
+      </Link>
+      {discountPercentage && (
+        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md">
+          -{discountPercentage}%
+        </div>
+      )}
+      <div className="p-4 bg-gray-200">
+        <h3 className="text-1.8 lg:font-semibold text-gray-800 font-medium truncate">
+          <Link href={`/products/${product.id}`}>{product.name}</Link>
+        </h3>
+        <div className="flex items-baseline mt-2">
+          <p className="text-[15px] max-sm:text-[11px] font-medium text-gray-800">₦{product.price ? product.price.toLocaleString() : '0.00'}</p>
+          {product.oldPrice && (
+            <p className="ml-2 text-[14px] max-sm:text-[14px] text-gray-500 line-through">₦{product.oldPrice.toLocaleString()}</p>
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
-export const LaptopSlide = () => {
-  const laptop = products
-    .filter(product => product.category === "Laptops")
-    .reverse();
+// --- Main Component for the Latops Category Section (Now with Slider) ---
+export const Laptops = () => {
+  const { data: allProducts, isLoading, error } = useQuery({
+    queryKey: ['publicProducts'],
+    queryFn: fetchAllProducts,
+  });
+
+  const mobileProducts = allProducts?.filter(
+    (product) => product.category === "Laptops"
+  );
+  
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 2,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1920, // For 32 desktops screen
+        settings: { slidesToShow: 5, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 1600, // For 27 desktops screen
+        settings: { slidesToShow: 5, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 1280, // For smaller desktops
+        settings: { slidesToShow: 5, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 1024, // For tablets
+        settings: { slidesToShow: 4, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 768, // For large phones
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 480, // For small phones
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+    ],
+  };
+
+  if (isLoading) {
+    return (
+      <div className='flex items-center justify-center min-h-[40vh]'>
+        <FaSpinner size={32} className="animate-spin text-gray-500" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-10">
+        <p className="text-red-500">Failed to load mobile products.</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex overflow-x-auto overflow-y-hidden gap-4 p-4 w-full scrollbar-hide">
-      {laptop.map((product) => (
-        <div
-          key={product.id}
-          className="min-w-[10rem] flex-shrink-0"
-        >
-          <ProductCard product={product} />
+    <div className='container mx-auto px-4 sm:px-3 lg:px-2 py-6'>
+      
+      <h1 className="text-3xl relative font-bold max-sm:rounded-none max-sm:mx-0 mx-2 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-3 mt-2">Laptop Devices</h1> 
+      {/* IMPROVEMENT: Show the slider if there are ANY products, not just more than 5 */}
+      {mobileProducts && mobileProducts.length > 0 ? (
+        <Slider {...settings}>
+          {mobileProducts.map((product) => (
+            <div key={product.id} className="p-2"> {/* react-slick needs a div wrapper */}
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </Slider>
+      ) : (
+        <div className="text-center py-10 text-gray-500">
+          <p>No mobile Laptops found found at the moment.</p>
         </div>
-      ))}
+      )}
     </div>
   );
 };

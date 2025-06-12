@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { useWishlist } from '@/app/hooks/WishlistContext.jsx'; // Updated path
+import { useWishlist } from '@/app/hooks/WishlistContext.jsx';
 
 const ProductCard = ({ product }) => {
   const { addToWishlist, removeFromWishlist, isWishlisted, isMounted } = useWishlist();
@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
   const isInWishlist = isWishlisted(product.id);
 
   return (
-    <div className="relative px-4 max-sm:px-2 py-5 flex flex-col rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300">
+    <div className="relative flex flex-col border border-gray-300 rounded-lg bg-white hover:shadow-lg transition-shadow duration-300">
       {isMounted && (
         <button
           onClick={() => {
@@ -28,21 +28,23 @@ const ProductCard = ({ product }) => {
       )}
 
       <Link href={`/products/${product.id}`}>
-        <div className="flex justify-center items-center mb-1">
+        <div className="flex justify-center items-center mb-1 py-2">
           <img
             src={product.image}
             alt={product.name}
             className="max-sm:h-[90px] h-[100px] object-fit rounded-lg"
           />
         </div>
-        <h2 className="text-sm max-sm:text-[15px] font-bold max-sm:font-light cursor-pointer">
-          {product.name.slice(0, 10)}...
-        </h2>
-        <div className="max-sm:flex max-sm:items-center max-sm:gap-2">
-          <p className="text-gray-600 text-sm max-sm:text-[11px]">₦{product.price}</p>
-          <strike className="text-gray-600 relative max-sm:top-0 -top-1.5 text-sm max-sm:text-[11px]">
-            ₦{product.oldPrice}
-          </strike>
+        <div className="p-4 bg-gray-200 rounded-lg">
+          <h3 className='text-1.8 lg:font-semibold text-gray-800 font-medium truncate'>
+            {product.name.slice(0, 10)}...
+          </h3>
+          <div className="flex items-baseline mt-2">
+            <p className="text-[15px] max-sm:text-[11px] font-medium text-gray-800">₦{product.price}</p>
+            <strike className="ml-2 text-[14px] max-sm:text-[14px] text-gray-500 line-through">
+              ₦{product.oldPrice}
+            </strike>
+          </div>
         </div>
       </Link>
     </div>

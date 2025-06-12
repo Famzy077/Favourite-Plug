@@ -5,8 +5,8 @@ import { Call, CallPhone } from '@/app/UI/Call';
 import ProductBaner from '@/app/Components/Home/ProductBaner';
 import { SmartwatchCarousel } from '@/app/Components/WatchCarousel';
 import { PowerBank } from '@/app/Components/PowerBank';
-import { Laptops, LaptopSlide } from '@/app/Components/Laptop';
-import { Mobile, MobileSticky } from '@/app/Components/Mobile';
+import { Laptops} from '@/app/Components/Laptop';
+import { MobileCategorySection } from '@/app/Components/Mobile';
 import { Accessories, AccessoriesStick } from '@/app/Components/Accessories';
 import Docs from '../../UI/Docs';
 
@@ -32,23 +32,23 @@ const Page = () => {
   if (loading) return <Spinner />;
 
   return (
-    <div className="bg-zinc-200">
+    <div className="bg-zinc-100">
       <CallPhone />
       <Section />
       <Call />
-      <Mobile />
-      <MobileSticky />
+      <MobileCategorySection />
+      {/* <MobileSticky /> */}
       <ProductBaner />
       <SmartwatchCarousel />
       <Laptops />
-      <LaptopSlide />
+      {/* <LaptopSlide /> */}
       <PowerBank />
       <div>
-        <h1 className="text-3xl relative max-sm:mx-0 mx-11.5 p-2 max-sm:rounded-none rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-6">
+        <h1 className="text-3xl font-bold relative max-sm:mx-0 mx-11.5 p-2 max-sm:rounded-none rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-5 mt-6">
           Accessories and more...
         </h1>
         <Accessories />
-        <AccessoriesStick />
+        {/* <AccessoriesStick /> */}
       </div>
       <Docs />
     </div>

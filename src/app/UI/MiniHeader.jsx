@@ -66,7 +66,7 @@ const MiniHeader = () => {
       {showSearch && (
         <div
           ref={searchModalRef}
-          className="absolute top-full mt-2 left-0 right-0 bg-white shadow-md rounded-md p-3 z-50 max-h-[50vh] overflow-y-auto"
+          className="absolute top-full mt-2 max-sm:mt-[-10px] left-0 right-0 bg-white shadow-md rounded-md p-3 z-50 max-h-[50vh] overflow-y-auto"
         >
           {results.length > 0 ? (
             <div className="space-y-2">
