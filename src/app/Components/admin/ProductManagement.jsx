@@ -205,7 +205,7 @@ export const ProductManagement = () => {
   if (isLoading) {
     return (
       <div className='flex items-center justify-center min-h-[60vh]'>
-        <FaSpinner size={32} className="animate-spin text-blue-500" />
+        <FaSpinner className="animate-spin text-blue-500" /> size={32} className="animate-spin text-blue-500" />
       </div>
     );
   }

@@ -1,105 +1,147 @@
-'use client'
-import React, { useState, useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { Search } from 'lucide-react';
-import Products from '../../Data/ProductData.json';
-import NoItemImage from '../../../public/Images/noProduct.png';
-import Image from 'next/image';
+'use client';
 
-const MiniHeader = () => {
+import React, { useState, useEffect, useRef } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { Search, Heart } from 'lucide-react'; 
+import { FaSpinner } from 'react-icons/fa';
+import Image from 'next/image';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import NoItemImage from '../../../public/Images/noProduct.png';
+
+const API_URL = "https://favorite-server-0.onrender.com";
+
+// --- Reusable Debounce Hook ---
+// This hook prevents the API from being called on every single keystroke.
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+  return debouncedValue;
+}
+
+// --- Data Fetching Function for Search ---
+const searchApiProducts = async (query) => {
+    if (!query) return [];
+    const { data } = await axios.get(`${API_URL}/api/products/search?q=${query}`);
+    return data.data;
+};
+
+export const MiniHeader = () => {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
-  const [showSearch, setShowSearch] = useState(false);
+  const [showResults, setShowResults] = useState(false);
   const pathname = usePathname();
   const searchModalRef = useRef(null);
+  const router = useRouter();
 
+  // Use the debounced query to trigger the API call
+  const debouncedQuery = useDebounce(query, 300); // 300ms delay
+
+  const { data: results, isLoading } = useQuery({
+    queryKey: ['productSearchMobile', debouncedQuery],
+    queryFn: () => searchApiProducts(debouncedQuery),
+    enabled: !!debouncedQuery, // Only run query if there's a debounced search term
+  });
+
+  // Effect to close search results when clicking outside
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (
-        searchModalRef.current &&
-        !searchModalRef.current.contains(event.target)
-      ) {
-        setShowSearch(false);
-        setQuery('');
-        setResults([]);
+      if (searchModalRef.current && !searchModalRef.current.contains(event.target)) {
+        setShowResults(false);
       }
     };
-
     document.addEventListener('mousedown', handleOutsideClick);
     return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
 
+  // Effect to close search results when the route changes
   useEffect(() => {
-    // Clear search when route changes
+    setShowResults(false);
     setQuery('');
-    setResults([]);
-    setShowSearch(false);
   }, [pathname]);
 
-  const handleSearch = (e) => {
+  const handleSearchChange = (e) => {
     const value = e.target.value;
     setQuery(value);
-    setShowSearch(true);
+    setShowResults(true); // Show results dropdown as soon as user starts typing
+  };
 
-    const filtered = Products.filter((product) =>
-      product.name.toLowerCase().includes(value.toLowerCase())
-    );
-    setResults(filtered);
+  const handleResultClick = (productId) => {
+    setShowResults(false);
+    setQuery('');
+    router.push(`/products/${productId}`);
   };
 
   return (
-    <div className="z-40 block md:hidden shadow bg-zinc-200 py-4 px-4 w-full relative">
-      <div className="flex">
-        <input
-          type="search"
-          placeholder="Search on Favorite Plug"
-          value={query}
-          onChange={handleSearch}
-          className="w-full border-2 border-blue-500 rounded-l px-4 py-1 outline-none bg-white"
-        />
-        <button className="bg-blue-500 text-white px-3 py-1 rounded-r">
-          <Search size={20} />
-        </button>
+    <div className="z-40 md:hidden shadow bg-zinc-200 py-4 px-4 w-full relative">
+      <div className="flex gap-4 justify-between items-center">
+        <form className="flex w-[85%]" onSubmit={(e) => e.preventDefault()}>
+          <input
+            type="search"
+            placeholder="Search on Favorite Plug"
+            value={query}
+            onChange={handleSearchChange}
+            onFocus={() => setShowResults(true)} // Show results on focus as well
+            className="w-full border-2 border-r-0 border-blue-500 rounded-l px-4 py-[7px] outline-none bg-white text-sm"
+          />
+          <button type="submit" className="bg-blue-500 text-white px-3 py-1 rounded-r">
+            <Search size={20} />
+          </button>
+        </form>
+
+        <Link href="/wishlist" title='Wishlist'>
+          <Heart size={36} className='text-blue-500 bg-white rounded-full p-1.5 border-2 border-blue-500'/>
+        </Link>
       </div>
 
-      {showSearch && (
+      {showResults && query && (
         <div
           ref={searchModalRef}
-          className="absolute top-full mt-2 max-sm:mt-[-10px] left-0 right-0 bg-white shadow-md rounded-md p-3 z-50 max-h-[50vh] overflow-y-auto"
+          className="absolute top-full mt-2 left-0 right-0 mx-4 bg-white shadow-lg rounded-md p-3 z-50 max-h-[70vh] overflow-y-auto"
         >
-          {results.length > 0 ? (
+          {isLoading && (
+            <div className="flex justify-center p-4">
+                <FaSpinner className="animate-spin text-blue-500" />
+            </div>
+          )}
+          {!isLoading && results && results.length > 0 && (
             <div className="space-y-2">
               {results.map((item) => (
-                <Link
+                <div
                   key={item.id}
-                  href={`/products/${item.id}`}
-                  className="block p-2 bg-gray-100 hover:bg-gray-200 rounded text-sm"
+                  onClick={() => handleResultClick(item.id)}
+                  className="flex items-center gap-3 p-2 bg-gray-50 hover:bg-gray-100 rounded text-sm cursor-pointer"
                 >
-                  {item.name}
-                </Link>
+                  <img src={`${API_URL}/${item.image}`} alt={item.name} className="w-12 h-12 object-cover rounded-md" />
+                  <div className="flex-grow">
+                    <p className="font-medium">{item.name}</p>
+                    <p className="text-gray-700 font-bold">₦{item.price.toLocaleString()}</p>
+                  </div>
+                </div>
               ))}
             </div>
-          ) : (
-            query && (
-              <div className="flex flex-col items-center justify-center py-6">
-                <Image
-                  src={NoItemImage}
-                  alt="No products found"
-                  width={100}
-                  height={100}
-                  className="opacity-70"
-                />
-                <p className="text-gray-500 mt-3 text-sm">
-                  No matching products found
-                </p>
-              </div>
-            )
+          )}
+          {!isLoading && debouncedQuery && results?.length === 0 && (
+            <div className="flex flex-col items-center justify-center py-6">
+              <Image
+                src={NoItemImage}
+                alt="No products found"
+                width={100}
+                height={100}
+                className="opacity-70"
+              />
+              <p className="text-gray-500 mt-3 text-sm">
+                No matching products found for "{debouncedQuery}"
+              </p>
+            </div>
           )}
         </div>
       )}
     </div>
   );
 };
-
-export default MiniHeader;

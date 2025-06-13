@@ -1,69 +1,40 @@
-// 'use client';
-// import { useEffect, useState } from 'react';
-// import { useRouter, usePathname } from 'next/navigation';
-// import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-// import { Provider } from 'react-redux';
-// import store from '../redux/Store';
-// import { WishlistProvider } from '../hooks/WishlistContext.jsx';
-
-// const queryClient = new QueryClient();
-
-// export default function PageProvider({ children }) {
-//   const router = useRouter();
-//   const pathname = usePathname();
-//   const [checkingAuth, setCheckingAuth] = useState(true);
-
-//   useEffect(() => {
-//     const user = localStorage.getItem('favoritePlugUser');
-
-//     // Redirect '/' to '/home'
-//     if (pathname === '/') {
-//       router.replace('/home');
-//       return;
-//     }
-//     const protectedRoutes = ['/wishlist', '/account', 'products:/id', '/admin'];
-//     const isProtected = protectedRoutes.includes(pathname);
-
-//     if (!user && isProtected) {
-//       router.replace('/login');
-//       return;
-//     }
-
-//     setCheckingAuth(false);
-//   }, [router, pathname]);
-
-//   if (checkingAuth) return null;
-
-//   return (
-//     <WishlistProvider>
-//       <QueryClientProvider client={queryClient}>
-//         <Provider store={store}>
-//           {children}
-//         </Provider>
-//       </QueryClientProvider>
-//     </WishlistProvider>
-//   );
-// }
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import logo from '/public/Images/Logo1.png'
+import Image from 'next/image';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider } from 'react-redux'; // Renamed to avoid clashes
 import store from '../redux/Store';
 import { WishlistProvider } from '../hooks/WishlistContext.jsx';
 import { FaSpinner } from 'react-icons/fa';
 
+// This is a "singleton" instance. It's best to create it outside the component
+// so it doesn't get re-created on every render.
 const queryClient = new QueryClient();
+
+// A dedicated component for all your providers. This is a clean pattern.
+const AllProviders = ({ children }) => {
+  return (
+    // 1. QueryClientProvider is on the outside, providing the "umbrella".
+    <QueryClientProvider client={queryClient}>
+      <ReduxProvider store={store}>
+        {/* 2. WishlistProvider is now INSIDE, so it can use useQuery. */}
+        <WishlistProvider>
+          {children}
+        </WishlistProvider>
+      </ReduxProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default function PageProvider({ children }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [checkingAuth, setCheckingAuth] = useState(true);
+  const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
-    // --- DEBUG LOG #1: What token do we have? ---
     const authToken = localStorage.getItem('authToken');
-    // console.log('1. Auth Token found in localStorage:', authToken);
 
     if (pathname === '/') {
       router.replace('/home');
@@ -71,39 +42,31 @@ export default function PageProvider({ children }) {
     }
 
     const protectedRoutes = ['/wishlist', '/account', '/admin', '/products'];
-    
-    // --- DEBUG LOG #2: What is the exact path? ---
-    // console.log('2. Current Pathname:', pathname);
-
     const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
-    
-    // --- DEBUG LOG #3: Is the route considered protected? ---
-    // console.log('3. Is this route protected?', isProtectedRoute);
 
     if (!authToken && isProtectedRoute) {
-      console.log('4. REDIRECTING to /login...');
       router.replace(`/login?redirect=${pathname}`);
-      return;
+      // Don't authorize yet, let the redirect happen
+    } else {
+      // If not a protected route, or if user has a token, they are clear to proceed.
+      setIsAuthorized(true);
     }
-
-    setCheckingAuth(false);
   }, [router, pathname]);
 
-  if (checkingAuth) {
+  // While checking, or during redirect, show a spinner.
+  if (!isAuthorized) {
     return (
-      <div className='flex items-center justify-center min-h-[85vh]'>
-        <FaSpinner size={32} className="animate-spin text-gray-500" />
+      <div className='flex flex-col items-center justify-center min-h-[85vh]'>
+        <Image src={logo} className='h-[100px] w-[230px]'/>
+        <FaSpinner className="animate-spin text-blue-500" size={40} />
       </div>
     );
   }
 
+  // Once authorized, wrap the children with all the providers.
   return (
-    <WishlistProvider>
-      <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
-          {children}
-        </Provider>
-      </QueryClientProvider>
-    </WishlistProvider>
+    <AllProviders>
+      {children}
+    </AllProviders>
   );
 }

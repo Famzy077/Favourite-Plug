@@ -51,13 +51,13 @@ export const BannerSlider = () => {
     };
 
   return (
-    <div className="overflow-hidden bg-zinc-200 pt-3">
-      <Slider className="mb-4.5" {...settings}>
+    <div className="overflow-hidden bg-zinc-200 max-sm:pt-3">
+      <Slider className="max-sm:mb-4.5" {...settings}>
         <Link href={''}>
           <Image
             src={BannerImg}
             alt="Infinix Series"
-            className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+            className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl max-sm:mx-3"
             title="Samsung Series"
           />
         </Link>
@@ -66,7 +66,7 @@ export const BannerSlider = () => {
             <Image
               src={Samsung}
               alt="Watch"
-              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl max-sm:mx-3"
               title="Watch"
             />
         </Link>
@@ -75,7 +75,7 @@ export const BannerSlider = () => {
             <Image
               src={SamsungA52}
               alt="SamsungA52"
-              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl max-sm:mx-3"
               title="SamsungA52"
             />
         </Link>
@@ -84,7 +84,7 @@ export const BannerSlider = () => {
             <Image
               src={Iphone}
               alt="Iphone"
-              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl mx-3"
+              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl max-sm:mx-3"
               title="Iphone"
             />
         </Link>

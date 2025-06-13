@@ -1,118 +1,3 @@
-// import Slider from "react-slick";
-// import ProductCard from "../Components/ProductsCard";
-// import products from '../../Data/ProductData.json';
-
-// export const SmartwatchCarousel = () => {
-//   const smartwatchProducts = products.filter(
-//     (product) => product.category === "Smartwatches"
-//   );
-
-//   const settings = {
-//     dots: true,
-//     infinite: true,
-//     autoplay: true,
-//     speed: 500,
-//     slidesToShow: 6,
-//     slidesToScroll: 2,
-//     arrows: false,
-//     responsive: [
-//       {
-//         breakpoint: 1024,
-//         settings: {
-//           slidesToShow: 4,
-//           slidesToScroll: 2,
-//         },
-//       },
-//       {
-//         breakpoint: 768,
-//         settings: {
-//           slidesToShow: 3,
-//           slidesToScroll: 1,
-//         },
-//       },
-//       {
-//         breakpoint: 480,
-//         settings: {
-//           slidesToShow: 2,
-//           slidesToScroll: 1,
-//         },
-//       },
-//     ],
-//   };
-
-//   return (
-//     <div className="pb-4">
-//       <h1 className="text-3xl max-sm:top relative max-sm:mx-0 max-sm:rounded-none mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-2 mt-5">Fashion Watch</h1> 
-//       <div className="px-10 max-sm:px-2">
-//         <Slider {...settings}>
-//           {smartwatchProducts.map((product) => (
-//             <div key={product.id} className="p-2">
-//               <ProductCard product={product} />
-//             </div>
-//           ))}
-//         </Slider>
-//       </div>
-//     </div>
-//   );
-// };
-
-// import Slider from "react-slick";
-// import ProductCard from '../Components/ProductsCard';
-// import products from '../.././Data/ProductData.json';
-
-// export const PowerBank = () => {
-//   const powerBanks = products.filter(
-//     (product) => product.category === "PowerBanks");
-
-//   const settings = {
-//     dots: true,
-//     infinite: true,
-//     autoplay: false,
-//     autoplaySpeed: 2000,
-//     speed: 500,
-//     slidesToShow: 6,
-//     slidesToScroll: 2,
-//     arrows: true,
-//     responsive: [
-//       {
-//         breakpoint: 1024,
-//         settings: {
-//           slidesToShow: 4,
-//           slidesToScroll: 2,
-//         },
-//       },
-//       {
-//         breakpoint: 768,
-//         settings: {
-//           slidesToShow: 3,
-//           slidesToScroll: 1,
-//         },
-//       },
-//       {
-//         breakpoint: 480,
-//         settings: {
-//           slidesToShow: 1,
-//           slidesToScroll: 1,
-//         },
-//       },
-//     ],
-//   };
-
-//   return (
-//     <div className="">
-//       <h1 className="text-3xl relative max-sm:mx-0 mx-11.5 p-2 rounded max-sm:rounded-none text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-1 mt-2">Power Bank</h1> 
-//       <div className="px-10 max-sm:px-3">
-//         <Slider {...settings}>
-//           {powerBanks.map((product) => (
-//             <div key={product.id} className="p-2">
-//               <ProductCard product={product} />
-//             </div>
-//           ))}
-//         </Slider>
-//       </div>
-//     </div>
-//   );
-// };
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
@@ -220,7 +105,7 @@ export const SmartwatchCarousel = () => {
   if (isLoading) {
     return (
       <div className='flex items-center justify-center min-h-[40vh]'>
-        <FaSpinner size={32} className="animate-spin text-gray-500" />
+        <FaSpinner className="animate-spin text-blue-500" size={32} /> 
       </div>
     );
   }
@@ -234,9 +119,7 @@ export const SmartwatchCarousel = () => {
   }
 
   return (
-    <div className='container mx-auto px-4 sm:px-3 lg:px-2 py-6'>
-      
-      <h1 className="text-3xl relative font-bold max-sm:rounded-none max-sm:mx-0 mx-2 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-3 mt-2">Smart Watch</h1> 
+    <div className='container mx-auto px-4 sm:px-3 lg:px-2'>
       {/* IMPROVEMENT: Show the slider if there are ANY products, not just more than 5 */}
       {mobileProducts && mobileProducts.length > 0 ? (
         <Slider {...settings}>

@@ -105,7 +105,7 @@ export const PowerBank = () => {
   if (isLoading) {
     return (
       <div className='flex items-center justify-center min-h-[40vh]'>
-        <FaSpinner size={32} className="animate-spin text-gray-500" />
+        <FaSpinner className="animate-spin text-blue-500" size={32} /> 
       </div>
     );
   }
@@ -119,9 +119,7 @@ export const PowerBank = () => {
   }
 
   return (
-    <div className='container mx-auto px-4 sm:px-3 lg:px-2 py-6'>
-      
-      <h1 className="text-3xl relative font-bold max-sm:rounded-none max-sm:mx-0 mx-2 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-3 mt-2">Power Banks</h1> 
+    <div className='container mx-auto px-4 sm:px-3 lg:px-2'>
       {/* IMPROVEMENT: Show the slider if there are ANY products, not just more than 5 */}
       {mobileProducts && mobileProducts.length > 0 ? (
         <Slider {...settings}>

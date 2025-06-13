@@ -109,7 +109,7 @@ export const Accessories = () => {
   if (isLoading) {
     return (
       <div className='flex items-center justify-center min-h-[40vh]'>
-        <FaSpinner size={32} className="animate-spin text-gray-500" />
+        <FaSpinner className="animate-spin text-blue-500" size={32} />
       </div>
     );
   }

@@ -1,70 +1,76 @@
 'use client';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
 
-const WishlistContext = createContext(null);
+const API_URL = "https://favorite-server-0.onrender.com";
+
+const WishlistContext = createContext();
+
+const fetchWishlist = async () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) return []; // If no token, return an empty array
+    const res = await axios.get(`${API_URL}/api/wishlist`, {
+        headers: { Authorization: `Bearer ${token}` }
+    });
+    return res.data.data;
+};
 
 export const WishlistProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]);
-  const [userId, setUserId] = useState(null);
-  const [isMounted, setIsMounted] = useState(false);
+    const queryClient = useQueryClient();
 
-  useEffect(() => {
-    const stored = localStorage.getItem('favoritePlugUser');
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        setUserId(parsed?.id || parsed?.email);
-      } catch (e) {
-        console.error('Error parsing user:', e);
-      }
-    }
-    const storedWishlist = localStorage.getItem('wishlist');
-    if (storedWishlist) {
-      try {
-        setWishlist(JSON.parse(storedWishlist));
-      } catch (e) {
-        console.error('Error parsing wishlist:', e);
-      }
-    }
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (isMounted) {
-      localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    }
-  }, [wishlist, isMounted]);
-
-  const addToWishlist = (product) => {
-    setWishlist((prev) => {
-      if (!prev.some((p) => p.id === product.id)) {
-        return [...prev, product];
-      }
-      return prev;
+    // Fetch the wishlist using useQuery
+    const { data: wishlist = [], isLoading, error } = useQuery({
+        queryKey: ['wishlist'],
+        queryFn: fetchWishlist
     });
-  };
 
-  const removeFromWishlist = (productId) => {
-    setWishlist((prev) => prev.filter((item) => item.id !== productId));
-  };
+    // Mutation for adding a product
+    const addToWishlistMutation = useMutation({
+        mutationFn: (productId) => {
+            const token = localStorage.getItem('authToken');
+            return axios.post(`${API_URL}/api/wishlist`, { productId }, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+        },
+        onSuccess: () => {
+            // When successful, refetch the wishlist data to update the UI
+            queryClient.invalidateQueries({ queryKey: ['wishlist'] });
+        }
+    });
 
-  const isWishlisted = (productId) => {
-    return wishlist.some((item) => item.id === productId);
-  };
+    // Mutation for removing a product
+    const removeFromWishlistMutation = useMutation({
+        mutationFn: (productId) => {
+            const token = localStorage.getItem('authToken');
+            return axios.delete(`${API_URL}/api/wishlist/${productId}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['wishlist'] });
+        }
+    });
 
-  return (
-    <WishlistContext.Provider
-      value={{ wishlist, addToWishlist, removeFromWishlist, isWishlisted, userId, isMounted }}
-    >
-      {children}
-    </WishlistContext.Provider>
-  );
+    // Helper function to check if a product is in the wishlist
+    const isWishlisted = (productId) => {
+        return wishlist.some(item => item.id === productId);
+    };
+
+    const value = {
+        wishlist,
+        isLoading,
+        error,
+        addToWishlist: addToWishlistMutation.mutate,
+        removeFromWishlist: removeFromWishlistMutation.mutate,
+        isWishlisted
+    };
+
+    return (
+        <WishlistContext.Provider value={value}>
+            {children}
+        </WishlistContext.Provider>
+    );
 };
 
-export const useWishlist = () => {
-  const context = useContext(WishlistContext);
-  if (!context) {
-    throw new Error('useWishlist must be used within a WishlistProvider');
-  }
-  return context;
-};
+export const useWishlist = () => useContext(WishlistContext);
