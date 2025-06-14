@@ -61,7 +61,7 @@ export const SmartwatchCarousel = () => {
   });
 
   const mobileProducts = allProducts?.filter(
-    (product) => product.category === "SmartWatches"
+    (product) => product.category === "Smartwatches" 
   );
   
 
@@ -131,7 +131,7 @@ export const SmartwatchCarousel = () => {
         </Slider>
       ) : (
         <div className="text-center py-10 text-gray-500">
-          <p>No Smart Watch found found at the moment.</p>
+          <p>No Smart Watch found at the moment.</p>
         </div>
       )}
     </div>
