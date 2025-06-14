@@ -27,14 +27,14 @@ const ProductCard = ({ product }) => {
       <Link href={`/products/${product.id}`}>
         <div className="aspect-w-1 aspect-h-1 flex justify-center w-full overflow-hidden bg-white py-3">
           <img
-            src={`${API_URL}/${product.image}`}
+            src={product.image}
             alt={product.name}
             className="max-sm:h-[100px] h-[120px] object-fit object-center group-hover:opacity-80 transition-opacity"
           />
         </div>
       </Link>
       {discountPercentage && (
-        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md">
+        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold max-sm:px-0.5 px-2 py-1 rounded-md">
           -{discountPercentage}%
         </div>
       )}
@@ -43,9 +43,9 @@ const ProductCard = ({ product }) => {
           <Link href={`/products/${product.id}`}>{product.name}</Link>
         </h3>
         <div className="flex items-baseline mt-2">
-          <p className="text-[15px] max-sm:text-[11px] font-medium text-gray-800">₦{product.price ? product.price.toLocaleString() : '0.00'}</p>
+          <p className="text-[15px] max-sm:text-[13px] font-medium text-gray-800">₦{product.price ? product.price.toLocaleString() : '0.00'}</p>
           {product.oldPrice && (
-            <p className="ml-2 text-[14px] max-sm:text-[14px] text-gray-500 line-through">₦{product.oldPrice.toLocaleString()}</p>
+            <p className="ml-2 text-[14px] max-sm:text-[11px] text-gray-500 line-through">₦{product.oldPrice.toLocaleString()}</p>
           )}
         </div>
       </div>
@@ -66,8 +66,8 @@ export const SmartwatchCarousel = () => {
   
 
   const settings = {
-    dots: true,
-    infinite: true,
+    dots: false,
+    infinite: false,
     autoplay: true,
     autoplaySpeed: 2000,
     speed: 500,

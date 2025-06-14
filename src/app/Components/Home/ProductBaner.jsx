@@ -6,14 +6,14 @@ import SectionWatchTwo from '../../../../public/Images/LaptopSection.png'
 export const ProductBaner = () => {
   return (
     <div>
-      <Image src={SectionWatch} className='w-[100%] h-fit max-sm:h-[22vh] object-fit' alt='banner-image' />
+      <Image src={SectionWatch} className='w-[] h-fit max-sm:h-[26vh] object-fit' alt='banner-image' />
     </div>
   )
 }
 export const ProductBanerTwo = () => {
   return (
     <div>
-      <Image src={SectionWatchTwo} className='w-[100%] h-[59vh] max-sm:h-[28vh] object-fit ' alt='banner-image' />
+      <Image src={SectionWatchTwo} className='w-[%] h-[59vh] max-sm:h-[28vh] object-fit lg:h-[87vh]' alt='banner-image' />
     </div>
   )
 }

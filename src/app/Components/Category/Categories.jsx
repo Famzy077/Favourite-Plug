@@ -5,7 +5,6 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Link from 'next/link';
-import Image from 'next/image'; // Import the Next.js Image component
 import { FaHeart, FaRegHeart, FaSpinner } from 'react-icons/fa';
 import { useWishlist } from '@/app/hooks/WishlistContext.jsx';
 import { useAuthAction } from '@/app/hooks/useAuthAction';
@@ -23,7 +22,7 @@ const Spinner = () => (
 const ProductCard = ({ product, onWishlistToggle, isWishlisted }) => {
   const { withAuth } = useAuthAction();
   // We construct the full, absolute URL for the image source.
-  const imageUrl = `${API_URL}/${product.image}`;
+  const imageUrl = product.image;
 
   return (
     <div className="relative group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">

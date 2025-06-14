@@ -40,7 +40,7 @@ export const AccountWishlist = () => {
           {wishlist.map((product) => {
             if (!product) return null; // Safety check for null products
 
-            const imageUrl = `${API_URL}/${product.image}`;
+            const imageUrl = product.image;
 
             return (
               <div key={product.id} className="relative group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">

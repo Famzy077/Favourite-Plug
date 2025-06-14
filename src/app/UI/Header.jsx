@@ -80,17 +80,16 @@ export const HeaderPage = () => {
 
   return (
     <div className='sticky top-0 z-50'>
-      {/* ... your main header JSX ... */}
       <header className='flex bg-blue-200 p-2 shadow-md items-center justify-between max-md:hidden'>
         <Link href={'/home'}>
           <Image className='w-[3.5rem] lg:ml-2 max-sm:w-[2rem]' src={Logo1} alt="Logo" />
         </Link>
         <nav className='w-[50%]'>
             <ul className='flex justify-center space-x-8 text-gray-800 text-[1rem] font-medium'>
-                <li><Link href="/home">Home</Link></li>
-                <li><Link href="/categories">Categories</Link></li>
-                <li><Link href="/wishlist">Wishlist</Link></li>
-                <li><Link href="/account">Account</Link></li>
+              <li><Link href="/home">Home</Link></li>
+              <li><Link href="/categories">Categories</Link></li>
+              <li><Link href="/wishlist">Wishlist</Link></li>
+              <li><Link href="/account">Account</Link></li>
             </ul>
         </nav>
         <div onClick={toggleSearchModal} className='border hover:border-blue-600 border-gray-600 w-[14%] flex items-center p-1 rounded-[5px] m-auto text-[8px] cursor-pointer'>
@@ -105,7 +104,7 @@ export const HeaderPage = () => {
       </header>
 
       {showSearch && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 h-screen flex justify-center items-start pt-[4.6rem] z-[90]">
+        <div className="fixed inset-0 bg-transparent bg-opacity-50 h-screen flex justify-center items-start pt-[4.6rem] z-[90]">
           <div ref={searchModalRef} className="bg-white z-[100] w-[50%] max-h-[80vh] rounded-lg p-4 shadow-lg relative flex flex-col">
             <button onClick={toggleSearchModal} className="absolute right-3 top-2 text-gray-500 hover:text-red-500 transition-all">
               <XIcon size={30} className='rounded-full p-1 bg-zinc-100'/>

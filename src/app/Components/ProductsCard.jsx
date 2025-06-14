@@ -29,11 +29,11 @@ const ProductCard = ({ product }) => {
 
       <Link href={`/products/${product.id}`}>
         <div className="flex justify-center items-center mb-1 py-2">
-          <img
+          {/* <img
             src={product.image}
             alt={product.name}
             className="max-sm:h-[90px] h-[100px] object-fit rounded-lg"
-          />
+          /> */}
         </div>
         <div className="p-4 bg-gray-200 rounded-lg">
           <h3 className='text-1.8 lg:font-semibold text-gray-800 font-medium truncate'>

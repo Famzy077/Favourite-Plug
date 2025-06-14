@@ -26,7 +26,7 @@ const RelatedProductCard = ({ product }) => (
     <Link href={`/products/${product.id}`}>
       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200">
         <img
-          src={`${API_URL}/${product.image}`}
+          src={product.image}
           alt={product.name}
           className="h-full w-full object-cover object-center"
         />
@@ -116,7 +116,7 @@ const ProductPage = ({ params }) => {
       <div className="p-5 max-w-4xl mx-auto mt-8">
         <div className='flex flex-col md:flex-row gap-8'>
           <div className='md:w-1/2 flex justify-center items-center p-4 border rounded-lg bg-white'>
-            <img src={`${API_URL}/${product.image}`} alt={product.name} className="max-w-full max-h-[50vh] object-contain" />
+            <img src={product.image} alt={product.name} className="max-w-full max-h-[50vh] object-contain" />
           </div>
           <div className='md:w-1/2 flex flex-col justify-center items-start'>
             <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
