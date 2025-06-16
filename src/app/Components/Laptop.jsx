@@ -1,81 +1,3 @@
-// 'use client'
-// import Slider from "react-slick";
-// import React from 'react'
-// import ProductCard from '@/app/Components/ProductsCard'
-// import products from '../.././Data/ProductData.json'
-
-// export const Laptops = () => {
-//   const laptops = products.filter((product) =>product.category === "Laptops");
-
-//   const settings = {
-//     dots: false,
-//     infinite: true,
-//     arrows: true,
-//     autoplay: true,
-//     autoplaySpeed: 2000,
-//     speed: 500,
-//     slidesToShow: 6,
-//     slidesToScroll: 1,
-//     responsive: [
-//       {
-//         breakpoint: 1024,
-//         settings: {
-//           slidesToShow: 4,
-//           slidesToScroll: 1,
-//         },
-//       },
-//       {
-//         breakpoint: 768,
-//         settings: {
-//           slidesToShow: 3,
-//           slidesToScroll: 1,
-//         },
-//       },
-//       {
-//         breakpoint: 480,
-//         settings: {
-//           slidesToShow: 2,
-//           slidesToScroll: 1,
-//         },
-//       },
-//     ],
-//   };
-
-//   return (
-//     <div className="">
-//         <h1 className="text-3xl relative max-sm:rounded-none max-sm:mx-0 mx-11.5 p-2 rounded text-white bg-blue-500 max-sm:text-xl pl-12 max-sm:mt-3 mt-2">Laptop Devices</h1> 
-//       <div className="px-10 max-sm:px-2 -mb-5">
-//         <Slider {...settings}>
-//           {laptops.map((product) => (
-//             <div key={product.id} className="p-2">
-//               <ProductCard product={product} />
-//             </div>
-//           ))}
-//         </Slider>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export const LaptopSlide = () => {
-//   const laptop = products
-//     .filter(product => product.category === "Laptops")
-//     .reverse();
-
-//   return (
-//     <div className="flex overflow-x-auto overflow-y-hidden gap-4 p-4 w-full scrollbar-hide">
-//       {laptop.map((product) => (
-//         <div
-//           key={product.id}
-//           className="min-w-[10rem] flex-shrink-0"
-//         >
-//           <ProductCard product={product} />
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
@@ -83,6 +5,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import { FaSpinner } from 'react-icons/fa';
 import Slider from "react-slick";
+import { AddToCartButton } from './cart/AddToCartButton';
 
 // --- Data Fetching Function ---
 const API_URL = "https://favorite-server-0.onrender.com";
@@ -116,16 +39,17 @@ const ProductCard = ({ product }) => {
           -{discountPercentage}%
         </div>
       )}
-      <div className="p-4 bg-gray-200">
+      <div className="p-4 pb-2 bg-gray-200">
         <h3 className="text-1.8 lg:font-semibold text-gray-800 font-medium truncate">
           <Link href={`/products/${product.id}`}>{product.name}</Link>
         </h3>
-        <div className="flex items-baseline mt-2">
+        <div className="flex items-baseline my-0.5">
           <p className="text-[15px] max-sm:text-[13px] font-medium text-gray-800">₦{product.price ? product.price.toLocaleString() : '0.00'}</p>
           {product.oldPrice && (
             <p className="ml-2 text-[14px] max-sm:text-[11px] text-gray-500 line-through">₦{product.oldPrice.toLocaleString()}</p>
           )}
         </div>
+        <AddToCartButton productId={product.id} />
       </div>
     </div>
   );
@@ -147,7 +71,7 @@ export const Laptops = () => {
     dots: false,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 2500,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 2,
@@ -167,11 +91,11 @@ export const Laptops = () => {
       },
       {
         breakpoint: 1024, // For tablets
-        settings: { slidesToShow: 4, slidesToScroll: 1 },
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
       },
       {
         breakpoint: 768, // For large phones
-        settings: { slidesToShow: 3, slidesToScroll: 1 },
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
       },
       {
         breakpoint: 480, // For small phones

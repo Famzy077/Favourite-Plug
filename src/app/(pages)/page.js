@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider as ReduxProvider } from 'react-redux';
 import store from '../redux/Store';
 import { WishlistProvider } from '../hooks/WishlistContext.jsx';
+import { CartProvider } from '../hooks/CartContext';
 import { FaSpinner } from 'react-icons/fa';
 
 // This is a "singleton" instance. It's best to create it outside the component
@@ -21,7 +22,9 @@ const AllProviders = ({ children }) => {
       <ReduxProvider store={store}>
         {/* 2. WishlistProvider is now INSIDE, so it can use useQuery. */}
         <WishlistProvider>
+          <CartProvider>
           {children}
+          </CartProvider>
         </WishlistProvider>
       </ReduxProvider>
     </QueryClientProvider>
@@ -80,7 +83,7 @@ export default function PageProvider({ children }) {
   if (!isAuthorized || !minDelayPassed) {
     return (
       <div className='flex flex-col items-center justify-center min-h-[85vh]'>
-        <Image src={logo} className='h-[100px] w-[230px]' alt="Loading Logo"/> {/* Added alt text */}
+        <Image src={logo} className='h-[100px] max-sm:h-[90px] max-sm:w-fit w-[230px]' alt="Loading Logo"/> {/* Added alt text */}
         <FaSpinner className="animate-spin text-blue-500" size={40} />
       </div>
     );

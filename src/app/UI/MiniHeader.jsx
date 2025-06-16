@@ -3,12 +3,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Search, Heart } from 'lucide-react'; 
+import { Search, Heart, ShoppingCart } from 'lucide-react'; 
 import { FaSpinner } from 'react-icons/fa';
 import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import NoItemImage from '../../../public/Images/noProduct.png';
+import NoItemImage from '/public/Images/noProduct.png';
+import { useCart } from '../hooks/CartContext';
 
 const API_URL = "https://favorite-server-0.onrender.com";
 
@@ -38,6 +39,9 @@ export const MiniHeader = () => {
   const pathname = usePathname();
   const searchModalRef = useRef(null);
   const router = useRouter();
+
+  // CartItemCount
+  const { itemCount } = useCart() || { itemCount: 0 };
 
   // Use the debounced query to trigger the API call
   const debouncedQuery = useDebounce(query, 300); // 300ms delay
@@ -79,7 +83,7 @@ export const MiniHeader = () => {
 
   return (
     <div className="z-40 md:hidden shadow bg-zinc-200 py-4 px-4 w-full relative">
-      <div className="flex gap-4 justify-between items-center">
+      <div className="flex gap-3 justify-between items-center">
         <form className="flex w-[85%]" onSubmit={(e) => e.preventDefault()}>
           <input
             type="search"
@@ -87,7 +91,7 @@ export const MiniHeader = () => {
             value={query}
             onChange={handleSearchChange}
             onFocus={() => setShowResults(true)} // Show results on focus as well
-            className="w-full border-2 border-r-0 border-blue-500 rounded-l px-4 py-[7px] outline-none bg-white text-sm"
+            className="w-full border-2 border-r-0 border-blue-500 rounded-l px-4 pr-0 py-[7px] outline-none bg-white text-sm"
           />
           <button type="submit" className="bg-blue-500 text-white px-3 py-1 rounded-r">
             <Search size={20} />
@@ -96,6 +100,18 @@ export const MiniHeader = () => {
 
         <Link href="/wishlist" title='Wishlist'>
           <Heart size={36} className='text-blue-500 bg-white rounded-full p-1.5 border-2 border-blue-500'/>
+        </Link>
+
+        {/* --- NEW: Cart Icon with Badge --- */}
+        <Link href="/cart">
+          <div className="relative m-0 p-1.5 rounded-full hover:bg-blue-300 transition-colors">
+            <ShoppingCart size={28} className="text-blue-500" />
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
+                {itemCount}
+              </span>
+            )}
+          </div>
         </Link>
       </div>
 
@@ -117,7 +133,7 @@ export const MiniHeader = () => {
                   onClick={() => handleResultClick(item.id)}
                   className="flex items-center gap-3 p-2 bg-gray-50 hover:bg-gray-100 rounded text-sm cursor-pointer"
                 >
-                  <img src={`${API_URL}/${item.image}`} alt={item.name} className="w-12 h-12 object-cover rounded-md" />
+                  <img src={item.image} alt={item.name} className="w-12 h-12 object-cover rounded-md" />
                   <div className="flex-grow">
                     <p className="font-medium">{item.name}</p>
                     <p className="text-gray-700 font-bold">₦{item.price.toLocaleString()}</p>

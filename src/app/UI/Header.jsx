@@ -10,6 +10,8 @@ import axios from 'axios';
 import { Heart, XIcon, UserRound, Search, HomeIcon, List } from 'lucide-react';
 import { FaSpinner } from 'react-icons/fa'; // FIX: FaSpinner needs to be imported
 import NoItemImage from '/public/Images/noProduct.png';
+import { useCart } from '../hooks/CartContext';
+import { ShoppingCart } from 'lucide-react';
 
 // const API_URL = "http://localhost:5000";
 const API_URL = "https://favorite-server-0.onrender.com";
@@ -40,6 +42,9 @@ export const HeaderPage = () => {
   const [query, setQuery] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const searchModalRef = useRef(null);
+
+  // CartItemCount
+  const { itemCount } = useCart() || { itemCount: 0 };
 
   // Use the debounced query for the API call
   const debouncedQuery = useDebounce(query, 300); // 300ms delay
@@ -84,7 +89,7 @@ export const HeaderPage = () => {
         <Link href={'/home'}>
           <Image className='w-[3.5rem] lg:ml-2 max-sm:w-[2rem]' src={Logo1} alt="Logo" />
         </Link>
-        <nav className='w-[50%]'>
+        <nav className='w-[48%]'>
             <ul className='flex justify-center space-x-8 text-gray-800 text-[1rem] font-medium'>
               <li><Link href="/home">Home</Link></li>
               <li><Link href="/categories">Categories</Link></li>
@@ -92,13 +97,23 @@ export const HeaderPage = () => {
               <li><Link href="/account">Account</Link></li>
             </ul>
         </nav>
-        <div onClick={toggleSearchModal} className='border hover:border-blue-600 border-gray-600 w-[14%] flex items-center p-1 rounded-[5px] m-auto text-[8px] cursor-pointer'>
-            <Search size={24} className="text-gray-700" />
-            <i className='text-sm text-zinc-600 ml-2'>Search products..</i>
+        <div onClick={toggleSearchModal} className='border hover:border-blue-600 border-gray-600 w-[12rem] flex items-center p-1 rounded-[5px] m-auto text-[8px] cursor-pointer'>
+          <Search size={24} className="text-gray-700" />
+          <i className='text-sm text-zinc-600 ml-2'>Search products..</i>
         </div>
+        <Link href="/cart">
+          <div className="relative m-0 p-1.5 rounded-full hover:bg-blue-300 transition-colors mr-5">
+            <ShoppingCart size={28} className="text-blue-500" />
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
+                {itemCount}
+              </span>
+            )}
+          </div>
+        </Link>
         <div className='space-x-4'>
             <button className='bg-blue-500 hover:bg-blue-400 text-white px-4 py-1.5 rounded-sm transition-all mr-10'>
-                Call To Order
+              Call To Order
             </button>
         </div>
       </header>
@@ -127,7 +142,7 @@ export const HeaderPage = () => {
                 <div className="space-y-2">
                   {results.map((item) => (
                     <div key={item.id} onClick={() => closeAndNavigate(`/products/${item.id}`)} className="p-2 flex items-center gap-4 bg-gray-50 rounded hover:bg-gray-100 transition-colors cursor-pointer">
-                      <img src={`${API_URL}/${item.image}`} alt={item.name} className="w-12 h-12 object-cover rounded-md" />
+                      <img src={item.image} alt={item.name} className="w-12 h-12 object-cover rounded-md" />
                       <div>
                         <p className="font-medium">{item.name}</p>
                         <p className="text-sm text-gray-600">₦{item.price.toLocaleString()}</p>

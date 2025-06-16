@@ -6,11 +6,13 @@ import { useWishlist } from '@/app/hooks/WishlistContext.jsx';
 import { FaHeart, FaSpinner } from 'react-icons/fa';
 import Image from 'next/image'; // Import the Next.js Image component
 import Docs from '../../UI/Docs'; // Assuming this path is correct
+import { AddToCartButton } from '@/app/Components/cart/AddToCartButton';
+import { Phone } from 'lucide-react';
 
 const WishlistPage = () => {
   // Your hook now provides everything you need
   const { wishlist, removeFromWishlist, isLoading, error } = useWishlist();
-
+  const totalPrice = wishlist.reduce((sum, product) => sum + product.price, 0);
   // 1. Show a spinner while the wishlist data is being fetched
   if (isLoading) {
     return (
@@ -28,14 +30,14 @@ const WishlistPage = () => {
   // 3. Show a helpful message if the wishlist is empty
   if (!wishlist || wishlist.length === 0) {
     return (
-        <div className="p-5 text-center min-h-[85vh] flex flex-col items-center justify-center">
-            <p className="text-2xl mb-4">You have no items in your wishlist yet 💔</p>
-            <Link href="/categories">
-                <button className="bg-blue-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors">
-                    Start Exploring
-                </button>
-            </Link>
-        </div>
+      <div className="p-5 text-center min-h-[85vh] flex flex-col items-center justify-center">
+        <p className="text-2xl mb-4">You have no items in your wishlist yet 💔</p>
+        <Link href="/categories">
+          <button className="bg-blue-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors">
+              Start Exploring
+          </button>
+        </Link>
+      </div>
     );
   }
 
@@ -45,7 +47,7 @@ const WishlistPage = () => {
 
   return (
     <div>
-      <div className="lg:px-20 bg-zinc-100 p-5 max-sm:px-5 min-h-screen">
+      <div className="lg:px-20 bg-zinc-100 p-5 max-sm:px-5 min-h-">
         <h1 className="text-4xl mb-6 max-sm:text-2xl font-medium font-sans">Your Wishlist</h1>
         <div className="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-14">
           {wishlist.map((product) => {
@@ -61,23 +63,36 @@ const WishlistPage = () => {
                 </button>
 
                 <Link href={`/products/${product.id}`} className="flex flex-col flex-grow">
-                  <div className="flex-grow flex justify-center items-center p-4 h-40">
+                  <div className="flex-grow flex justify-center items-center p-4 py-2 h-">
                     {/* The src={product.image} now works perfectly because
                         the new data in your database contains the full Cloudinary URL */}
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="max-h-full w-auto object-contain"
+                      className="max-h-full max-sm:h-[100px] w-auto object-contain"
                     />
                   </div>
                   <div className="p-3 border-t text-center">
-                    <h1 className="text-sm font-semibold truncate">{product.name}</h1>
-                    <p className="font-bold text-lg mt-1">₦{product.price.toLocaleString()}</p>
+                    <h1 className="text-[1.2rem] font-semibold truncate">{product.name}</h1>
+                    <p className="font-bold text-sm mt-1">₦{product.price.toLocaleString()}</p>
+                    
+                  <AddToCartButton productId={product.id} />
                   </div>
                 </Link>
               </div>
             );
           })}
+        </div>
+        
+        <div className="text-center flex max-sm:flex-col justify-center rounded-[10px] w-auto gap-4">
+          <div className='flex gap-2.5 items-center bg-blue-300 w-[300px] max-sm:w-[100%] justify-center p-2 rounded-[5px]'>
+            <p className="text-gray-800 text-xl font-semibold">Total Price =</p>
+            <p className="text-xl font-bold text-blue-800">₦{totalPrice.toLocaleString()}</p>
+          </div>
+          <button className='text-xl max-sm:w-[100%] max-sm:text-[14px] border border-blue-500 text-white rounded-[5px] bg-blue-500 hover:bg-blue-600 py-1.5 px-6 cursor-pointer font-semibold transition-colors flex gap-2 items-center'>
+              <Phone className="max-sm:text-sm" size={28}/>
+              Call to order
+            </button>
         </div>
       </div>
       <Docs />

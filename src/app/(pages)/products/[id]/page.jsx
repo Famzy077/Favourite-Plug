@@ -5,6 +5,8 @@ import Docs from '@/app/UI/Docs';
 import bannerImage from '/public/Images/GalaxySeries.png'
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { AddToCartButton } from '@/app/Components/cart/AddToCartButton';
+import { Phone } from 'lucide-react';
 
 const API_URL = "https://favorite-server-0.onrender.com";
 
@@ -24,16 +26,17 @@ const fetchAllProducts = async () => {
 const RelatedProductCard = ({ product }) => (
   <div className="group relative border rounded-lg overflow-hidden bg-white hover:shadow-lg transition-shadow">
     <Link href={`/products/${product.id}`}>
-      <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200">
+      <div className="aspect-w-1 aspect-h-1 w-full flex justify-center overflow-hidden bg-white">
         <img
           src={product.image}
           alt={product.name}
-          className="h-full w-full object-cover object-center"
+          className="h-28 object-cover"
         />
       </div>
-      <div className="p-3">
+      <div className="p-3 py-1 border-t">
         <h3 className="text-sm text-gray-700 font-medium truncate">{product.name}</h3>
         <p className="mt-1 text-lg font-bold text-gray-900">₦{product.price.toLocaleString()}</p>
+      <AddToCartButton productId={product.id} />
       </div>
     </Link>
   </div>
@@ -110,10 +113,10 @@ const ProductPage = ({ params }) => {
             <h1 className="text-xl md:text-2xl text-blue-400 font-bold">Shop</h1>
           </div>
         </div>
-        <h1 className="text-2xl md:text-3xl font-bold mb-1 text-white bg-blue-500 mx-auto max-w-4xl p-2 mt-5 rounded-md">Product Details</h1>
+        <h1 className="text-2xl md:text-3xl font-bold mb-1 text-white bg-blue-500 mx-auto max-w-4xl p-2 mt-5 rounded-md max-sm:rounded-none">Product Details</h1>
       </div>
 
-      <div className="p-5 max-w-4xl mx-auto mt-8">
+      <div className="p-5 max-w-4xl mx-auto mt-8 mb-10">
         <div className='flex flex-col md:flex-row gap-8'>
           <div className='md:w-1/2 flex justify-center items-center p-4 border rounded-lg bg-white'>
             <img src={product.image} alt={product.name} className="max-w-full max-h-[50vh] object-contain" />
@@ -126,7 +129,14 @@ const ProductPage = ({ params }) => {
             </div>
             <p className="text-gray-700 leading-relaxed mb-6">{product.description}</p>
             <div>
-              <button className='text-xl border border-blue-500 text-white rounded-lg bg-blue-500 hover:bg-blue-600 py-3 px-6 cursor-pointer font-semibold transition-colors'>Call to order</button>
+              <div className='bg-[#2648db] rounded-[5px] cursor-pointer !text-xl !font-semibold'>
+                <AddToCartButton productId={product.id} />
+              </div>
+              <p className='text-center text-font-semibold text-xl'>OR</p>
+              <button className='text-xl max-sm:text-sm border border-blue-500 text-white rounded-[5px] bg-blue-500 hover:bg-blue-600 py-1.5 px-6 cursor-pointer font-semibold transition-colors flex gap-2 items-center'>
+                <Phone className="max-sm:text-sm" size={28}/>
+                Call to order
+              </button>
             </div>
           </div>
         </div>

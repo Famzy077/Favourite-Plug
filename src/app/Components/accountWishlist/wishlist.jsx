@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useWishlist } from '@/app/hooks/WishlistContext.jsx';
 import { FaHeart, FaSpinner } from 'react-icons/fa';
 import Image from 'next/image';
+import { AddToCartButton } from '../cart/AddToCartButton';
+import { Phone } from 'lucide-react';
 
 const API_URL = "https://favorite-server-0.onrender.com";
 
@@ -12,6 +14,7 @@ export const AccountWishlist = () => {
   // Your useWishlist hook now provides everything you need:
   const { wishlist, removeFromWishlist, isWishlisted, isLoading, error } = useWishlist();
 
+  const totalPrice = wishlist.reduce((sum, product) => sum + product.price, 0);
   // 1. Show a spinner while the wishlist is being fetched
   if (isLoading) {
     return (
@@ -29,14 +32,23 @@ export const AccountWishlist = () => {
   // 3. Show a message if the wishlist is empty
   // This check now happens after loading and error states are handled.
   if (!wishlist || wishlist.length === 0) {
-    return <div className="p-5 text-center min-h-[50vh]">You have no items in your wishlist yet 💔</div>;
+    return (
+      <div className="p-5 text-center min-h-[85vh] flex flex-col items-center justify-center">
+        <p className="text-2xl mb-4">You have no items in your wishlist yet 💔</p>
+        <Link href="/categories">
+            <button className="bg-blue-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors">
+                Start Exploring
+            </button>
+        </Link>
+      </div>
+    )
   }
 
   return (
     <div>
-      <div className="bg-zinc-50 p-5 max-sm:px-0 rounded-xl min-h-[85vh]">
-        <h1 className="text-4xl mb-6 max-sm:text-xl font-semibold font-sans">Your Wishlist</h1>
-        <div className="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="bg-zinc-50 p-5 max-sm:px-0 rounded-xl">
+        <h1 className="text-2xl mb-6 max-sm:text-xl font-semibold">Your Wishlist</h1>
+        <div className="grid max-sm:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
           {wishlist.map((product) => {
             if (!product) return null; // Safety check for null products
 
@@ -55,8 +67,10 @@ export const AccountWishlist = () => {
                 <Link href={`/products/${product.id}`}>
                   <div className="px-4 max-sm:px-1.5 py-5 flex flex-col items-center">
                     <div className="h-32 flex items-center justify-center">
-                      <img
+                      <Image
                         src={imageUrl}
+                        height={120}
+                        width={120}
                         alt={product.name}
                         className="max-h-[120px] w-auto object-contain"
                       />
@@ -64,12 +78,23 @@ export const AccountWishlist = () => {
                     <div className="text-center">
                       <h1 className="text-sm font-semibold truncate">{product.name.slice(0, 12)}...</h1>
                       <p className="font-bold text-[1rem]">₦{product.price.toLocaleString()}</p>
+                      <AddToCartButton productId={product.id} />
                     </div>
                   </div>
                 </Link>
               </div>
             );
           })}
+        </div>
+        <div className="text-center mt-8 flex max-sm:flex-col justify-start rounded-[10px] w-auto gap-4">
+          <div className='flex gap-2.5 items-center bg-blue-300 w-[300px] max-sm:w-[100%] justify-center p-2 rounded-[5px]'>
+            <p className="text-gray-800 text-xl font-semibold">Total Price =</p>
+            <p className="text-xl font-bold text-blue-800">₦{totalPrice.toLocaleString()}</p>
+          </div>
+          <button className='text-xl max-sm:w-[100%] max-sm:text-[14px] border border-blue-500 text-white rounded-[5px] bg-blue-500 hover:bg-blue-600 py-1.5 px-6 cursor-pointer font-semibold transition-colors flex gap-2 items-center'>
+              <Phone className="max-sm:text-sm" size={28}/>
+              Call to order
+            </button>
         </div>
       </div>
     </div>

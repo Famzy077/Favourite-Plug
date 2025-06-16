@@ -28,7 +28,7 @@ const ProductCard = ({ product, onWishlistToggle, isWishlisted }) => {
     <div className="relative group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
       <button
           onClick={() => withAuth(() => onWishlistToggle(product.id))}
-          className="absolute text-lg bg-white rounded-full p-1.5 top-2 right-2 text-red-500 z-10 shadow-sm"
+          className="absolute text-lg max-sm:text-[1.2rem] bg-red-100 rounded-full p-1.5 max-sm:p-0.5 top-2 right-2 text-red-500 z-10 shadow-sm "
       >
           {isWishlisted ? <FaHeart /> : <FaRegHeart />}
       </button>

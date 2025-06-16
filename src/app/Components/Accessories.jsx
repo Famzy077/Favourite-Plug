@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import ProductCard from '@/app/Components/ProductsCard'
+import { AddToCartButton } from './cart/AddToCartButton';
 // --- Data Fetching Function ---
 const API_URL = "https://favorite-server-0.onrender.com";
 
@@ -42,16 +43,17 @@ const ProductCardItems = ({ product }) => {
           -{discountPercentage}%
         </div>
       )}
-      <div className="p-4 bg-gray-200">
+      <div className="p-4 pb-2 bg-gray-200">
         <h3 className="text-1.8 lg:font-semibold text-gray-800 font-medium truncate">
           <Link href={`/products/${product.id}`}>{product.name}</Link>
         </h3>
-        <div className="flex items-baseline mt-2">
+        <div className="flex items-baseline my-0.5">
           <p className="text-[15px] max-sm:text-[13px] font-medium text-gray-800">₦{product.price ? product.price.toLocaleString() : '0.00'}</p>
           {product.oldPrice && (
             <p className="ml-2 text-[14px] max-sm:text-[11px] text-gray-500 line-through">₦{product.oldPrice.toLocaleString()}</p>
           )}
         </div>
+        <AddToCartButton productId={product.id} />
       </div>
     </div>
   );
@@ -93,11 +95,11 @@ export const Accessories = () => {
       },
       {
         breakpoint: 1024, // For tablets
-        settings: { slidesToShow: 4, slidesToScroll: 1 },
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
       },
       {
         breakpoint: 768, // For large phones
-        settings: { slidesToShow: 3, slidesToScroll: 1 },
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
       },
       {
         breakpoint: 480, // For small phones
