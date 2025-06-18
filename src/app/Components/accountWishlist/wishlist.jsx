@@ -33,7 +33,7 @@ export const AccountWishlist = () => {
   // This check now happens after loading and error states are handled.
   if (!wishlist || wishlist.length === 0) {
     return (
-      <div className="p-5 text-center min-h-[85vh] flex flex-col items-center justify-center">
+      <div className="p-5 text-center h-[85vh] flex flex-col items-center justify-center">
         <p className="text-2xl mb-4">You have no items in your wishlist yet 💔</p>
         <Link href="/categories">
             <button className="bg-blue-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors">
@@ -46,9 +46,9 @@ export const AccountWishlist = () => {
 
   return (
     <div>
-      <div className="bg-zinc-50 p-5 max-sm:px-0 rounded-xl">
+      <div className="bg-zinc-50 p-5 max-sm:px-3 rounded-xl scroll-auto overflow-y-auto overflow-visible">
         <h1 className="text-2xl mb-6 max-sm:text-xl font-semibold">Your Wishlist</h1>
-        <div className="grid max-sm:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+        <div className="grid max-sm:grid-cols-1 sm:grid-cols-2 max-md:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {wishlist.map((product) => {
             if (!product) return null; // Safety check for null products
 
@@ -68,18 +68,18 @@ export const AccountWishlist = () => {
 
                 <Link href={`/products/${product.id}`}>
                   <div className="px-4 max-sm:px-1.5 py-5 flex flex-col items-center">
-                    <div className="h-32 flex items-center justify-center">
+                    <div className="p-2 flex items-center justify-center">
                       <Image
                         src={displayImage}
                         height={120}
                         width={120}
                         alt={product.name}
-                        className="max-h-[120px] w-auto object-contain"
+                        className="max-h-[120px] max-sm:h-[100px] w-auto object-contain"
                       />
                     </div>
                     <div className="text-center">
-                      <h1 className="text-sm font-semibold truncate">{product.name.slice(0, 12)}...</h1>
-                      <p className="font-bold text-[1rem]">₦{product.price.toLocaleString()}</p>
+                      <h1 className="text-sm max-sm:text-[12px] font-semibold truncate">{product.name.slice(0, 12)}...</h1>
+                      <p className="font-bold text-[1rem] max-sm:text-[0.9rem]">₦{product.price.toLocaleString()}</p>
                       <AddToCartButton productId={product.id} />
                     </div>
                   </div>
@@ -90,8 +90,8 @@ export const AccountWishlist = () => {
         </div>
         <div className="text-center mt-8 flex max-sm:flex-col justify-start rounded-[10px] w-auto gap-4">
           <div className='flex gap-2.5 items-center border border-blue-500 w-[300px] max-sm:w-[100%] justify-center p-2 rounded-[5px]'>
-            <p className="text-gray-800 text-xl font-semibold">Total Price =</p>
-            <p className="text-xl font-bold text-gray-800">₦{totalPrice.toLocaleString()}</p>
+            <p className="text-gray-800 text-xl max-sm:text-[1rem] font-semibold">Total Price =</p>
+            <p className="text-xl max-sm:text-[0.9rem] font-bold text-gray-800">₦{totalPrice.toLocaleString()}</p>
           </div>
           <button className='text-xl max-sm:w-[100%] max-sm:text-[14px] border border-blue-500 text-white rounded-[5px] bg-blue-500 hover:bg-blue-600 py-1.5 px-6 cursor-pointer font-semibold transition-colors flex gap-2 items-center justify-center'>
               <Phone className="max-sm:text-sm" size={28}/>

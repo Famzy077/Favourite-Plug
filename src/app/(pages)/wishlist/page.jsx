@@ -71,12 +71,12 @@ const WishlistPage = () => {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="max-h-full max-sm:h-[100px] w-auto object-contain"
+                      className="max-h-full max-sm:h-[90px] w-auto object-contain"
                     />
                   </div>
                   <div className="p-3 py-1 border-t text-center">
-                    <h1 className="text-[1.2rem] font-semibold truncate">{product.name}</h1>
-                    <p className="font-bold text-sm mt-1">₦{product.price.toLocaleString()}</p>
+                    <h1 className="text-[1.2rem] max-sm:text-[0.9rem] font-semibold truncate">{product.name}</h1>
+                    <p className="font-bold text-sm max-sm:text-[13px] mt-1">₦{product.price.toLocaleString()}</p>
                     
                   </div>
                 </Link>

@@ -91,10 +91,10 @@ const AccountPage = () => {
 
   return (
     <div>
-      <div className="flex gap-6 max-sm:gap-0 min-h-[85vh]">
+      <div className="flex gap-6 max-sm:gap-0 min-h-[77vh]">
         
         {/* Pass the handleLogout function as a prop to the Sidebar */}
-        <Sidebar 
+        <Sidebar
             selectedTab={activeTab} 
             onTabChange={setActiveTab} 
             onLogout={handleLogout} 

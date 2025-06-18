@@ -12,7 +12,7 @@ const API_URL = "https://favorite-server-0.onrender.com";
 
 // --- FORGOT PASSWORD PAGE COMPONENT ---
 // This component would live at `app/forgot-password/page.jsx`
-export const ForgotPasswordPage = () => {
+const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -71,3 +71,5 @@ export const ForgotPasswordPage = () => {
     </div>
   );
 };
+
+export default ForgotPasswordPage

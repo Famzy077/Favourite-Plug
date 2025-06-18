@@ -62,7 +62,7 @@ export const PageProvider = ({ children }) => {
   return (
     <>
       {(!isAuthorized || !minDelayPassed) ? (
-        <div className='flex flex-col items-center justify-center min-h-[85vh]'>
+        <div className='flex flex-col items-center justify-center min-h-[90vh]'>
           <Image src={logo} className='h-[100px] max-sm:h-[90px] max-sm:w-fit w-[230px]' alt="Loading Logo" />
           <FaSpinner className="animate-spin text-blue-500" size={40} />
         </div>
