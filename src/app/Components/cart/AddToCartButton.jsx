@@ -1,5 +1,4 @@
 'use client';
-
 import { useCart } from "@/app/hooks/CartContext";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
@@ -10,8 +9,6 @@ export const AddToCartButton = ({ productId, quantity = 1 }) => {
     const { addToCart } = useCart() || {};
 
     const handleAddToCart = () => {
-        console.log("Add to cart clicked"); 
-        console.log("addToCart:", addToCart);
         if (!productId) return;
         if (addToCart) {
             toast.success("Product added to cart!", {

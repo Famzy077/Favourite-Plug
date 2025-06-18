@@ -3,8 +3,8 @@
 import React, { createContext, useContext } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
-import { useAuthAction } from './useAuthAction'; // We'll use this to protect actions
-import { toast } from 'sonner';
+import { useAuthAction } from './useAuthAction';
+import toast from 'react-hot-toast';
 
 const API_URL = "https://favorite-server-0.onrender.com";
 
@@ -12,7 +12,7 @@ const CartContext = createContext();
 
 const fetchCart = async () => {
     const token = localStorage.getItem('authToken');
-    if (!token) return { items: [], total: 0 }; // Return empty cart if not logged in
+    if (!token) return { items: [], total: 0 };
     const res = await axios.get(`${API_URL}/api/cart`, {
         headers: { Authorization: `Bearer ${token}` }
     });
@@ -27,8 +27,6 @@ export const CartProvider = ({ children }) => {
         queryFn: fetchCart
     });
 
-    // --- MUTATIONS to interact with the backend ---
-
     const addItemMutation = useMutation({
         mutationFn: ({ productId, quantity }) => {
             const token = localStorage.getItem('authToken');
@@ -38,6 +36,7 @@ export const CartProvider = ({ children }) => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['cart'] });
+            // The toast for adding is handled in the AddToCartButton component
         }
     });
 
@@ -50,6 +49,8 @@ export const CartProvider = ({ children }) => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['cart'] });
+            // --- NEW: Toast for updating quantity ---
+            toast.success("Cart updated successfully.");
         }
     });
 
@@ -62,18 +63,19 @@ export const CartProvider = ({ children }) => {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['cart'] });
+            // --- NEW: Toast for removing an item ---
+            toast.error("Item removed from cart.");
         }
     });
 
     const { withAuth } = useAuthAction();
     
     const value = {
-        cart: cart || { items: [] }, // Provide a default empty cart
+        cart: cart || { items: [] },
         isLoading,
-        // MODIFIED: All mutation calls now use .mutateAsync to return a promise
-        addToCart: (data) => withAuth(() => addItemMutation.mutateAsync(data)),
-        updateQuantity: (data) => withAuth(() => updateItemMutation.mutateAsync(data)),
-        removeFromCart: (productId) => withAuth(() => removeItemMutation.mutateAsync(productId)),
+        addToCart: (data) => withAuth(() => addItemMutation.mutate(data)),
+        updateQuantity: (data) => withAuth(() => updateItemMutation.mutate(data)),
+        removeFromCart: (productId) => withAuth(() => removeItemMutation.mutate(productId)),
         itemCount: cart?.items?.length || 0,
         cartTotal: cart?.total || 0
     };

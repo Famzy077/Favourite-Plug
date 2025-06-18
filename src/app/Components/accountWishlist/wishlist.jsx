@@ -52,7 +52,9 @@ export const AccountWishlist = () => {
           {wishlist.map((product) => {
             if (!product) return null; // Safety check for null products
 
-            const imageUrl = product.image;
+            const displayImage = product.images && product.images.length > 0
+            ? product.images[0].url
+            : '/Images/placeholder.png'; // Fallback image if no images are available
 
             return (
               <div key={product.id} className="relative group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -68,7 +70,7 @@ export const AccountWishlist = () => {
                   <div className="px-4 max-sm:px-1.5 py-5 flex flex-col items-center">
                     <div className="h-32 flex items-center justify-center">
                       <Image
-                        src={imageUrl}
+                        src={displayImage}
                         height={120}
                         width={120}
                         alt={product.name}
@@ -87,9 +89,9 @@ export const AccountWishlist = () => {
           })}
         </div>
         <div className="text-center mt-8 flex max-sm:flex-col justify-start rounded-[10px] w-auto gap-4">
-          <div className='flex gap-2.5 items-center bg-blue-300 w-[300px] max-sm:w-[100%] justify-center p-2 rounded-[5px]'>
+          <div className='flex gap-2.5 items-center border border-blue-500 w-[300px] max-sm:w-[100%] justify-center p-2 rounded-[5px]'>
             <p className="text-gray-800 text-xl font-semibold">Total Price =</p>
-            <p className="text-xl font-bold text-blue-800">₦{totalPrice.toLocaleString()}</p>
+            <p className="text-xl font-bold text-gray-800">₦{totalPrice.toLocaleString()}</p>
           </div>
           <button className='text-xl max-sm:w-[100%] max-sm:text-[14px] border border-blue-500 text-white rounded-[5px] bg-blue-500 hover:bg-blue-600 py-1.5 px-6 cursor-pointer font-semibold transition-colors flex gap-2 items-center justify-center'>
               <Phone className="max-sm:text-sm" size={28}/>

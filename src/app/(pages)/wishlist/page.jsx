@@ -50,9 +50,6 @@ const WishlistPage = () => {
   return (
     <div>
       <div className="lg:px-20 bg-zinc-100 p-5 max-sm:px-5 min-h-">
-        <Button onClick={() => toast.success("Hello from Sonner!")}>
-  Test Toast
-</Button>
         <h1 className="text-4xl mb-6 max-sm:text-2xl font-medium font-sans">Your Wishlist</h1>
         <div className="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-14">
           {wishlist.map((product) => {
@@ -100,13 +97,6 @@ const WishlistPage = () => {
             </button>
         </div>
       </div>
-
-      
-    <div className="p-10 mt-20">
-      <Button onClick={() => toast.success("Hello from Sonner!")}>
-        Test Toast
-      </Button>
-    </div>
       <Docs />
     </div>
   );
