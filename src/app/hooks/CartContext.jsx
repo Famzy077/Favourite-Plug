@@ -1,10 +1,10 @@
-
 'use client';
 
 import React, { createContext, useContext } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useAuthAction } from './useAuthAction'; // We'll use this to protect actions
+import { toast } from 'sonner';
 
 const API_URL = "https://favorite-server-0.onrender.com";
 
@@ -70,9 +70,10 @@ export const CartProvider = ({ children }) => {
     const value = {
         cart: cart || { items: [] }, // Provide a default empty cart
         isLoading,
-        addToCart: (data) => withAuth(() => addItemMutation.mutate(data)),
-        updateQuantity: (data) => withAuth(() => updateItemMutation.mutate(data)),
-        removeFromCart: (productId) => withAuth(() => removeItemMutation.mutate(productId)),
+        // MODIFIED: All mutation calls now use .mutateAsync to return a promise
+        addToCart: (data) => withAuth(() => addItemMutation.mutateAsync(data)),
+        updateQuantity: (data) => withAuth(() => updateItemMutation.mutateAsync(data)),
+        removeFromCart: (productId) => withAuth(() => removeItemMutation.mutateAsync(productId)),
         itemCount: cart?.items?.length || 0,
         cartTotal: cart?.total || 0
     };

@@ -134,3 +134,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* body{
+  
+    
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
+  } */

@@ -71,7 +71,7 @@ export const Laptops = () => {
     dots: false,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 2500,
+    autoplaySpeed: 4000,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 2,

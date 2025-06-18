@@ -1,4 +1,6 @@
 'use client';
+import { toast } from 'sonner';
+import { Button } from '@/components/ui/button';
 
 import React from 'react';
 import Link from 'next/link';
@@ -48,13 +50,16 @@ const WishlistPage = () => {
   return (
     <div>
       <div className="lg:px-20 bg-zinc-100 p-5 max-sm:px-5 min-h-">
+        <Button onClick={() => toast.success("Hello from Sonner!")}>
+  Test Toast
+</Button>
         <h1 className="text-4xl mb-6 max-sm:text-2xl font-medium font-sans">Your Wishlist</h1>
         <div className="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-14">
           {wishlist.map((product) => {
             if (!product) return null; // Safety check in case of null data
 
             return (
-              <div key={product.id} className="relative group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
+              <div key={product.id} className="relative group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col p-2">
                 <button
                   onClick={() => removeFromWishlist(product.id)}
                   className="absolute text-xl bg-white rounded-full p-1.5 top-2 right-2 text-red-500 z-10 shadow-sm"
@@ -72,29 +77,36 @@ const WishlistPage = () => {
                       className="max-h-full max-sm:h-[100px] w-auto object-contain"
                     />
                   </div>
-                  <div className="p-3 border-t text-center">
+                  <div className="p-3 py-1 border-t text-center">
                     <h1 className="text-[1.2rem] font-semibold truncate">{product.name}</h1>
                     <p className="font-bold text-sm mt-1">₦{product.price.toLocaleString()}</p>
                     
-                  <AddToCartButton productId={product.id} />
                   </div>
                 </Link>
+                <AddToCartButton productId={product.id} />
               </div>
             );
           })}
         </div>
         
         <div className="text-center flex max-sm:flex-col justify-center rounded-[10px] w-auto gap-4">
-          <div className='flex gap-2.5 items-center bg-blue-300 w-[300px] max-sm:w-[100%] justify-center p-2 rounded-[5px]'>
+          <div className='flex gap-2.5 items-center border-blue-500 border w-[300px] max-sm:w-[100%] justify-center p-2 rounded-[5px]'>
             <p className="text-gray-800 text-xl font-semibold">Total Price =</p>
-            <p className="text-xl font-bold text-blue-800">₦{totalPrice.toLocaleString()}</p>
+            <p className="text-xl font-bold text-gray-600">₦{totalPrice.toLocaleString()}</p>
           </div>
-          <button className='text-xl max-sm:w-[100%] max-sm:text-[14px] border border-blue-500 text-white rounded-[5px] bg-blue-500 hover:bg-blue-600 py-1.5 px-6 cursor-pointer font-semibold transition-colors flex gap-2 items-center'>
+          <button className='text-xl max-sm:w-[100%] max-sm:text-[14px] border border-blue-500 text-white rounded-[5px] bg-blue-500 hover:bg-blue-600 py-1.5 px-6 cursor-pointer font-semibold transition-colors flex gap-2 items-center justify-center'>
               <Phone className="max-sm:text-sm" size={28}/>
               Call to order
             </button>
         </div>
       </div>
+
+      
+    <div className="p-10 mt-20">
+      <Button onClick={() => toast.success("Hello from Sonner!")}>
+        Test Toast
+      </Button>
+    </div>
       <Docs />
     </div>
   );

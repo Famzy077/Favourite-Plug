@@ -22,13 +22,16 @@ const ProductCard = ({ product }) => {
     return Math.round(((oldPrice - price) / oldPrice) * 100);
   };
   const discountPercentage = calculateDiscount(product.price, product.oldPrice);
+  const displayImage = product.images && product.images.length > 0
+  ? product.images[0].url
+  : '/Images/placeholder.png';
 
   return (
     <div className="group relative border rounded-lg overflow-hidden border-gray-300 bg-white hover:shadow-xl transition-shadow duration-300">
       <Link href={`/products/${product.id}`}>
         <div className="aspect-w-1 aspect-h-1 flex justify-center w-full overflow-hidden bg-white py-3">
           <img
-            src={product.image}
+            src={displayImage}
             alt={product.name}
             className="max-sm:h-[100px] h-[120px] object-fit object-center group-hover:opacity-80 transition-opacity"
           />

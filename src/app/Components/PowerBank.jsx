@@ -71,7 +71,7 @@ export const PowerBank = () => {
     dots: false,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 2,

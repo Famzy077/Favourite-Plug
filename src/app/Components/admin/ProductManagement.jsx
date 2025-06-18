@@ -11,6 +11,7 @@ import { FaSpinner } from 'react-icons/fa'; // Import a spinner for loading stat
 const API_URL = "https://favorite-server-0.onrender.com";
 
 const fetchProducts = async () => {
+  // This function now fetches products *with* their related images
   const res = await axios.get(`${API_URL}/api/products`);
   return res.data.data;
 };
@@ -22,16 +23,16 @@ export const ProductManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
   
-  // --- NEW: Pagination State ---
+  // --- Pagination State ---
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; // Show 10 products per page
+  const itemsPerPage = 10;
 
   const { data: products, isLoading, error } = useQuery({
     queryKey: ['products'],
     queryFn: fetchProducts,
   });
 
-  // --- DELETE MUTATION (No changes needed) ---
+  // --- DELETE MUTATION ---
   const deleteMutation = useMutation({
     mutationFn: async (productId) => {
       const token = localStorage.getItem('authToken');
@@ -55,7 +56,7 @@ export const ProductManagement = () => {
     }
   };
 
-  // --- EVENT HANDLERS (No changes needed) ---
+  // --- EVENT HANDLERS ---
   const handleOpenAddModal = () => {
     setEditingProduct(null);
     setIsModalOpen(true);
@@ -71,7 +72,7 @@ export const ProductManagement = () => {
     setEditingProduct(null);
   };
 
-  // --- NEW: Pagination Logic ---
+  // --- Pagination Logic ---
   const totalPages = products ? Math.ceil(products.length / itemsPerPage) : 0;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -105,38 +106,43 @@ export const ProductManagement = () => {
               <TableHead>Name</TableHead>
               <TableHead>Price</TableHead>
               <TableHead>Stock</TableHead>
-              <TableHead>Category</TableHead> {/* FIX: Changed from Categories */}
+              <TableHead>Category</TableHead>
               <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {/* We now map over 'currentProducts' instead of 'products' */}
-            {currentProducts.map((product) => (
-              <TableRow key={product.id}>
-                <TableCell>
-                  <img src={product.image} alt={product.name} className="h-12 w-12 object-cover rounded-md" />
-                </TableCell>
-                <TableCell className="font-medium">{product.name}</TableCell>
-                <TableCell>₦{product.price ? product.price.toFixed(2) : '0.00'}</TableCell>
-                <TableCell>{product.quantity || 0}</TableCell>
-                <TableCell>{product.category}</TableCell> {/* FIX: Changed from category || 0 */}
-                <TableCell>
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm" onClick={() => handleOpenEditModal(product)}>
-                      Edit
-                    </Button>
-                    <Button variant="destructive" size="sm" onClick={() => handleDelete(product.id)}>
-                      Delete
-                    </Button>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
+            {currentProducts.map((product) => {
+              // Optional chaining `?.` prevents errors if the array doesn't exist or is empty.
+              const thumbnailUrl = product.images?.[0]?.url || '/Images/placeholder.png'; // Use a fallback image
+
+              return (
+                <TableRow key={product.id}>
+                  <TableCell>
+                    {/* Use the new thumbnailUrl variable for the image source */}
+                    <img src={thumbnailUrl} alt={product.name} className="h-12 w-12 object-cover rounded-md" />
+                  </TableCell>
+                  <TableCell className="font-medium">{product.name}</TableCell>
+                  <TableCell>₦{product.price ? product.price.toFixed(2) : '0.00'}</TableCell>
+                  <TableCell>{product.quantity || 0}</TableCell>
+                  <TableCell>{product.category}</TableCell>
+                  <TableCell>
+                    <div className="flex gap-2">
+                      <Button variant="outline" size="sm" onClick={() => handleOpenEditModal(product)}>
+                        Edit
+                      </Button>
+                      <Button variant="destructive" size="sm" onClick={() => handleDelete(product.id)}>
+                        Delete
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </div>
 
-      {/* --- NEW: Pagination Controls --- */}
+      {/* --- Pagination Controls --- */}
       <div className="flex items-center justify-between mt-4">
         <span className="text-sm text-gray-700">
           Page {currentPage} of {totalPages}

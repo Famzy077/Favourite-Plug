@@ -22,7 +22,9 @@ const Spinner = () => (
 const ProductCard = ({ product, onWishlistToggle, isWishlisted }) => {
   const { withAuth } = useAuthAction();
   // We construct the full, absolute URL for the image source.
-  const imageUrl = product.image;
+  const displayImage = product.images && product.images.length > 0
+    ? product.images[0].url
+    : '/Images/placeholder.png';
 
   return (
     <div className="relative group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
@@ -35,7 +37,8 @@ const ProductCard = ({ product, onWishlistToggle, isWishlisted }) => {
       <Link href={`/products/${product.id}`} className="flex flex-col flex-grow">
         <div className="flex justify-center items-center mb-1">
           <img
-            src={imageUrl} 
+            
+            src={displayImage}
             alt={product.name}
             className="max-sm:h-[45px] h-[100px] object-fit rounded-lg"
           />
@@ -57,7 +60,9 @@ const ProductCard = ({ product, onWishlistToggle, isWishlisted }) => {
 // --- Data Fetching Function ---
 const fetchAllProducts = async () => {
   const res = await axios.get(`${API_URL}/api/products`);
+  console.log(res.data.data)
   return res.data.data;
+  
 };
 
 // --- Main Categories Page Component ---
@@ -71,7 +76,6 @@ const Categories = () => {
     queryKey: ['publicProducts'],
     queryFn: fetchAllProducts,
   });
-
   const category = searchParams.get('category') || 'All';
   const page = parseInt(searchParams.get('page') || '1');
 

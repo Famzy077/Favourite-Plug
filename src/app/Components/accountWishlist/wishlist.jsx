@@ -91,7 +91,7 @@ export const AccountWishlist = () => {
             <p className="text-gray-800 text-xl font-semibold">Total Price =</p>
             <p className="text-xl font-bold text-blue-800">₦{totalPrice.toLocaleString()}</p>
           </div>
-          <button className='text-xl max-sm:w-[100%] max-sm:text-[14px] border border-blue-500 text-white rounded-[5px] bg-blue-500 hover:bg-blue-600 py-1.5 px-6 cursor-pointer font-semibold transition-colors flex gap-2 items-center'>
+          <button className='text-xl max-sm:w-[100%] max-sm:text-[14px] border border-blue-500 text-white rounded-[5px] bg-blue-500 hover:bg-blue-600 py-1.5 px-6 cursor-pointer font-semibold transition-colors flex gap-2 items-center justify-center'>
               <Phone className="max-sm:text-sm" size={28}/>
               Call to order
             </button>
