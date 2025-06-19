@@ -11,7 +11,6 @@ import { FaSpinner, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
 const API_URL = "https://favorite-server-0.onrender.com";
 
 // --- FORGOT PASSWORD PAGE COMPONENT ---
-// This component would live at `app/forgot-password/page.jsx`
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');

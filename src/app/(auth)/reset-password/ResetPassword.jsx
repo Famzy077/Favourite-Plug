@@ -27,6 +27,7 @@ const ResetPasswordPage = () => {
   }, [token]);
 
   const handleSubmit = async (e) => {
+    const API_URL = "https://favorite-server-0.onrender.com";
     e.preventDefault();
     if (newPassword !== confirmPassword) {
       setError("Passwords do not match.");

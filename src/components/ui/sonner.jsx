@@ -1,5 +1,3 @@
-// components/ui/sonner.jsx
-
 "use client"
 
 import { useTheme } from "next-themes"
@@ -12,7 +10,6 @@ const Toaster = ({ ...props }) => {
     <Sonner
       theme={theme}
       className="toaster group"
-      // THIS IS THE CRITICAL PART THAT WAS MISSING
       toastOptions={{
         classNames: {
           toast:
