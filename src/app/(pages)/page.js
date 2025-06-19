@@ -69,6 +69,13 @@ const PageProvider = ({ children }) => {
       ) : (
         <AllProviders>
           {children}
+          <a
+            href="https://analytics.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+         </a>
         </AllProviders>
       )}
     </>
