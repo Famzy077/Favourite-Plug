@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from 'next/script';
-import {PageProvider} from "./page";
+import PageProvider from "./page";
 import { HeaderPage, MobileBottomNav } from "../UI/Header";
 import Footer from "../UI/Footer";
 import { Toaster } from "react-hot-toast";

@@ -30,7 +30,7 @@ const AllProviders = ({ children }) => {
     </QueryClientProvider>
   );
 };
-export const PageProvider = ({ children }) => {
+const PageProvider = ({ children }) => {
   const router = useRouter();
   const pathname = usePathname();
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -74,3 +74,4 @@ export const PageProvider = ({ children }) => {
     </>
   );
 }
+export default PageProvider;

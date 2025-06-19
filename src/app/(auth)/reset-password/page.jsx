@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import React from 'react'
 import ResetPasswordPage from './ResetPassword'
 
-const page = () => {
+export const page = () => {
   return (
     <Suspense>
       <ResetPasswordPage />
@@ -10,4 +10,3 @@ const page = () => {
   )
 }
 
-export default page

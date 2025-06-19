@@ -43,10 +43,6 @@ const WishlistPage = () => {
     );
   }
 
-  // NOTE: No need to check for a token here. The '/wishlist' route is already
-  // protected by your main PageProvider, so a user can't see this component
-  // unless they are already logged in.
-
   return (
     <div>
       <div className="lg:px-20 bg-zinc-100 p-5 max-sm:px-5 min-h-">
@@ -54,7 +50,8 @@ const WishlistPage = () => {
         <div className="grid max-sm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-14">
           {wishlist.map((product) => {
             if (!product) return null; // Safety check in case of null data
-
+              
+            const displayImage = product.images?.[0]?.url || '/Images/placeholder.png';
             return (
               <div key={product.id} className="relative group bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col p-2">
                 <button
@@ -66,10 +63,8 @@ const WishlistPage = () => {
 
                 <Link href={`/products/${product.id}`} className="flex flex-col flex-grow">
                   <div className="flex-grow flex justify-center items-center p-4 py-2 h-">
-                    {/* The src={product.image} now works perfectly because
-                        the new data in your database contains the full Cloudinary URL */}
                     <img
-                      src={product.image}
+                      src={displayImage}
                       alt={product.name}
                       className="max-h-full max-sm:h-[90px] w-auto object-contain"
                     />
