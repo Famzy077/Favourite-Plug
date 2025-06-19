@@ -1,95 +1,19 @@
-"use client";
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import BannerImg from "/public/Images/Phones.png";
-import Samsung from "/public/Images/GalaxyS25.png";
-import SamsungA52 from "/public/Images/SamsungA52.png"
-import Image from "next/image";
-import Link from "next/link";
-import Iphone from '/public/Images/iphoneSection__.png'
+import React from 'react'
+import Image from 'next/image';
+import bannerImage from '/public/Images/GalaxySeries.png';
 
-
-
-export const BannerSlider = () => {
-    let settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 1
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-    };
-
+const BannerSlider = () => {
   return (
-    <div className="overflow-hidden bg-zinc-200 max-sm:pt-3">
-      <Slider className="max-sm:mb-4.5" {...settings}>
-        <Link href={''}>
-          <Image
-            src={BannerImg}
-            alt="Infinix Series"
-            className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl max-sm:mx-3"
-            title="Samsung Series"
-          />
-        </Link>
-
-        <Link href={''}>
-            <Image
-              src={Samsung}
-              alt="Watch"
-              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl max-sm:mx-3"
-              title="Watch"
-            />
-        </Link>
-
-        <Link href={''}>
-            <Image
-              src={SamsungA52}
-              alt="SamsungA52"
-              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl max-sm:mx-3"
-              title="SamsungA52"
-            />
-        </Link>
-
-        <Link href={''}>
-            <Image
-              src={Iphone}
-              alt="Iphone"
-              className="w-[100%] max-sm:w-[95%] max-sm:h-[30vh] h-[70vh] object-fit max-sm:rounded-2xl max-sm:mx-3"
-              title="Iphone"
-            />
-        </Link>
-      </Slider>
+    <div>
+      <div className="relative h-[50vh] flex justify-center items-center text-white bg-gray-800">
+        <Image src={bannerImage} alt="Products Banner" layout="fill" objectFit="cover" className="opacity-30" />
+        <div className="relative z-10 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold">All Products</h1>
+          <p className="text-lg mt-2">Find your favorite gadgets right here.</p>
+        </div>
+      </div>
     </div>
+  )
+}
 
-  );
-};
+export default BannerSlider

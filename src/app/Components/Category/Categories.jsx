@@ -60,7 +60,7 @@ const ProductCard = ({ product, onWishlistToggle, isWishlisted }) => {
 // --- Data Fetching Function ---
 const fetchAllProducts = async () => {
   const res = await axios.get(`${API_URL}/api/products`);
-  console.log(res.data.data)
+  // console.log(res.data.data)
   return res.data.data;
   
 };
