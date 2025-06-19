@@ -50,8 +50,8 @@
 }
 .scrollbar-hide {
   scrollbar-width: hidden;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @theme inline {

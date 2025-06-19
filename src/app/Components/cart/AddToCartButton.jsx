@@ -23,8 +23,8 @@ export const AddToCartButton = ({ productId, quantity = 1 }) => {
     };
 
     return (
-        <Button onClick={handleAddToCart} size="lg" className="w-full rounded-[5px] my-2 max-sm:text-[12px] cursor-pointer text-lg">
-            <ShoppingCart className="mr-2 h-5 w-5" />
+        <Button onClick={handleAddToCart} size="lg" className="w-[100%] rounded-[5px] my-2 max-sm:text-[12px] cursor-pointer text-lg">
+            <ShoppingCart className="mr-0 h-5 w-5" />
             Add to Cart
         </Button>
     );

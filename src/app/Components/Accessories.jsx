@@ -39,7 +39,7 @@ const ProductCardItems = ({ product }) => {
         </div>
       </Link>
       {discountPercentage && (
-        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold max-sm:px-0.5 px-2 py-1 rounded-md">
+        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs max-sm:text-[11px] font-bold max-sm:px-[0.3rem] px-2 py-1 rounded-md">
           -{discountPercentage}%
         </div>
       )}

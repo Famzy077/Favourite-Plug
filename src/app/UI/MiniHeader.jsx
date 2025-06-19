@@ -91,21 +91,21 @@ export const MiniHeader = () => {
             value={query}
             onChange={handleSearchChange}
             onFocus={() => setShowResults(true)} // Show results on focus as well
-            className="w-full border-2 border-r-0 border-blue-500 rounded-l px-4 pr-0 py-[7px] outline-none bg-white text-sm"
+            className="w-full border-2 border-r-0 border-[#2648db] rounded-l px-4 pr-0 py-[7px] outline-none bg-white text-sm"
           />
-          <button type="submit" className="bg-blue-500 text-white px-3 py-1 rounded-r">
+          <button type="submit" className="bg-[#2648db] text-white px-3 py-1 rounded-r">
             <Search size={20} />
           </button>
         </form>
 
         <Link href="/wishlist" title='Wishlist'>
-          <Heart size={36} className='text-blue-500 bg-white rounded-full p-1.5 border-2 border-blue-500'/>
+          <Heart size={36} className='text-[#2648db] bg-white rounded-full p-1.5 border-2 border-[#2648db]'/>
         </Link>
 
         {/* --- NEW: Cart Icon with Badge --- */}
         <Link href="/cart">
           <div className="relative m-0 p-1.5 rounded-full hover:bg-blue-300 transition-colors">
-            <ShoppingCart size={28} className="text-blue-500" />
+            <ShoppingCart size={28} className="text-[#2648db]" />
             {itemCount > 0 && (
               <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
                 {itemCount}
@@ -122,7 +122,7 @@ export const MiniHeader = () => {
         >
           {isLoading && (
             <div className="flex justify-center p-4">
-                <FaSpinner className="animate-spin text-blue-500" />
+                <FaSpinner className="animate-spin text-[#2648db]" />
             </div>
           )}
           {!isLoading && results && results.length > 0 && (

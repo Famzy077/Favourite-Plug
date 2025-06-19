@@ -103,7 +103,7 @@ export const HeaderPage = () => {
         </div>
         <Link href="/cart">
           <div className="relative m-0 p-1.5 rounded-full hover:bg-blue-300 transition-colors mr-5">
-            <ShoppingCart size={28} className="text-blue-500" />
+            <ShoppingCart size={28} className="text-[#2648db]" />
             {itemCount > 0 && (
               <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
                 {itemCount}
@@ -112,7 +112,7 @@ export const HeaderPage = () => {
           </div>
         </Link>
         <div className='space-x-4'>
-            <button className='bg-blue-500 hover:bg-blue-400 text-white px-4 py-1.5 rounded-sm transition-all mr-10'>
+            <button className='bg-[#2648db] hover:bg-blue-500 text-white px-4 py-1.5 rounded-sm transition-all mr-10'>
               Call To Order
             </button>
         </div>

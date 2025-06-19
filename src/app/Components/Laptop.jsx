@@ -35,12 +35,12 @@ const ProductCard = ({ product }) => {
         </div>
       </Link>
       {discountPercentage && (
-        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold max-sm:px-0.5 px-2 py-1 rounded-md">
+        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs max-sm:text-[11px] font-bold max-sm:px-[0.3rem] px-2 py-1 rounded-md">
           -{discountPercentage}%
         </div>
       )}
-      <div className="p-4 pb-2 bg-gray-200">
-        <h3 className="text-1.8 lg:font-semibold text-gray-800 font-medium truncate">
+      <div className="p-4 max-sm:py-0 pb-2 bg-gray-200">
+        <h3 className="text-1.8 max-sm:text-[0.9rem] lg:font-semibold text-gray-800 font-medium truncate">
           <Link href={`/products/${product.id}`}>{product.name}</Link>
         </h3>
         <div className="flex items-baseline my-0.5">
