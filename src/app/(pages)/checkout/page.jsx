@@ -253,11 +253,11 @@ const CheckoutPage = () => {
                         <form id="checkout-form" onSubmit={handleSubmit} className="space-y-6">
                             <div>
                                 <Label htmlFor="fullName" className="block text-md font-medium mb-2">Full Name</Label>
-                                <Input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
+                                <Input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Please enter your full name" required />
                             </div>
                             <div>
                                 <Label htmlFor="contactPhone" className="block text-md font-medium mb-2">Contact Phone Number</Label>
-                                <Input id="contactPhone" type="tel" value={contactPhone} onChange={(e) => setContactPhone(e.target.value)} required />
+                                <Input id="contactPhone" type="tel" value={contactPhone} onChange={(e) => setContactPhone(e.target.value)} placeholder="Please enter your phone number" required />
                             </div>
                             <div>
                                 <Label htmlFor="shippingAddress" className="block text-md font-medium mb-2">Delivery Address</Label>
