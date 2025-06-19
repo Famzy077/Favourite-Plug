@@ -47,7 +47,7 @@ export const AccountWishlist = () => {
     <div>
       <div className="bg-zinc-50 p-5 max-sm:px-3 rounded-xl">
         <h1 className="text-2xl mb-6 max-sm:text-xl font-semibold">Your Wishlist</h1>
-        <div className="grid max-sm:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid max-sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {wishlist.map((product) => {
             if (!product) return null;
 
