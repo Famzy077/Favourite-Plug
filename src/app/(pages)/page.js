@@ -10,11 +10,9 @@ import { WishlistProvider } from '../hooks/WishlistContext.jsx';
 import { CartProvider } from '../hooks/CartContext';
 import { FaSpinner } from 'react-icons/fa';
 
-// This is a "singleton" instance. It's best to create it outside the component
-// so it doesn't get re-created on every render.
 const queryClient = new QueryClient();
 
-// A dedicated component for all your providers. This is a clean pattern.
+// A dedicated component for all providers.
 const AllProviders = ({ children }) => {
   return (
     // 1. QueryClientProvider is on the outside, providing the "umbrella".
