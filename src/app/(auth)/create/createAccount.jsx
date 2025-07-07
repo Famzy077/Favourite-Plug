@@ -132,7 +132,7 @@ const CreateAccount = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center max-w-md mx-auto">
-      <Image src={logo} alt="Favorite Plug Logo" width={60} height={60} className="mb-4" />
+      <Image src={logo} alt="Favvorite plug Logo" width={60} height={60} className="mb-4" />
 
       <h1 className="text-2xl font-bold mb-2">Create your account</h1>
       <p className="text-gray-600 mb-6">

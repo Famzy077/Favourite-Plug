@@ -8,13 +8,13 @@ const Docs = () => {
     <div className="px-16 py-20 max-sm:px-5 bg-blue-200 max-sm:hidden">
       <main className="p-7 max-sm:px-3 bg-white rounded-xl shadow-xl">
         <h1 className="text-2xl max-sm:text-xl py-2 font-semibold text-zinc-800">
-          Favorite Plug - Trusted Tech & Gadget Destination
+          Favvorite plug - Trusted Tech & Gadget Destination
         </h1>
         <h2 className="max-sm:text-[17px] text-xl py-1 font-bold text-zinc-600">
           Shop Premium Gadgets & Accessories in One Click
         </h2>
         <p className="text-zinc-600 max-sm:text-[15px]">
-          Welcome to Favorite Plug, your go-to online store in Nigeria for high-quality phones, laptops, smartwatches, accessories, and more...
+          Welcome to Favvorite plug, your go-to online store in Nigeria for high-quality phones, laptops, smartwatches, accessories, and more...
         </p>
 
         {/* Conditionally render the rest of the content */}
@@ -44,7 +44,7 @@ const Docs = () => {
               Genuine Products. Guaranteed Satisfaction.
             </h1>
             <p className="text-zinc-600 max-sm:text-[15px]">
-              At Favorite Plug, we prioritize quality and trust...
+              At Favvorite plug, we prioritize quality and trust...
             </p>
 
             <h1 className="text-xl max-sm:text-[17px] pt-2 pb-1 font-bold text-zinc-600">
@@ -62,7 +62,7 @@ const Docs = () => {
             </p>
 
             <h1 className="text-xl max-sm:text-[17px] pt-2 pb-1 font-bold text-zinc-600">
-              🛒 Start Shopping with Favorite Plug Today
+              🛒 Start Shopping with Favvorite plug Today
             </h1>
             <p className="text-zinc-600 max-sm:text-[15px]">
               Whether you need a new phone, a better headset, or a gift...

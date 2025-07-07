@@ -87,7 +87,7 @@ export const MiniHeader = () => {
         <form className="flex w-[85%]" onSubmit={(e) => e.preventDefault()}>
           <input
             type="search"
-            placeholder="Search on Favorite Plug"
+            placeholder="Search on Favvorite plug"
             value={query}
             onChange={handleSearchChange}
             onFocus={() => setShowResults(true)} // Show results on focus as well

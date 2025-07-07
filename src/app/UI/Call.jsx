@@ -4,7 +4,7 @@ export const Call = () => {
   return (
     <div className='max-sm:px-0 px-22 mt-5'>
       <main className='bg-white p-3 text-center font-bold text-black'>
-        <h1 className='text-2xl max-sm:text-xl'>Favorite Plug & Gadget</h1>
+        <h1 className='text-2xl max-sm:text-xl'>Favvorite plug & Gadget</h1>
       </main>
     </div>
   )

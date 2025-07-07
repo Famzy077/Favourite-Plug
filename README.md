@@ -1,6 +1,6 @@
-# 🛍️ 💻📱 Favorite Plug
+# 🛍️ 💻📱 Favvorite plug
 
-**Favorite Plug** is a modern, responsive e-commerce platform focused on delivering tech gadgets and accessories to users with a clean and intuitive shopping experience.
+**Favvorite plug** is a modern, responsive e-commerce platform focused on delivering tech gadgets and accessories to users with a clean and intuitive shopping experience.
 
 🔗 **Live Demo**: [https://favourite-plug.vercel.app](https://favourite-plug.vercel.app)
 

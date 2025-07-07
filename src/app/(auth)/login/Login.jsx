@@ -68,8 +68,8 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-white">
-      <Image src={logo} alt="Favorite Plug Logo" width={60} height={60} />
-      <h2 className="text-xl font-semibold mt-4">Welcome to Favorite Plug</h2>
+      <Image src={logo} alt="Favvorite plug Logo" width={60} height={60} />
+      <h2 className="text-xl font-semibold mt-4">Welcome to Favvorite plug</h2>
       <p className="text-sm text-center text-gray-600 mb-6">
         Type your e-mail or phone number to log in or create an account.
       </p>
@@ -107,7 +107,7 @@ const Login = () => {
       </form>
 
       <p className="text-xs text-gray-500 mb-4">
-        By continuing you agree to Favorite Plug’s{' '}
+        By continuing you agree to Favvorite plug’s{' '}
         <span className="underline cursor-pointer text-blue-500">Terms and Conditions</span>
       </p>
 

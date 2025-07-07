@@ -97,8 +97,8 @@ const SignIn = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center max-w-md mx-auto">
-      <Image src={logo} alt="Favorite Plug Logo" width={60} height={60} className="mb-4" />
-      <h1 className="text-2xl font-bold mb-2">Welcome Back To Favorite Plug</h1>
+      <Image src={logo} alt="Favvorite plug Logo" width={60} height={60} className="mb-4" />
+      <h1 className="text-2xl font-bold mb-2">Welcome Back To Favvorite plug</h1>
       <p className="text-gray-600 mb-6">Log in</p>
 
       {error && (

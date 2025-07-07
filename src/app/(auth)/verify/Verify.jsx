@@ -139,7 +139,7 @@ const VerifyEmail = () => {
   if (!email) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
-        <Image src={logo} alt="Favorite Plug Logo" width={60} height={60} className="mb-4" />
+        <Image src={logo} alt="Favvorite plug Logo" width={60} height={60} className="mb-4" />
         <h1 className="text-xl font-semibold mb-2">Email Required</h1>
         <p className="text-gray-600 mb-6">Please provide an email address to verify</p>
         <button
@@ -154,7 +154,7 @@ const VerifyEmail = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center max-w-md mx-auto">
-      <Image src={logo} alt="Favorite Plug Logo" width={60} height={60} className="mb-4" />
+      <Image src={logo} alt="Favvorite plug Logo" width={60} height={60} className="mb-4" />
 
       <h1 className="text-xl font-semibold mb-2">Verify your email address</h1>
       <p className="text-gray-600 text-sm mb-6">
