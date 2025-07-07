@@ -3,9 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-*{
-  /* contain: ; */
-}
 :root {
   --primary: #2648db;
   /* --primary: oklch(0.216 0.006 56.043); */
