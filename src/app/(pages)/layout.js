@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from 'next/script';
 import PageProvider from "./page";
+import dynamic from "next/dynamic";
 import { HeaderPage, MobileBottomNav } from "../UI/Header";
 import Footer from "../UI/Footer";
 import { Toaster } from "react-hot-toast";
@@ -20,6 +21,10 @@ export const metadata = {
   title: "Favvorite plug",
   description: "Favorite your tech plug",
 };
+
+const CookieConsentWrapper = dynamic(
+  () => import('../UI/CookieConsentWrapper')
+);
 
 
 export default function PageLayout({ children }) {
@@ -70,6 +75,8 @@ export default function PageLayout({ children }) {
             },
           }}
         />
+
+        <CookieConsentWrapper/>
 
       </body>
     </html>

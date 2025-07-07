@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -14,7 +13,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import toast from 'react-hot-toast';
-import { Truck } from 'lucide-react'; // For a nice icon
+import { Truck } from 'lucide-react';
 
 const API_URL = "https://favorite-server-0.onrender.com";
 
@@ -27,9 +26,7 @@ const CheckoutPage = () => {
     const [fullName, setFullName] = useState('');
     const [shippingAddress, setShippingAddress] = useState('');
     const [contactPhone, setContactPhone] = useState('');
-    // --- NEW: State for the payment method ---
     const [paymentMethod, setPaymentMethod] = useState('PAY_ON_DELIVERY');
-    
     const [isOrderPlaced, setIsOrderPlaced] = useState(false);
 
     useEffect(() => {
@@ -48,9 +45,11 @@ const CheckoutPage = () => {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['cart'] });
             setIsOrderPlaced(true);
+            // FIX: Use toast for success message
             toast.success("Your order has been placed successfully!");
         },
         onError: (error) => {
+            // FIX: Use toast for error messages
             toast.error(error.response?.data?.message || 'Error placing order. Please try again.');
         }
     });
@@ -58,13 +57,13 @@ const CheckoutPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!shippingAddress || !contactPhone || !fullName) {
+            // FIX: Use toast for validation errors
             toast.error('Please fill in all delivery details.');
             return;
         }
-        // --- NEW: Include paymentMethod in the data sent to the API ---
         placeOrderMutation.mutate({ shippingAddress, contactPhone, fullName, paymentMethod });
     };
-    
+
     if (isLoading) {
         return (
           <div className='flex items-center justify-center min-h-screen'>
@@ -90,32 +89,27 @@ const CheckoutPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <h1 className="text-3xl font-bold mb-8 text-center">Checkout</h1>
             <div className="flex flex-col lg:flex-row gap-12">
-
-                {/* Left Side: Delivery and Payment */}
                 <div className="w-full lg:w-3/5 space-y-8">
-                    {/* Delivery Information Form */}
                     <div className="bg-white p-6 rounded-lg shadow-md border">
                         <h2 className="text-xl font-bold mb-6">1. Delivery Information</h2>
                         <form id="checkout-form" onSubmit={handleSubmit} className="space-y-6">
                             <div>
-                                <Label htmlFor="fullName" className="block text-md font-medium mb-2">Full Name</Label>
-                                <Input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Please enter your full name" required />
+                                <Label htmlFor="fullName">Full Name</Label>
+                                <Input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
                             </div>
                             <div>
-                                <Label htmlFor="contactPhone" className="block text-md font-medium mb-2">Contact Phone Number</Label>
-                                <Input id="contactPhone" type="tel" value={contactPhone} onChange={(e) => setContactPhone(e.target.value)} placeholder="Please enter your phone number" required />
+                                <Label htmlFor="contactPhone">Contact Phone Number</Label>
+                                <Input id="contactPhone" type="tel" value={contactPhone} onChange={(e) => setContactPhone(e.target.value)} required />
                             </div>
                             <div>
-                                <Label htmlFor="shippingAddress" className="block text-md font-medium mb-2">Delivery Address</Label>
+                                <Label htmlFor="shippingAddress">Delivery Address</Label>
                                 <Textarea id="shippingAddress" rows={4} value={shippingAddress} onChange={(e) => setShippingAddress(e.target.value)} required placeholder="Please provide your full street address, city, and state." />
                             </div>
                         </form>
                     </div>
-
-                    {/* --- NEW: Payment Method Section --- */}
                     <div className="bg-white p-6 rounded-lg shadow-md border">
                         <h2 className="text-xl font-bold mb-4">2. Payment Method</h2>
-                        <div className="border-2 border-[#2648db] bg-blue-50 rounded-lg p-4 flex items-center gap-4">
+                        <div className="border-2 border-blue-500 bg-blue-50 rounded-lg p-4 flex items-center gap-4">
                             <Truck className="h-8 w-8 text-blue-600" />
                             <div>
                                 <h3 className="font-bold text-gray-800">Pay on Delivery</h3>
@@ -124,14 +118,14 @@ const CheckoutPage = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* Right Side: Order Summary & Place Order Button */}
                 <div className="w-full lg:w-2/5">
                     <div className="bg-white p-6 rounded-lg shadow-md border sticky top-24">
                         <h2 className="text-xl font-bold border-b pb-4 mb-4">Your Order ({itemCount} items)</h2>
                         <div className="space-y-4 max-h-64 overflow-y-auto pr-2">
                             {cart?.items?.map(item => {
-                                const displayImage = item.product.image;
+                                // --- THE FIX for the image ---
+                                const displayImage = item.product.image; // The backend now provides this directly
+                                
                                 return (
                                     <div key={item.id} className="flex items-center gap-4 text-sm">
                                         <Image src={displayImage} alt={item.product.name} width={64} height={64} className="rounded-md object-cover h-16 w-16" />
@@ -145,18 +139,13 @@ const CheckoutPage = () => {
                             })}
                         </div>
                         <div className="border-t mt-4 pt-4 space-y-2">
-                            <div className="flex justify-between"><p>Subtotal</p><p>₦{cartTotal.toLocaleString()}</p></div>
+                             <div className="flex justify-between"><p>Subtotal</p><p>₦{cartTotal.toLocaleString()}</p></div>
                             <div className="flex justify-between text-gray-500"><p>Shipping</p><p>Free</p></div>
-                             <div className="flex justify-between text-gray-600 text-sm">
-                                <p>Payment Method</p>
-                                <p>Pay on Delivery</p>
-                             </div>
                             <div className="border-t pt-4 flex justify-between font-bold text-lg"><p>Total</p><p>₦{cartTotal.toLocaleString()}</p></div>
                         </div>
-                         {/* This button now submits the form */}
                          <Button 
                             type="submit" 
-                            form="checkout-form" // This links the button to the form
+                            form="checkout-form"
                             className="w-full text-lg py-6 mt-6" 
                             disabled={placeOrderMutation.isLoading}
                          >
