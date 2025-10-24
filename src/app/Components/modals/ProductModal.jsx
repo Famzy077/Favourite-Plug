@@ -142,31 +142,31 @@ export const ProductModal = ({ productToEdit = null, isOpen, onClose }) => {
 
           <form onSubmit={handleSubmit} className="pr-2">
             <div className="grid gap-4 py-4 max-sm:px-0">
-              <div className="grid grid-cols-4 items-center gap-4">
+              <div className="grid items-center grid-cols-4 gap-4">
                 <Label htmlFor="name" className="text-right max-sm:text-[0.8rem]">Name</Label>
                 <Input id="name" value={productName} onChange={(e) => setProductName(e.target.value)} className="col-span-3" required />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
+              <div className="grid items-center grid-cols-4 gap-4">
                 <Label htmlFor="category" className="text-right max-sm:text-[0.8rem]">Category</Label>
                 <Input id="category" value={category} onChange={(e) => setCategory(e.target.value)} className="col-span-3" required />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
+              <div className="grid items-center grid-cols-4 gap-4">
                 <Label htmlFor="description" className="text-right max-sm:text-[0.8rem]">Description</Label>
                 <Textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} className="col-span-3" />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
+              <div className="grid items-center grid-cols-4 gap-4">
                 <Label htmlFor="price" className="text-right max-sm:text-[0.8rem]">Price (₦)</Label>
                 <Input id="price" type="number" value={price} onChange={(e) => setPrice(e.target.value)} className="col-span-3" required />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
+              <div className="grid items-center grid-cols-4 gap-4">
                 <Label htmlFor="oldPrice" className="text-right max-sm:text-[0.8rem]">Old Price (₦)</Label>
                 <Input id="oldPrice" type="number" value={oldPrice} onChange={(e) => setOldPrice(e.target.value)} className="col-span-3" />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
+              <div className="grid items-center grid-cols-4 gap-4">
                 <Label htmlFor="quantity" className="text-right max-sm:text-[0.8rem]">Quantity</Label>
                 <Input id="quantity" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} className="col-span-3" />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
+              <div className="grid items-center grid-cols-4 gap-4">
                 <Label htmlFor="pictures" className="text-right">Images</Label>
                 <Input 
                   id="pictures" 
@@ -180,12 +180,12 @@ export const ProductModal = ({ productToEdit = null, isOpen, onClose }) => {
               
               {/* --- UPDATED: Image preview section --- */}
               {previewUrls.length > 0 && (
-                <div className="grid grid-cols-4 gap-4 items-start">
-                    <Label className="text-right pt-2">Previews</Label>
-                    <div className="col-span-3 grid grid-cols-3 gap-2">
+                <div className="grid items-start grid-cols-4 gap-4">
+                    <Label className="pt-2 text-right">Previews</Label>
+                    <div className="grid grid-cols-3 col-span-3 gap-2">
                       {previewUrls.map((url, index) => (
                           <div key={index} className="relative">
-                              <img src={url} alt={`Preview ${index + 1}`} className="h-24 w-24 object-cover rounded-md border" />
+                              <img src={url} alt={`Preview ${index + 1}`} className="object-cover w-24 h-24 border rounded-md" />
                               {/* --- NEW: The remove button for each image --- */}
                               <button
                                   type="button" // Important to prevent form submission
@@ -193,7 +193,7 @@ export const ProductModal = ({ productToEdit = null, isOpen, onClose }) => {
                                   className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full p-0.5 hover:bg-red-700 transition-colors"
                                   title="Remove image"
                               >
-                                  <XIcon className="h-4 w-4" />
+                                  <XIcon className="w-4 h-4" />
                               </button>
                           </div>
                       ))}

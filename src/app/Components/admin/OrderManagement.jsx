@@ -1,10 +1,3 @@
-/*
-* =================================================================
-* STEP 1: CREATE THE NEW ORDER MANAGEMENT COMPONENT
-* =================================================================
-* Create a new file at: app/components/admin/OrderManagement.jsx
-*/
-
 'use client';
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
