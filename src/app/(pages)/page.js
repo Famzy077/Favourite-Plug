@@ -37,7 +37,7 @@ const PageProvider = ({ children }) => {
   useEffect(() => {
     const minDelayTimer = setTimeout(() => {
       setMinDelayPassed(true);
-    }, 3000);
+    }, 1500);
 
     const authToken = localStorage.getItem('authToken');
 
@@ -62,7 +62,7 @@ const PageProvider = ({ children }) => {
       {(!isAuthorized || !minDelayPassed) ? (
         <div className='flex flex-col items-center justify-center min-h-[90vh]'>
           <Image src={logo} className='h-[100px] max-sm:h-[90px] max-sm:w-fit w-[230px]' alt="Loading Logo" />
-          <FaSpinner className="animate-spin text-blue-500" size={40} />
+          <FaSpinner className="text-blue-500 animate-spin" size={40} />
         </div>
       ) : (
         <AllProviders>
